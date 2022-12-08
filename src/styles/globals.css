@@ -1,3 +1,37 @@
+:root {
+  /* COLORS */
+
+  --Green: hsl(153, 71%, 59%);
+
+  --Black: hsl(0, 0%, 8%);
+
+  --DarkGrey: hsl(0, 0%, 14%);
+
+  --Grey: hsl(0, 0%, 85%);
+
+  --White: hsl(0, 0%, 100%);
+
+  /* TYPOGRAPHY */
+
+  --FF-Primary: 'Space Grotesk';
+  --FW-Heading: 700;
+
+  --FS-Heading-XL: 8.8rem;
+  --FL-Heading-XL: 8.8rem;
+  --LS-Heading-XL: -2.5px;
+
+  --FS-Heading-L: 4.8rem;
+  --FL-Heading-L: 5.6rem;
+  --LS-Heading-L: -1.5px;
+
+  --FS-Heading-M: 2.4rem;
+  --FL-Heading-M: 3.2rem;
+
+  --FS-Body-L: 1.8rem;
+  --FW-Body-L: 500;
+  --FL-Body-L: 2.8rem;
+}
+
 *,
 *::after,
 *::before {
@@ -13,13 +47,27 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: var(--FS-Body-L);
+  font-weight: var(--FW-Body-L);
   font-style: normal;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  color: var(--Grey);
+  background-color: var(--Black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--White);
+  font-weight: var(--FW-Heading);
 }
 
 a {
