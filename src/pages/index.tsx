@@ -1,8 +1,9 @@
+import type { NextPage } from 'next';
 import Head from 'next/head';
 
-export default function Home() {
+const Home: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>Create Next App</title>
         <meta
@@ -18,6 +19,8 @@ export default function Home() {
       <main>
         <h1>Hello World!</h1>
       </main>
-    </div>
+    </>
   );
-}
+};
+
+export default Home;
