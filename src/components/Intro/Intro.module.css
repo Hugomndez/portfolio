@@ -1,0 +1,53 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  margin-block-start: 40px;
+  margin-block-end: 24px;
+  font-size: 4rem;
+  letter-spacing: -1.13636px;
+}
+
+.underline {
+  border-bottom: 4px solid var(--Green);
+}
+
+.subTitle {
+  margin-block-end: 24px;
+  font-size: 1.6rem;
+}
+
+.button {
+  padding-block-end: 10px;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  font-weight: var(--FW-Heading);
+  text-transform: uppercase;
+  letter-spacing: 2.28571px;
+  color: var(--White);
+  border-bottom: 2px solid var(--Green);
+}
+
+.button:hover {
+  color: var(--Green);
+}
+
+.button:active {
+  color: hsl(153, 71%, 39%);
+  border-bottom: 2px solid hsl(153, 71%, 39%);
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    flex-direction: row-reverse;
+  }
+
+  .img {
+    width: 322px;
+  }
+}
