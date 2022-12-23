@@ -11,6 +11,10 @@ const Home: NextPage = () => {
           name='description'
           content='My developer portfolio.'
         />
+        <meta
+          name='theme-color'
+          content='#151515'
+        />
         <link
           rel='icon'
           href='/favicon.ico'
