@@ -30,8 +30,8 @@ const Intro = () => {
 
       <div className={styles.content}>
         <h1 className={styles.title}>
-          <span className={styles.spanBlock}>Nice to</span> meet you! I’m
-          <span className={styles.underline}> Adam Keyes</span>.
+          <span className={styles.spanBlock}>Nice to</span> meet you! I’m{' '}
+          <span className={styles.underline}>Adam Keyes</span>.
         </h1>
         <p className={styles.subTitle}>
           Based in the UK, I’m a front-end developer passionate about building
@@ -77,7 +77,7 @@ const Rings = () => {
       className={styles.rings}>
       <g
         fill='none'
-        fill-rule='evenodd'
+        fillRule='evenodd'
         stroke='#FFF'
         opacity='.25'>
         <ellipse
