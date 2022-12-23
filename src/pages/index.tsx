@@ -1,4 +1,4 @@
-import { Intro } from 'components';
+import { Intro, Skills } from 'components';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
@@ -23,6 +23,7 @@ const Home: NextPage = () => {
 
       <main>
         <Intro />
+        <Skills />
       </main>
     </>
   );
