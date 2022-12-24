@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { LinkButton } from 'components';
 import profileDesktop from '../../assets/images/image-profile-desktop.webp';
 import profileMobile from '../../assets/images/image-profile-mobile.webp';
 import profileTablet from '../../assets/images/image-profile-tablet.webp';
@@ -37,11 +37,11 @@ const Intro = () => {
           Based in the UK, I’m a front-end developer passionate about building
           accessible web apps that users love.
         </p>
-        <Link
-          href='/'
-          className={styles.button}>
-          Contact me
-        </Link>
+
+        <LinkButton
+          path='/'
+          title='Contact me'
+        />
       </div>
     </section>
   );
