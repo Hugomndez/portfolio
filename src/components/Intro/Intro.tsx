@@ -23,6 +23,7 @@ const Intro = () => {
           className={styles.img}
           src={profileMobile.src}
           width={174}
+          height={383}
           decoding='async'
           alt='Profile Image'
         />
