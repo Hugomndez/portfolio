@@ -10,6 +10,7 @@
   border-bottom: 2px solid var(--Green);
 }
 
+.button:focus,
 .button:hover {
   color: var(--Green);
 }

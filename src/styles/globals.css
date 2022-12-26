@@ -11,6 +11,8 @@
 
   --White: hsl(0, 0%, 100%);
 
+  --Invalid: hsla(7, 100%, 68%, 1);
+
   /* TYPOGRAPHY */
 
   --FF-Primary: 'Space Grotesk';
@@ -30,6 +32,29 @@
   --FS-Body-L: 1.8rem;
   --FW-Body-L: 500;
   --FL-Body-L: 2.8rem;
+
+  accent-color: var(--Green);
+}
+
+:focus-visible {
+  outline: none;
+}
+
+::selection {
+  background-color: var(--Green);
+}
+
+::marker {
+  color: var(--Green);
+}
+
+:is(
+    ::-webkit-calendar-picker-indicator,
+    ::-webkit-clear-button,
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button
+  ) {
+  color: var(--Green);
 }
 
 *,
@@ -58,6 +83,10 @@ body {
 
   color: var(--Grey);
   background-color: var(--Black);
+}
+
+footer {
+  background-color: var(--DarkGrey);
 }
 
 h1,

@@ -1,4 +1,4 @@
-import { Intro, Projects, Skills } from 'components';
+import { Contact, Intro, Projects, Skills } from 'components';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
@@ -26,6 +26,9 @@ const Home: NextPage = () => {
         <Skills />
         <Projects />
       </main>
+      <footer>
+        <Contact />
+      </footer>
     </>
   );
 };
