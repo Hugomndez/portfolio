@@ -94,6 +94,7 @@ const Contact = () => {
 
         <button
           type='submit'
+          tabIndex={0}
           disabled={!isDirty || !isValid}>
           Send Message
         </button>

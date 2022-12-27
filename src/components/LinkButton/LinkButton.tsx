@@ -9,6 +9,7 @@ const LinkButton = ({ path, title }: LinkButtonProps) => {
   return (
     <Link
       href={path}
+      tabIndex={0}
       className={styles.button}>
       {title}
     </Link>
