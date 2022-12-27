@@ -39,6 +39,10 @@
 
 .form input,
 .form textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+
   padding-inline: 24px;
   padding-block-end: 16px;
   font-family: inherit;
