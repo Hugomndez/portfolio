@@ -85,6 +85,10 @@ body {
   background-color: var(--Black);
 }
 
+main {
+  overflow: hidden;
+}
+
 footer {
   background-color: var(--DarkGrey);
 }
