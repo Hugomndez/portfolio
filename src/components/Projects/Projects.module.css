@@ -1,14 +1,14 @@
 .section {
+  margin-inline: auto;
   padding: 80px 16px;
   max-width: 1110px;
-  margin-inline: auto;
 }
 
 .title {
+  margin-block-end: 40px;
   font-size: 4rem;
   line-height: 4rem;
   letter-spacing: -1.13636px;
-  margin-block-end: 40px;
 }
 
 .container {
@@ -17,21 +17,49 @@
   row-gap: 40px;
 }
 
+.overlay {
+  position: relative;
+}
+
+.image {
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.overlayLinks {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  transition: 0.5s ease;
+}
+
 .name {
-  text-transform: uppercase;
+  margin-block: 20px 7px;
   font-size: 2.4rem;
-  margin-block-start: 20px;
-  margin-block-end: 7px;
+  text-transform: uppercase;
 }
 
 .stack {
+  margin-block-end: 20px;
   display: flex;
   gap: 18px;
-  margin-block-end: 20px;
 }
 
 .tech {
   text-transform: uppercase;
+}
+
+.links {
+  display: flex;
+  gap: 30px;
 }
 
 @media screen and (min-width: 768px) {
@@ -40,10 +68,10 @@
   }
 
   .title {
+    margin-block-end: 60px;
     font-size: 7.2rem;
     line-height: 7.2rem;
     letter-spacing: -2.04545px;
-    margin-block-end: 60px;
   }
 
   .container {
@@ -59,10 +87,10 @@
   }
 
   .title {
+    margin-block-end: 80px;
     font-size: 8.8rem;
     line-height: 8.8rem;
     letter-spacing: -2.5px;
-    margin-block-end: 80px;
   }
 
   .container {
@@ -70,7 +98,21 @@
     row-gap: 69px;
   }
 
-  .overlay {
-    position: relative;
+  .overlayLinks {
+    visibility: visible;
+  }
+
+  .overlay:focus-within .image,
+  .overlay:hover .image {
+    opacity: 0.3;
+  }
+
+  .overlayLinks:focus-within,
+  .overlay:hover .overlayLinks {
+    opacity: 1;
+  }
+
+  .links {
+    display: none;
   }
 }

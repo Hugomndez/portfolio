@@ -100,13 +100,25 @@ const Projects = () => {
           <div
             key={idx}
             className={styles.card}>
-            <Image
-              className={styles.image}
-              src={p.thumbnail.url}
-              width={p.thumbnail.width}
-              height={p.thumbnail.height}
-              alt={p.thumbnail.alt}
-            />
+            <div className={styles.overlay}>
+              <Image
+                className={styles.image}
+                src={p.thumbnail.url}
+                width={p.thumbnail.width}
+                height={p.thumbnail.height}
+                alt={p.thumbnail.alt}
+              />
+              <div className={styles.overlayLinks}>
+                <LinkButton
+                  path={p.liveUrl}
+                  title='View Project'
+                />
+                <LinkButton
+                  path={p.sourceUrl}
+                  title='View Code'
+                />
+              </div>
+            </div>
             <h3 className={styles.name}>{p.name}</h3>
             <div className={styles.stack}>
               {p.techStack.map((t, i) => (
@@ -117,14 +129,16 @@ const Projects = () => {
                 </p>
               ))}
             </div>
-            <LinkButton
-              path={p.liveUrl}
-              title='View Project'
-            />
-            <LinkButton
-              path={p.sourceUrl}
-              title='View Code'
-            />
+            <div className={styles.links}>
+              <LinkButton
+                path={p.liveUrl}
+                title='View Project'
+              />
+              <LinkButton
+                path={p.sourceUrl}
+                title='View Code'
+              />
+            </div>
           </div>
         ))}
       </div>
