@@ -46,7 +46,9 @@ const Contact = () => {
   const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data);
 
   return (
-    <section className={styles.section}>
+    <section
+      className={styles.section}
+      id='contact'>
       <div className={styles.content}>
         <h2 className={styles.title}>Contact</h2>
         <p className={styles.text}>

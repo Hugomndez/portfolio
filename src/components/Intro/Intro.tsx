@@ -40,7 +40,7 @@ const Intro = () => {
         </p>
 
         <LinkButton
-          path='/'
+          path='#contact'
           title='Contact me'
         />
       </div>
