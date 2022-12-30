@@ -1,14 +1,14 @@
 .section {
   position: relative;
-  max-width: 1110px;
   margin-inline: auto;
+  max-width: 1110px;
   overflow: hidden;
 }
 
 .hrTop,
 .hrBottom {
-  width: 93%;
   margin-inline: auto;
+  width: 93%;
   border: none;
   border-top: 1px solid var(--White);
 }

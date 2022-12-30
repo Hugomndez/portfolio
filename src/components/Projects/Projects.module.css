@@ -102,13 +102,11 @@
     visibility: visible;
   }
 
-  .overlay:focus-within .image,
-  .overlay:hover .image {
+  .overlay:is(:hover, :focus-within) .image {
     opacity: 0.3;
   }
 
-  .overlayLinks:focus-within,
-  .overlay:hover .overlayLinks {
+  .overlay:is(:hover, :focus-within) .overlayLinks {
     opacity: 1;
   }
 

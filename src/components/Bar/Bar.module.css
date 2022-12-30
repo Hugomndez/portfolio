@@ -1,16 +1,16 @@
 .hrTop {
+  margin-inline: auto;
   width: 93%;
   max-width: 1110px;
-  margin-inline: auto;
   border: none;
   border-top: 1px solid var(--White);
 }
 
 .bar {
-  max-width: 1110px;
   margin-inline: auto;
   padding-block: 39px 60px;
   padding-inline: 16px;
+  max-width: 1110px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,8 +31,7 @@
   gap: 25.6px;
 }
 
-.socialMedia a:focus svg path,
-.socialMedia a:hover svg path {
+.socialMedia a:is(:hover, :focus) svg path {
   fill: var(--Green);
 }
 

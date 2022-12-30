@@ -9,12 +9,11 @@
   border-bottom: 2px solid var(--Green);
 }
 
-.button:focus,
-.button:hover {
+.button:is(:hover, :focus) {
   color: var(--Green);
 }
 
 .button:active {
   color: hsl(153, 71%, 39%);
-  border-bottom: 2px solid hsl(153, 71%, 39%);
+  border-bottom-color: hsl(153, 71%, 39%);
 }

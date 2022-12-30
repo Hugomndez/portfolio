@@ -13,9 +13,9 @@
 
 .rings {
   position: absolute;
+  top: 120px;
   right: 130%;
   transform: translate(50%);
-  top: 120px;
   z-index: -1;
 }
 
@@ -30,8 +30,7 @@
 }
 
 .title {
-  margin-block-start: 40px;
-  margin-block-end: 24px;
+  margin-block: 40px 24px;
   font-size: 4rem;
   letter-spacing: -1.13636px;
 }
@@ -67,14 +66,12 @@
   }
 
   .content {
-    padding-left: 32px;
-    padding-right: 0;
+    padding-inline: 32px 0;
   }
 
   .title {
     width: 110%;
-    margin-block-start: 0;
-    margin-block-end: 60px;
+    margin-block: 0 60px;
     font-size: 7.2rem;
     line-height: 8.2rem;
     letter-spacing: -2.04545px;
