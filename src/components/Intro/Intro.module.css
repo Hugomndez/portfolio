@@ -58,6 +58,7 @@
 
   .section picture {
     min-width: 322px;
+    z-index: -1;
   }
 
   .img {
