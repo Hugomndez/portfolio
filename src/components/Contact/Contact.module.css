@@ -113,6 +113,10 @@
   cursor: pointer;
 }
 
+.form button[type='submit']:disabled {
+  opacity: 0.5;
+}
+
 .form button[type='submit']:is(:hover, :focus) {
   color: var(--Green);
   border-bottom-color: var(--Green);
