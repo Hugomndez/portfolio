@@ -1,0 +1,116 @@
+.section {
+  margin-inline: auto;
+  padding: 80px 16px;
+  max-width: 1110px;
+}
+
+.title {
+  margin-block-end: 40px;
+  font-size: 4rem;
+  line-height: 4rem;
+  letter-spacing: -1.13636px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 40px;
+}
+
+.overlay {
+  position: relative;
+}
+
+.image {
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.overlayLinks {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  transition: 0.5s ease;
+}
+
+.name {
+  margin-block: 20px 7px;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+}
+
+.stack {
+  margin-block-end: 20px;
+  display: flex;
+  gap: 18px;
+}
+
+.tech {
+  text-transform: uppercase;
+}
+
+.links {
+  display: flex;
+  gap: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    padding-inline: 32px;
+  }
+
+  .title {
+    margin-block-end: 60px;
+    font-size: 7.2rem;
+    line-height: 7.2rem;
+    letter-spacing: -2.04545px;
+  }
+
+  .container {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 60px;
+  }
+}
+
+@media screen and (min-width: 1110px) {
+  .section {
+    padding-inline: 0;
+  }
+
+  .title {
+    margin-block-end: 80px;
+    font-size: 8.8rem;
+    line-height: 8.8rem;
+    letter-spacing: -2.5px;
+  }
+
+  .container {
+    column-gap: 30px;
+    row-gap: 69px;
+  }
+
+  .overlayLinks {
+    visibility: visible;
+  }
+
+  .overlay:is(:hover, :focus-within) .image {
+    opacity: 0.3;
+  }
+
+  .overlay:is(:hover, :focus-within) .overlayLinks {
+    opacity: 1;
+  }
+
+  .links {
+    display: none;
+  }
+}

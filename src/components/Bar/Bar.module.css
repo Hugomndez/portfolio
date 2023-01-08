@@ -1,0 +1,57 @@
+.hrTop {
+  margin-inline: auto;
+  width: 93%;
+  max-width: 1110px;
+  border: none;
+  border-top: 1px solid var(--White);
+}
+
+.bar {
+  margin-inline: auto;
+  padding-block: 39px 60px;
+  padding-inline: 16px;
+  max-width: 1110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.name {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  letter-spacing: -0.33px;
+  font-weight: var(--FW-Heading);
+  color: var(--White);
+}
+
+.socialMedia {
+  display: flex;
+  gap: 25.6px;
+}
+
+.socialMedia a:is(:hover, :focus) svg path {
+  fill: var(--Green);
+}
+
+@media screen and (min-width: 768px) {
+  .bar {
+    padding-block: 30px 40px;
+    padding-inline: 30px;
+    flex-direction: initial;
+    justify-content: space-between;
+  }
+
+  .name {
+    font-size: 3.2rem;
+    letter-spacing: -0.44px;
+  }
+}
+
+@media screen and (min-width: 1110px) {
+  .bar {
+    padding-block: 47px 92px;
+    padding-inline: 0;
+  }
+}

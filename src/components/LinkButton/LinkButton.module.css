@@ -1,0 +1,19 @@
+.button {
+  padding-block-end: 10px;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  font-weight: var(--FW-Heading);
+  text-transform: uppercase;
+  letter-spacing: 2.28571px;
+  color: var(--White);
+  border-bottom: 2px solid var(--Green);
+}
+
+.button:is(:hover, :focus) {
+  color: var(--Green);
+}
+
+.button:active {
+  color: hsl(153, 71%, 39%);
+  border-bottom-color: hsl(153, 71%, 39%);
+}
