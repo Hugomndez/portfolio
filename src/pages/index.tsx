@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Portfolio</title>
+        <title>Portfolio | Hugo Méndez</title>
         <meta
           name='description'
           content='My developer portfolio.'
@@ -20,7 +20,6 @@ const Home: NextPage = () => {
           href='/favicon.ico'
         />
       </Head>
-
       <main>
         <Intro />
         <Skills />
