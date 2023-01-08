@@ -6,10 +6,12 @@ const Bar = () => {
       <hr className={styles.hrTop} />
 
       <div className={styles.bar}>
-        <span className={styles.name}>adamkeyes</span>
+        <span className={styles.name}>hugoméndez</span>
         <div className={styles.socialMedia}>
           <a
-            href='#'
+            href='https://github.com/Hugomndez'
+            target='_blank'
+            rel='noreferrer'
             tabIndex={0}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -23,7 +25,9 @@ const Bar = () => {
             </svg>
           </a>
           <a
-            href='#'
+            href='https://www.frontendmentor.io/profile/Hugomndez'
+            target='_blank'
+            rel='noreferrer'
             tabIndex={0}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -36,7 +40,9 @@ const Bar = () => {
             </svg>
           </a>
           <a
-            href='#'
+            href='https://www.linkedin.com/in/hugomndez/'
+            target='_blank'
+            rel='noreferrer'
             tabIndex={0}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -51,6 +57,8 @@ const Bar = () => {
           </a>
           <a
             href='#'
+            target='_blank'
+            rel='noreferrer'
             tabIndex={0}>
             <svg
               xmlns='http://www.w3.org/2000/svg'

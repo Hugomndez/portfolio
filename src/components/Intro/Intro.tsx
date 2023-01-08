@@ -1,7 +1,7 @@
 import { LinkButton } from 'components';
-import profileDesktop from '../../assets/images/image-profile-desktop.webp';
-import profileMobile from '../../assets/images/image-profile-mobile.webp';
-import profileTablet from '../../assets/images/image-profile-tablet.webp';
+import profileDesktop from '../../assets/images/hugo-mendez-profile-photo-large.webp';
+import profileTablet from '../../assets/images/hugo-mendez-profile-photo-medium.webp';
+import profileMobile from '../../assets/images/hugo-mendez-profile-photo-small.webp';
 import styles from './Intro.module.css';
 
 const Intro = () => {
@@ -31,11 +31,11 @@ const Intro = () => {
 
       <div className={styles.content}>
         <h1 className={styles.title}>
-          <span className={styles.spanBlock}>Nice to</span> meet you! I’m{' '}
-          <span className={styles.underline}>Adam Keyes</span>.
+          <span className={styles.spanBlock}>Nice to meet you! I’m </span>
+          <span className={styles.underline}>Hugo Méndez</span>.
         </h1>
         <p className={styles.subTitle}>
-          Based in the UK, I’m a front-end developer passionate about building
+          Based in Mexico, I’m a front-end developer passionate about building
           accessible web apps that users love.
         </p>
 

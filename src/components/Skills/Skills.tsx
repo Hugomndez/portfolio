@@ -8,12 +8,12 @@ interface Skills {
 type Data = Skills[];
 
 const data: Data = [
-  { skill: 'HTML', years: 4 },
-  { skill: 'CSS', years: 4 },
-  { skill: 'JavaScript', years: 4 },
-  { skill: 'Accessibility', years: 4 },
-  { skill: 'React', years: 3 },
-  { skill: 'Sass', years: 3 },
+  { skill: 'HTML', years: 6 },
+  { skill: 'CSS', years: 6 },
+  { skill: 'JavaScript', years: 2 },
+  { skill: 'React', years: 2 },
+  { skill: 'NextJS', years: 1 },
+  { skill: 'TypeScript', years: 2 },
 ];
 
 const Skills = () => {

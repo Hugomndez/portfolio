@@ -1,11 +1,11 @@
 import { LinkButton } from 'components';
 import Image from 'next/image';
-import dPImg from '../../assets/images/thumbnail-project-1-large.webp';
-import eLImg from '../../assets/images/thumbnail-project-2-large.webp';
-import tWAImg from '../../assets/images/thumbnail-project-3-large.webp';
-import eWAImg from '../../assets/images/thumbnail-project-4-large.webp';
-import mGImg from '../../assets/images/thumbnail-project-5-large.webp';
-import aGSImg from '../../assets/images/thumbnail-project-6-large.webp';
+import mGImg from '../../assets/images/thumbnail-3code-website.webp';
+import eLImg from '../../assets/images/thumbnail-batatabit-website.webp';
+import aGSImg from '../../assets/images/thumbnail-bv-properties-website.webp';
+import tWAImg from '../../assets/images/thumbnail-faq-accordion-card.webp';
+import dPImg from '../../assets/images/thumbnail-interactive-app.webp';
+import eWAImg from '../../assets/images/thumbnail-interactive-rating-component.webp';
 import styles from './Projects.module.css';
 
 interface Project {
@@ -18,76 +18,76 @@ interface Project {
 
 const portfolio: Project[] = [
   {
-    name: 'Design Portfolio',
+    name: 'Interactive CC Form',
     thumbnail: {
       url: dPImg.src,
       width: dPImg.width,
       height: dPImg.height,
-      alt: 'Design Portfolio Thumbnail',
+      alt: 'Interactive app thumbnail challenge by frontend mentor.',
     },
-    techStack: ['html', 'css'],
-    sourceUrl: '/',
-    liveUrl: '/',
+    techStack: ['nextjs', 'typescript', 'css modules'],
+    sourceUrl: 'https://github.com/Hugomndez/interactive-frontend',
+    liveUrl: 'https://interactive-frontend.vercel.app',
   },
   {
-    name: 'E-Learning Landing Page',
+    name: 'Batatabit | POC',
     thumbnail: {
       url: eLImg.src,
       width: eLImg.width,
       height: eLImg.height,
-      alt: 'E-Learning Landing Page Thumbnail',
+      alt: 'Batatabit website thumbnail',
     },
-    techStack: ['html', 'css'],
-    sourceUrl: '/',
-    liveUrl: '/',
+    techStack: ['nextjs', 'typescript', 'css modules'],
+    sourceUrl: 'https://github.com/Hugomndez/next-batatabit',
+    liveUrl: 'https://next-batatabit.vercel.app',
   },
   {
-    name: 'Todo Web App',
+    name: 'FAQ Accordion Card ',
     thumbnail: {
       url: tWAImg.src,
       width: tWAImg.width,
       height: tWAImg.height,
-      alt: 'Todo Web App Thumbnail',
+      alt: 'FAQ accordion card app thumbnail challenge by frontend mentor.',
     },
-    techStack: ['html', 'css', 'javascript'],
-    sourceUrl: '/',
-    liveUrl: '/',
+    techStack: ['nextjs', 'typescript', 'css modules'],
+    sourceUrl: 'https://github.com/Hugomndez/faq-accordion-card',
+    liveUrl: 'https://faq-accordion-card-neon-omega.vercel.app',
   },
   {
-    name: 'Entertainment Web App',
+    name: 'Rating Card Component ',
     thumbnail: {
       url: eWAImg.src,
       width: eWAImg.width,
       height: eWAImg.height,
-      alt: 'Entertainment Web App Thumbnail',
+      alt: 'Interactive rating component thumbnail challenge by frontend mentor.',
     },
-    techStack: ['html', 'css', 'javascript'],
-    sourceUrl: '/',
-    liveUrl: '/',
+    techStack: ['nextjs', 'typescript', 'css modules'],
+    sourceUrl: 'https://github.com/Hugomndez/interactive-rating-component',
+    liveUrl: 'https://interactive-rating-component-jet-alpha.vercel.app',
   },
   {
-    name: 'Memory Game',
+    name: '3Code | Website',
     thumbnail: {
       url: mGImg.src,
       width: mGImg.width,
       height: mGImg.height,
-      alt: 'Memory Game Thumbnail',
+      alt: '3Code website Thumbnail',
     },
-    techStack: ['html', 'css', 'javascript'],
+    techStack: ['html5', 'css3', 'javascript'],
     sourceUrl: '/',
-    liveUrl: '/',
+    liveUrl: 'https://3code.us',
   },
   {
-    name: 'Art Gallery Showcase',
+    name: 'B&VProperties | Website',
     thumbnail: {
       url: aGSImg.src,
       width: aGSImg.width,
       height: aGSImg.height,
-      alt: 'Art Gallery Showcase Thumbnail',
+      alt: 'B&VProperties Thumbnail',
     },
-    techStack: ['html', 'css', 'javascript'],
+    techStack: ['Joomla', 'YOOTheme Pro'],
     sourceUrl: '/',
-    liveUrl: '/',
+    liveUrl: 'https://www.bvpropertiescozumel.com',
   },
 ];
 
@@ -112,10 +112,12 @@ const Projects = () => {
                 <LinkButton
                   path={p.liveUrl}
                   title='View Project'
+                  internal={false}
                 />
                 <LinkButton
                   path={p.sourceUrl}
                   title='View Code'
+                  internal={false}
                 />
               </div>
             </div>
@@ -133,10 +135,12 @@ const Projects = () => {
               <LinkButton
                 path={p.liveUrl}
                 title='View Project'
+                internal={false}
               />
               <LinkButton
                 path={p.sourceUrl}
                 title='View Code'
+                internal={false}
               />
             </div>
           </div>
