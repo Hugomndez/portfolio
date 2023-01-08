@@ -25,8 +25,9 @@ const Intro = () => {
           width={174}
           height={383}
           fetchpriority='high'
-          decoding='async'
-          alt='Profile Image'
+          loading='eager'
+          decoding='sync'
+          alt='Hugo Méndez profile photo'
         />
       </picture>
 
