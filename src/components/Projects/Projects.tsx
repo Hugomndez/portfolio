@@ -12,8 +12,8 @@ interface Project {
   name: string;
   thumbnail: { url: string; width: number; height: number; alt: string };
   techStack: string[];
-  sourceUrl: string;
-  liveUrl: string;
+  sourceCodeUrl?: string;
+  liveSiteUrl: string;
 }
 
 const portfolio: Project[] = [
@@ -26,8 +26,8 @@ const portfolio: Project[] = [
       alt: 'Interactive app thumbnail challenge by frontend mentor.',
     },
     techStack: ['nextjs', 'typescript', 'css modules'],
-    sourceUrl: 'https://github.com/Hugomndez/interactive-frontend',
-    liveUrl: 'https://interactive-frontend.vercel.app',
+    sourceCodeUrl: 'https://github.com/Hugomndez/interactive-frontend',
+    liveSiteUrl: 'https://interactive-frontend.vercel.app',
   },
   {
     name: 'Batatabit | POC',
@@ -38,8 +38,8 @@ const portfolio: Project[] = [
       alt: 'Batatabit website thumbnail',
     },
     techStack: ['nextjs', 'typescript', 'css modules'],
-    sourceUrl: 'https://github.com/Hugomndez/next-batatabit',
-    liveUrl: 'https://next-batatabit.vercel.app',
+    sourceCodeUrl: 'https://github.com/Hugomndez/next-batatabit',
+    liveSiteUrl: 'https://next-batatabit.vercel.app',
   },
   {
     name: 'FAQ Accordion Card ',
@@ -50,8 +50,8 @@ const portfolio: Project[] = [
       alt: 'FAQ accordion card app thumbnail challenge by frontend mentor.',
     },
     techStack: ['nextjs', 'typescript', 'css modules'],
-    sourceUrl: 'https://github.com/Hugomndez/faq-accordion-card',
-    liveUrl: 'https://faq-accordion-card-neon-omega.vercel.app',
+    sourceCodeUrl: 'https://github.com/Hugomndez/faq-accordion-card',
+    liveSiteUrl: 'https://faq-accordion-card-neon-omega.vercel.app',
   },
   {
     name: 'Rating Card Component ',
@@ -62,8 +62,8 @@ const portfolio: Project[] = [
       alt: 'Interactive rating component thumbnail challenge by frontend mentor.',
     },
     techStack: ['nextjs', 'typescript', 'css modules'],
-    sourceUrl: 'https://github.com/Hugomndez/interactive-rating-component',
-    liveUrl: 'https://interactive-rating-component-jet-alpha.vercel.app',
+    sourceCodeUrl: 'https://github.com/Hugomndez/interactive-rating-component',
+    liveSiteUrl: 'https://interactive-rating-component-jet-alpha.vercel.app',
   },
   {
     name: '3Code | Website',
@@ -74,8 +74,7 @@ const portfolio: Project[] = [
       alt: '3Code website Thumbnail',
     },
     techStack: ['html5', 'css3', 'javascript'],
-    sourceUrl: '/',
-    liveUrl: 'https://3code.us',
+    liveSiteUrl: 'https://3code.us',
   },
   {
     name: 'B&VProperties | Website',
@@ -86,8 +85,7 @@ const portfolio: Project[] = [
       alt: 'B&VProperties Thumbnail',
     },
     techStack: ['Joomla', 'YOOTheme Pro'],
-    sourceUrl: '/',
-    liveUrl: 'https://www.bvpropertiescozumel.com',
+    liveSiteUrl: 'https://www.bvpropertiescozumel.com',
   },
 ];
 
@@ -110,15 +108,17 @@ const Projects = () => {
               />
               <div className={styles.overlayLinks}>
                 <LinkButton
-                  path={p.liveUrl}
+                  path={p.liveSiteUrl}
                   title='View Project'
                   internal={false}
                 />
-                <LinkButton
-                  path={p.sourceUrl}
-                  title='View Code'
-                  internal={false}
-                />
+                {p.sourceCodeUrl && (
+                  <LinkButton
+                    path={p.sourceCodeUrl}
+                    title='View Code'
+                    internal={false}
+                  />
+                )}
               </div>
             </div>
             <h3 className={styles.name}>{p.name}</h3>
@@ -133,15 +133,17 @@ const Projects = () => {
             </div>
             <div className={styles.links}>
               <LinkButton
-                path={p.liveUrl}
+                path={p.liveSiteUrl}
                 title='View Project'
                 internal={false}
               />
-              <LinkButton
-                path={p.sourceUrl}
-                title='View Code'
-                internal={false}
-              />
+              {p.sourceCodeUrl && (
+                <LinkButton
+                  path={p.sourceCodeUrl}
+                  title='View Code'
+                  internal={false}
+                />
+              )}
             </div>
           </div>
         ))}
