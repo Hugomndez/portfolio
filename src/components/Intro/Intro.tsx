@@ -24,6 +24,7 @@ const Intro = () => {
           src={profileMobile.src}
           width={174}
           height={383}
+          fetchpriority='high'
           decoding='async'
           alt='Profile Image'
         />
