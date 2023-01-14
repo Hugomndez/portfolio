@@ -6,7 +6,6 @@ const nextConfig = {
     locales: ['en-US'],
     defaultLocale: 'en-US',
   },
-  experimental: { optimizeCss: true },
 };
 
 module.exports = nextConfig;
