@@ -1,7 +1,7 @@
 import { LinkButton } from 'components';
-import profileDesktop from '../../assets/images/hugo-mendez-profile-photo-large.webp';
-import profileTablet from '../../assets/images/hugo-mendez-profile-photo-medium.webp';
-import profileMobile from '../../assets/images/hugo-mendez-profile-photo-small.webp';
+import profileDesktop from '../../assets/images/hugo-mendez-profile-photo-large-low-res.webp';
+import profileTablet from '../../assets/images/hugo-mendez-profile-photo-medium-low-res.webp';
+import profileMobile from '../../assets/images/hugo-mendez-profile-photo-small-low-res.webp';
 import styles from './Intro.module.css';
 
 const Intro = () => {
