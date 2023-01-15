@@ -37,8 +37,9 @@ const Intro = () => {
           <span className={styles.underline}>Hugo Méndez</span>.
         </h1>
         <p className={styles.subTitle}>
-          Based in Mexico, I’m a front-end developer passionate about building
-          accessible web apps that users love.
+          Based in Mexico, I’m a front-end developer with experience in the
+          implementation of SEO principles and best practices building
+          high-performance web apps.
         </p>
 
         <LinkButton
