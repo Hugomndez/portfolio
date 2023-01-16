@@ -41,7 +41,7 @@ const Home: NextPage = () => {
         />
         <meta
           property='og:image'
-          content='/hugo-mendez-profile-photo-large-high-res.jpg'
+          content='https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg'
         />
         <meta
           property='profile:first_name'
@@ -75,7 +75,7 @@ const Home: NextPage = () => {
         />
         <meta
           property='twitter:image'
-          content='/hugo-mendez-profile-photo-large-high-res.jpg'
+          content='https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg'
         />
         <meta
           name='theme-color'
@@ -102,7 +102,7 @@ const Home: NextPage = () => {
             "worksFor": "https://www.nearshoretechnology.com",
             "jobTitle": "Front-End Developer",
             "alumniOf": "https://www.uady.mx",
-            "image": "/hugo-mendez-profile-photo-large-high-res.jpg",
+            "image": "https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg",
             "gender": "http://schema.org/Male",
             "sameAs": ["https://www.linkedin.com/in/hugomndez/","https://www.instagram.com/hugomndez/","https://github.com/Hugomndez"]
           }
