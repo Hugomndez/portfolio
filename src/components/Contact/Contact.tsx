@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import styles from './Contact.module.css';
@@ -24,6 +25,8 @@ const initValues: ValidationSchema = {
   message: '',
 };
 
+const RECAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!;
+
 const Contact = () => {
   const {
     register,
@@ -37,6 +40,8 @@ const Contact = () => {
     defaultValues: initValues,
   });
 
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset();
@@ -44,10 +49,24 @@ const Contact = () => {
   }, [isSubmitSuccessful, reset]);
 
   const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
-    await fetch('/api/mail', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    });
+    const token = await recaptchaRef.current?.executeAsync();
+
+    if (!token) {
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/mail', {
+        method: 'POST',
+        body: JSON.stringify({ ...data, captcha: token }),
+      });
+
+      if (response.ok) console.log(response.status);
+    } catch (error) {
+      if (error instanceof Error) console.log(error.message);
+    } finally {
+      recaptchaRef.current?.reset();
+    }
   };
 
   return (
@@ -64,6 +83,11 @@ const Contact = () => {
       <form
         className={styles.form}
         onSubmit={handleSubmit(onSubmit)}>
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          size='invisible'
+          sitekey={RECAPTCHA_KEY}
+        />
         <label htmlFor='name'>
           <input
             className={errors.name ? styles.invalidInput : ''}
