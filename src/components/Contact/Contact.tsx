@@ -29,7 +29,7 @@ const Contact = () => {
     register,
     handleSubmit,
     reset,
-    formState: { isDirty, isValid, errors, isSubmitSuccessful },
+    formState: { isDirty, isValid, errors, isSubmitting, isSubmitSuccessful },
   } = useForm<ValidationSchema>({
     resolver: zodResolver(validationSchema),
     mode: 'onChange',
@@ -43,7 +43,12 @@ const Contact = () => {
     }
   }, [isSubmitSuccessful, reset]);
 
-  const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
+    await fetch('/api/mail', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  };
 
   return (
     <section
@@ -97,8 +102,8 @@ const Contact = () => {
         <button
           type='submit'
           tabIndex={0}
-          disabled={!isDirty || !isValid}>
-          Send Message
+          disabled={!isDirty || !isValid || isSubmitting}>
+          {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
       </form>
       <Rings />
