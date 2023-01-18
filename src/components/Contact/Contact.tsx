@@ -25,7 +25,7 @@ const initValues: ValidationSchema = {
   message: '',
 };
 
-const RECAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!;
+const RECAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const Contact = () => {
   const {
@@ -85,8 +85,9 @@ const Contact = () => {
         onSubmit={handleSubmit(onSubmit)}>
         <ReCAPTCHA
           ref={recaptchaRef}
-          size='invisible'
           sitekey={RECAPTCHA_KEY}
+          size='invisible'
+          theme='dark'
         />
         <label htmlFor='name'>
           <input
