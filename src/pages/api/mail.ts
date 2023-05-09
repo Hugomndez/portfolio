@@ -1,5 +1,5 @@
 import mail from '@sendgrid/mail';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { type NextApiRequest, type NextApiResponse } from 'next';
 
 type Data = {
   status: string;
