@@ -6,24 +6,18 @@ type LinkButtonProps = {
   title: string;
   internal: boolean;
 };
+
 const LinkButton = ({ path, title, internal = true }: LinkButtonProps) => {
-  return internal ? (
+  return (
     <Link
       href={path}
       scroll={false}
+      target={internal ? undefined : '_blank'}
+      rel={internal ? undefined : 'noreferrer'}
       tabIndex={0}
       className={styles.button}>
       {title}
     </Link>
-  ) : (
-    <a
-      href={path}
-      target='_blank'
-      rel='noreferrer'
-      tabIndex={0}
-      className={styles.button}>
-      {title}
-    </a>
   );
 };
 

@@ -45,7 +45,7 @@ const Intro = () => {
         <LinkButton
           path='#contact'
           title='Contact me'
-          internal={true}
+          internal
         />
       </div>
     </section>
