@@ -1,7 +1,6 @@
 import { Bar, Contact, Intro, Projects, Skills } from 'components';
-import type { NextPage } from 'next';
+import { type NextPage } from 'next';
 import Head from 'next/head';
-import Script from 'next/script';
 
 const Home: NextPage = () => {
   return (
@@ -110,23 +109,6 @@ const Home: NextPage = () => {
           href='/favicon.ico'
         />
       </Head>
-      <Script
-        id='schema'
-        strategy='afterInteractive'
-        type='application/ld+json'>{`
-          {
-            "@context": "http://schema.org",
-            "@type": "Person",
-            "familyName": "Méndez",
-            "givenName": "Hugo",
-            "worksFor": "https://www.nearshoretechnology.com",
-            "jobTitle": "Frontend Developer",
-            "alumniOf": "https://www.uady.mx",
-            "image": "https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg",
-            "gender": "http://schema.org/Male",
-            "sameAs": ["https://www.linkedin.com/in/hugomndez/","https://www.instagram.com/hugomndez/","https://github.com/Hugomndez"]
-          }
-      `}</Script>
       <main>
         <Intro />
         <Skills />
