@@ -1,5 +1,5 @@
 import { Space_Grotesk } from '@next/font/google';
-import type { AppProps } from 'next/app';
+import { type AppProps } from 'next/app';
 import 'styles/globals.css';
 
 const font = Space_Grotesk({
@@ -9,8 +9,15 @@ const font = Space_Grotesk({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={font.className}>
+    <>
+      <style
+        jsx
+        global>{`
+        html {
+          font-family: ${font.style.fontFamily};
+        }
+      `}</style>
       <Component {...pageProps} />
-    </div>
+    </>
   );
 }

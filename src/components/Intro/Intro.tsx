@@ -33,13 +33,13 @@ const Intro = () => {
 
       <div className={styles.content}>
         <h1 className={styles.title}>
-          <span className={styles.spanBlock}>Nice to meet you! I’m </span>
+          <span className={styles.spanBlock}>Nice to meet you! I&rsquo;m </span>
           <span className={styles.underline}>Hugo Méndez</span>.
         </h1>
         <p className={styles.subTitle}>
-          Based in Mexico, I’m a front-end developer with experience in the
-          implementation of SEO principles and best practices building
-          high-performance web apps.
+          Based in Mexico, I&rsquo;m a front-end developer with experience in
+          the implementation of SEO principles and best practices building
+          high-performance websites.
         </p>
 
         <LinkButton
