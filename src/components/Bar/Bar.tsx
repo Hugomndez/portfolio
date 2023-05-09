@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './Bar.module.css';
 
 const Bar = () => {
@@ -6,7 +7,11 @@ const Bar = () => {
       <hr className={styles.hrTop} />
 
       <div className={styles.bar}>
-        <span className={styles.name}>hugoméndez</span>
+        <Link
+          href='/'
+          className={styles.name}>
+          hugoméndez
+        </Link>
         <div className={styles.socialMedia}>
           <a
             href='https://github.com/Hugomndez'
