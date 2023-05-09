@@ -29,7 +29,9 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+
+![hugomendez-dev-iPhone-X-screenshoot](https://user-images.githubusercontent.com/81496381/236971516-3f52c164-8bab-454b-afc9-604bcb04429f.png)
+
 
 ### Links
 
