@@ -8,10 +8,10 @@ const Home: NextPage = () => {
     <>
       <Head>
         {/* <!-- Primary Meta Tags --> */}
-        <title>Frontend Developer - Hugo Méndez.</title>
+        <title>Hugo Méndez - Frontend Developer.</title>
         <meta
           name='title'
-          content='Frontend Developer - Hugo Méndez.'
+          content='Hugo Méndez - Frontend Developer.'
         />
         <meta
           name='description'
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
         />
         <meta
           property='og:title'
-          content='Frontend Developer - Hugo Méndez.'
+          content='Hugo Méndez - Frontend Developer.'
         />
         <meta
           property='og:description'
@@ -87,7 +87,7 @@ const Home: NextPage = () => {
         />
         <meta
           property='twitter:title'
-          content='Frontend Developer - Hugo Méndez.'
+          content='Hugo Méndez - Frontend Developer.'
         />
         <meta
           property='twitter:description'
@@ -120,7 +120,7 @@ const Home: NextPage = () => {
             "familyName": "Méndez",
             "givenName": "Hugo",
             "worksFor": "https://www.nearshoretechnology.com",
-            "jobTitle": "Front-End Developer",
+            "jobTitle": "Frontend Developer",
             "alumniOf": "https://www.uady.mx",
             "image": "https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg",
             "gender": "http://schema.org/Male",
