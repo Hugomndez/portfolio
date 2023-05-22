@@ -1,5 +1,5 @@
 import { LinkButton } from 'components';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import mGImg from '../../assets/images/thumbnail-3code-website.webp';
 import eLImg from '../../assets/images/thumbnail-batatabit-website.webp';
 import aGSImg from '../../assets/images/thumbnail-bv-properties-website.webp';
@@ -8,21 +8,19 @@ import dPImg from '../../assets/images/thumbnail-interactive-app.webp';
 import eWAImg from '../../assets/images/thumbnail-interactive-rating-component.webp';
 import styles from './Projects.module.css';
 
-interface Project {
+type Project = {
   name: string;
-  thumbnail: { url: string; width: number; height: number; alt: string };
+  thumbnail: { url: StaticImageData; alt: string };
   techStack: string[];
   sourceCodeUrl?: string;
   liveSiteUrl: string;
-}
+};
 
-const portfolio: Project[] = [
+const data: Project[] = [
   {
     name: 'Interactive CC Form',
     thumbnail: {
-      url: dPImg.src,
-      width: dPImg.width,
-      height: dPImg.height,
+      url: dPImg,
       alt: 'Interactive app thumbnail challenge by frontend mentor.',
     },
     techStack: ['nextjs', 'typescript', 'css modules'],
@@ -32,9 +30,7 @@ const portfolio: Project[] = [
   {
     name: 'Batatabit | POC',
     thumbnail: {
-      url: eLImg.src,
-      width: eLImg.width,
-      height: eLImg.height,
+      url: eLImg,
       alt: 'Batatabit website thumbnail',
     },
     techStack: ['nextjs', 'typescript', 'css modules'],
@@ -44,9 +40,7 @@ const portfolio: Project[] = [
   {
     name: 'FAQ Accordion Card ',
     thumbnail: {
-      url: tWAImg.src,
-      width: tWAImg.width,
-      height: tWAImg.height,
+      url: tWAImg,
       alt: 'FAQ accordion card app thumbnail challenge by frontend mentor.',
     },
     techStack: ['nextjs', 'typescript', 'css modules'],
@@ -56,9 +50,7 @@ const portfolio: Project[] = [
   {
     name: 'Rating Card Component ',
     thumbnail: {
-      url: eWAImg.src,
-      width: eWAImg.width,
-      height: eWAImg.height,
+      url: eWAImg,
       alt: 'Interactive rating component thumbnail challenge by frontend mentor.',
     },
     techStack: ['nextjs', 'typescript', 'css modules'],
@@ -68,9 +60,7 @@ const portfolio: Project[] = [
   {
     name: '3Code | Website',
     thumbnail: {
-      url: mGImg.src,
-      width: mGImg.width,
-      height: mGImg.height,
+      url: mGImg,
       alt: '3Code website Thumbnail',
     },
     techStack: ['html5', 'css3', 'javascript'],
@@ -79,9 +69,7 @@ const portfolio: Project[] = [
   {
     name: 'B&VProperties | Website',
     thumbnail: {
-      url: aGSImg.src,
-      width: aGSImg.width,
-      height: aGSImg.height,
+      url: aGSImg,
       alt: 'B&VProperties Thumbnail',
     },
     techStack: ['Joomla', 'YOOTheme Pro'],
@@ -94,36 +82,35 @@ const Projects = () => {
     <section className={styles.section}>
       <h2 className={styles.title}>Projects</h2>
       <div className={styles.container}>
-        {portfolio.map((p, idx) => (
+        {data.map((item, idx) => (
           <div
             key={idx}
             className={styles.card}>
             <div className={styles.overlay}>
               <Image
                 className={styles.image}
-                src={p.thumbnail.url}
-                width={p.thumbnail.width}
-                height={p.thumbnail.height}
-                alt={p.thumbnail.alt}
+                src={item.thumbnail.url}
+                alt={item.thumbnail.alt}
+                placeholder='blur'
               />
               <div className={styles.overlayLinks}>
                 <LinkButton
-                  path={p.liveSiteUrl}
+                  path={item.liveSiteUrl}
                   title='View Project'
                   internal={false}
                 />
-                {p.sourceCodeUrl && (
+                {item.sourceCodeUrl && (
                   <LinkButton
-                    path={p.sourceCodeUrl}
+                    path={item.sourceCodeUrl}
                     title='View Code'
                     internal={false}
                   />
                 )}
               </div>
             </div>
-            <h3 className={styles.name}>{p.name}</h3>
+            <h3 className={styles.name}>{item.name}</h3>
             <div className={styles.stack}>
-              {p.techStack.map((t, i) => (
+              {item.techStack.map((t, i) => (
                 <p
                   key={i}
                   className={styles.tech}>
@@ -133,13 +120,13 @@ const Projects = () => {
             </div>
             <div className={styles.links}>
               <LinkButton
-                path={p.liveSiteUrl}
+                path={item.liveSiteUrl}
                 title='View Project'
                 internal={false}
               />
-              {p.sourceCodeUrl && (
+              {item.sourceCodeUrl && (
                 <LinkButton
-                  path={p.sourceCodeUrl}
+                  path={item.sourceCodeUrl}
                   title='View Code'
                   internal={false}
                 />
