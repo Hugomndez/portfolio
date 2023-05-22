@@ -13,10 +13,7 @@ type ReCAPTCHAResponse = {
 
 mail.setApiKey(process.env.SENDGRID_API_KEY);
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   if (req.method === 'POST') {
     const { name, email, message, captcha } = JSON.parse(req.body);
 
