@@ -25,17 +25,14 @@ const initValues: ValidationSchema = {
 const RECAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const Contact = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { isDirty, isValid, errors, isSubmitting, isSubmitSuccessful },
-  } = useForm<ValidationSchema>({
+  const { register, handleSubmit, reset, formState } = useForm<ValidationSchema>({
     resolver: zodResolver(validationSchema),
     mode: 'onChange',
     delayError: 2500,
     defaultValues: initValues,
   });
+
+  const { isDirty, isValid, errors, isSubmitting, isSubmitSuccessful } = formState;
 
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
@@ -58,7 +55,7 @@ const Contact = () => {
         body: JSON.stringify({ ...data, captcha: token }),
       });
 
-      if (response.ok) console.log(response.status);
+      // if (response.ok)  TODO: Show user success thank you message.
     } catch (error) {
       if (error instanceof Error) console.log(error.message);
     } finally {
