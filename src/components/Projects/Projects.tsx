@@ -18,14 +18,22 @@ type Project = {
 
 const data: Project[] = [
   {
-    name: 'Interactive CC Form',
+    name: 'B&V Properties | WebApp',
     thumbnail: {
-      url: dPImg,
-      alt: 'Interactive app thumbnail challenge by frontend mentor.',
+      url: aGSImg,
+      alt: 'B&VProperties Thumbnail',
     },
-    techStack: ['nextjs', 'typescript', 'css modules'],
-    sourceCodeUrl: 'https://github.com/Hugomndez/interactive-frontend',
-    liveSiteUrl: 'https://interactive-frontend.vercel.app',
+    techStack: ['nextJS', 'typescript', 'headless CMS'],
+    liveSiteUrl: 'https://www.bvpropertiescozumel.com',
+  },
+  {
+    name: '3Code | Website',
+    thumbnail: {
+      url: mGImg,
+      alt: '3Code website Thumbnail',
+    },
+    techStack: ['html5', 'css3', 'javascript'],
+    liveSiteUrl: 'https://3code.us',
   },
   {
     name: 'Batatabit | POC',
@@ -36,6 +44,16 @@ const data: Project[] = [
     techStack: ['nextjs', 'typescript', 'css modules'],
     sourceCodeUrl: 'https://github.com/Hugomndez/next-batatabit',
     liveSiteUrl: 'https://next-batatabit.vercel.app',
+  },
+  {
+    name: 'Interactive CC Form',
+    thumbnail: {
+      url: dPImg,
+      alt: 'Interactive app thumbnail challenge by frontend mentor.',
+    },
+    techStack: ['nextjs', 'typescript', 'css modules'],
+    sourceCodeUrl: 'https://github.com/Hugomndez/interactive-frontend',
+    liveSiteUrl: 'https://interactive-frontend.vercel.app',
   },
   {
     name: 'FAQ Accordion Card ',
@@ -56,24 +74,6 @@ const data: Project[] = [
     techStack: ['nextjs', 'typescript', 'css modules'],
     sourceCodeUrl: 'https://github.com/Hugomndez/interactive-rating-component',
     liveSiteUrl: 'https://interactive-rating-component-jet-alpha.vercel.app',
-  },
-  {
-    name: '3Code | Website',
-    thumbnail: {
-      url: mGImg,
-      alt: '3Code website Thumbnail',
-    },
-    techStack: ['html5', 'css3', 'javascript'],
-    liveSiteUrl: 'https://3code.us',
-  },
-  {
-    name: 'B&VProperties | Website',
-    thumbnail: {
-      url: aGSImg,
-      alt: 'B&VProperties Thumbnail',
-    },
-    techStack: ['Joomla', 'YOOTheme Pro'],
-    liveSiteUrl: 'https://www.bvpropertiescozumel.com',
   },
 ];
 

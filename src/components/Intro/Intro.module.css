@@ -2,12 +2,11 @@
   position: relative;
   max-width: 1110px;
   margin-inline: auto;
-  margin-bottom: 80px;
+  margin-block-end: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   overflow: hidden;
 }
 
@@ -30,9 +29,16 @@
 }
 
 .title {
-  margin-block: 40px 24px;
+  margin-block: 15px 44px;
   font-size: 4rem;
   letter-spacing: -1.13636px;
+}
+
+.spanBlock {
+  display: block;
+  font-size: 1.6rem;
+  letter-spacing: normal;
+  line-height: 6rem;
 }
 
 .underline {
@@ -40,8 +46,15 @@
 }
 
 .subTitle {
-  margin-block-end: 24px;
+  margin-block-end: 50px;
   font-size: 1.6rem;
+  line-height: 2.6rem;
+}
+
+.content > a {
+  display: block;
+  max-width: max-content;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -59,6 +72,7 @@
   .section picture {
     min-width: 322px;
     z-index: -1;
+    user-select: none;
   }
 
   .img {
@@ -72,14 +86,16 @@
 
   .title {
     width: 110%;
-    margin-block: 0 60px;
-    font-size: 7.2rem;
-    line-height: 8.2rem;
-    letter-spacing: -2.04545px;
+    margin-block-end: 85px;
+    font-size: 5.3rem;
+    letter-spacing: inherit;
+    line-height: initial;
   }
 
   .spanBlock {
-    display: block;
+    font-size: inherit;
+    line-height: 8.2rem;
+    letter-spacing: -2.04545px;
   }
 
   .underline {
@@ -87,9 +103,13 @@
   }
 
   .subTitle {
-    margin-block-end: 34px;
+    margin-block-end: 60px;
     font-size: 1.8rem;
     line-height: 2.8rem;
+  }
+
+  .content > a {
+    display: inline;
   }
 }
 
@@ -119,20 +139,25 @@
 
   .content {
     padding-left: 0px;
-  }
-
-  .spanBlock {
-    display: initial;
+    align-self: flex-end;
   }
 
   .title {
+    margin-block-end: 150px;
     width: 116%;
     font-size: 8.8rem;
     line-height: 8.8rem;
     letter-spacing: -2.5px;
   }
 
+  .spanBlock {
+    font-size: 7.8rem;
+    letter-spacing: inherit;
+    line-height: 10.8rem;
+  }
+
   .subTitle {
+    margin-block-end: 80px;
     width: 65%;
   }
 }
