@@ -34,8 +34,7 @@ const Intro = () => {
       <div className={styles.content}>
         <h1 className={styles.title}>
           <span className={styles.spanBlock}>Nice to meet you! </span>
-          I&rsquo;m {' '}
-          <span className={styles.underline}>Hugo Méndez</span>.
+          I&rsquo;m <span className={styles.underline}>Hugo Méndez</span>.
         </h1>
         <p className={styles.subTitle}>
           Based in Mexico, I&rsquo;m a front-end developer with experience in the implementation of
