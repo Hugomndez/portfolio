@@ -24,7 +24,7 @@ const Intro = () => {
           src={profileMobile.src}
           width={174}
           height={383}
-          fetchpriority='high'
+          fetchPriority='high'
           loading='eager'
           decoding='sync'
           alt='Hugo Méndez profile photo'
