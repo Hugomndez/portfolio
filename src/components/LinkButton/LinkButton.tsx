@@ -12,6 +12,7 @@ const LinkButton = ({ path, title, internal = true }: LinkButtonProps) => {
     <Link
       href={path}
       scroll={false}
+      prefetch={false}
       target={internal ? undefined : '_blank'}
       rel={internal ? undefined : 'noreferrer'}
       tabIndex={0}
