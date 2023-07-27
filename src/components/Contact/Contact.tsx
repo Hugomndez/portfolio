@@ -52,9 +52,9 @@ const Contact = () => {
     }
 
     try {
-      const response = await fetch('/api/mail', {
+      const response = await fetch('/api', {
         method: 'POST',
-        body: JSON.stringify({ ...data, captcha: token }),
+        body: JSON.stringify({ ...data, token }),
       });
 
       // if (response.ok)  TODO: Show user success thank you message.
