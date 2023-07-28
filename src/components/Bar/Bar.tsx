@@ -1,17 +1,15 @@
-import Link from 'next/link';
 import styles from './Bar.module.css';
 
 const Bar = () => {
   return (
     <>
       <hr className={styles.hrTop} />
-
       <div className={styles.bar}>
-        <Link
+        <a
           href='/'
           className={styles.name}>
           hugoméndez
-        </Link>
+        </a>
         <div className={styles.socialMedia}>
           <a
             href='https://github.com/Hugomndez'
