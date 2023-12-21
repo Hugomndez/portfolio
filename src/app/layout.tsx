@@ -79,7 +79,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html
-      lang='en-US'
+      lang='en'
       dir='ltr'
       className={spaceGrotesk.className}>
       <body>{children}</body>
