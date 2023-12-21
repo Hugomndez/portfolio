@@ -89,7 +89,9 @@ const Contact = () => {
           <input
             className={errors.name ? styles.invalidInput : ''}
             type='text'
+            id='name'
             placeholder='Name'
+            autoComplete='name'
             {...register('name')}
           />
           <span className={styles.invalidMessage}>
@@ -100,7 +102,9 @@ const Contact = () => {
           <input
             className={errors.email ? styles.invalidInput : ''}
             type='email'
+            id='email'
             placeholder='Email'
+            autoComplete='email'
             {...register('email')}
           />
           <span className={styles.invalidMessage}>
@@ -112,6 +116,7 @@ const Contact = () => {
           <textarea
             className={errors.message ? styles.invalidInput : ''}
             rows={3}
+            id='message'
             placeholder='Message'
             {...register('message')}
           />
