@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { spaceGrotesk } from 'fonts';
 import { Metadata, Viewport } from 'next';
 import Script from 'next/script';
@@ -82,7 +83,10 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       lang='en'
       dir='ltr'
       className={spaceGrotesk.className}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
       <Script
         id='schema-json-ld'
         type='application/ld+json'
