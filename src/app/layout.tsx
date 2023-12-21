@@ -35,8 +35,9 @@ export const metadata: Metadata = {
   description:
     'Personal developer portfolio showcasing my skills on HTML, CSS, JavaScript, TypeScript, React, NextJS, Web Performance, SEO and more...',
   creator: 'Hugo Méndez',
-  metadataBase: new URL('https://hugomendez.dev'),
-  alternates: { canonical: '/', languages: { 'en-US': '/' } },
+  alternates: {
+    canonical: 'https://hugomendez.dev',
+  },
   formatDetection: { email: false, address: false, telephone: false },
   icons: {
     icon: '/favicon.ico',
