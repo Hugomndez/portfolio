@@ -16,7 +16,8 @@ const Bar = () => {
             href='https://github.com/Hugomndez'
             target='_blank'
             rel='noreferrer'
-            tabIndex={0}>
+            tabIndex={0}
+            data-umami-event='GitHub Link'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='24'
@@ -33,7 +34,8 @@ const Bar = () => {
             href='https://www.frontendmentor.io/profile/Hugomndez'
             target='_blank'
             rel='noreferrer'
-            tabIndex={0}>
+            tabIndex={0}
+            data-umami-event='Frontend Mentor Link'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='24'
@@ -49,7 +51,8 @@ const Bar = () => {
             href='https://www.linkedin.com/in/hugomndez/'
             target='_blank'
             rel='noreferrer'
-            tabIndex={0}>
+            tabIndex={0}
+            data-umami-event='LinkedIn Link'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='24'

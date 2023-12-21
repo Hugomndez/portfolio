@@ -27,7 +27,7 @@ const initValues: ValidationSchema = {
 const RECAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const Contact = () => {
-  const { register, handleSubmit, reset, formState } = useForm<ValidationSchema>({
+  const { register, handleSubmit, reset, getValues, formState } = useForm<ValidationSchema>({
     resolver: zodResolver(validationSchema),
     mode: 'onChange',
     delayError: 2500,
@@ -128,7 +128,11 @@ const Contact = () => {
         <button
           type='submit'
           tabIndex={0}
-          disabled={!isDirty || !isValid || isSubmitting}>
+          disabled={!isDirty || !isValid || isSubmitting}
+          data-umami-event='Submit button'
+          data-umami-event-name={getValues('name')}
+          data-umami-event-email={getValues('email')}
+          data-umami-event-message={getValues('message')}>
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
       </form>

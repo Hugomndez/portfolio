@@ -14,7 +14,10 @@ const LinkButton = ({ path, title, internal = true }: LinkButtonProps) => {
       target={internal ? undefined : '_blank'}
       rel={internal ? undefined : 'noreferrer'}
       tabIndex={0}
-      className={styles.button}>
+      className={styles.button}
+      data-umami-event='Link button'
+      data-umami-event-path={path}
+      data-umami-event-title={title}>
       {title}
     </Link>
   );
