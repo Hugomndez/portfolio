@@ -1,5 +1,5 @@
 import { spaceGrotesk } from 'fonts';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 
 import 'styles/globals.css';
@@ -25,12 +25,15 @@ const schema = {
   ],
 };
 
+export const viewport: Viewport = {
+  themeColor: '#151515',
+  colorScheme: 'dark',
+};
+
 export const metadata: Metadata = {
   title: 'Hugo Méndez - Frontend Developer',
   description:
     'Personal developer portfolio showcasing my skills on HTML, CSS, JavaScript, TypeScript, React, NextJS, Web Performance, SEO and more...',
-  colorScheme: 'dark',
-  themeColor: '#151515',
   creator: 'Hugo Méndez',
   metadataBase: new URL('https://hugomendez.dev'),
   alternates: { canonical: '/', languages: { 'en-US': '/' } },
