@@ -98,6 +98,15 @@
   color: var(--Invalid);
 }
 
+.thankYouMessage {
+  color: var(--Green);
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  letter-spacing: -0.166667px;
+}
+
 .form button[type='submit'] {
   all: unset;
   padding-block-end: 10px;
@@ -173,5 +182,11 @@
     font-size: 8.8rem;
     line-height: 8.8rem;
     letter-spacing: -2.5px;
+  }
+
+  .thankYouMessage {
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    letter-spacing: -0.2px;
   }
 }

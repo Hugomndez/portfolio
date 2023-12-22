@@ -1,68 +1,48 @@
-import mail from '@sendgrid/mail';
 import { NextResponse } from 'next/server';
+import { validateRecaptcha } from 'services/captchaService';
+import { sendEmail } from 'services/emailService';
+import { z } from 'zod';
 
-type ReCAPTCHAResponse = {
-  success: boolean;
-  status_code: number;
-  error_codes?: Array<string>;
-};
-
-mail.setApiKey(process.env.SENDGRID_API_KEY);
-
-export const runtime = 'nodejs';
+const requestSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+  message: z.string(),
+  token: z.string(),
+});
 
 export async function POST(request: Request) {
-  const { name, email, message, token } = await request.json();
+  const requestData = await request.json();
 
-  if (!name || !email || !message || !token) {
+  const validationResult = requestSchema.safeParse(requestData);
+
+  if (!validationResult.success) {
     return new NextResponse(
-      JSON.stringify({ name: 'Unproccesable request, please provide the required fields' }),
+      JSON.stringify({ name: 'Invalid request data: Please provide the required fields' }),
       { status: 422 }
     );
   }
 
-  const templateMessage = `
-      Name: ${name}\r\n
-      Email: ${email}\r\n
-      Message: ${message}
-     `;
+  const { name, email, message, token } = validationResult.data;
 
   try {
-    const response = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-        },
-        method: 'POST',
-      }
-    );
-    const captchaValidation = (await response.json()) as ReCAPTCHAResponse;
+    const captchaValidation = await validateRecaptcha(token);
 
-    if (captchaValidation.success) {
-      try {
-        await mail.send({
-          to: 'hello@hugomendez.dev',
-          from: 'hello@hugomendez.dev',
-          subject: 'New message from portfolio contact form!',
-          text: templateMessage,
-          html: templateMessage.replace(/\r\n/g, '<br>'),
-        });
-      } catch (error) {
-        if (error instanceof Error) {
-          return new NextResponse(JSON.stringify({ name: error.message }), { status: 500 });
-        }
-      }
-      return new NextResponse(JSON.stringify({ name: 'Ok' }), { status: 200 });
-    } else {
-      return new NextResponse(
-        JSON.stringify({ name: 'Unproccesable request, Invalid captcha code' }),
-        { status: 422 }
-      );
+    if (!captchaValidation.success) {
+      return new NextResponse(JSON.stringify({ name: 'Invalid captcha code. Please try again.' }), {
+        status: 422,
+      });
     }
+
+    await sendEmail(name, email, message);
+    return new NextResponse(JSON.stringify({ name: 'Ok' }), { status: 200 });
   } catch (error) {
-    if (error instanceof Error) {
-      return new NextResponse(JSON.stringify({ name: error.message }), { status: 500 });
-    }
+    return handleError(error);
   }
+}
+
+function handleError(error: any): NextResponse {
+  if (error instanceof Error) {
+    return new NextResponse(JSON.stringify({ name: error.message }), { status: 500 });
+  }
+  return new NextResponse(JSON.stringify({ name: 'Unknown error' }), { status: 500 });
 }

@@ -1,10 +1,11 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
+
 import styles from './Contact.module.css';
 
 const validationSchema = z.object({
@@ -36,6 +37,9 @@ const Contact = () => {
 
   const { isDirty, isValid, errors, isSubmitting, isSubmitSuccessful } = formState;
 
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
+
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
   useEffect(() => {
@@ -44,10 +48,27 @@ const Contact = () => {
     }
   }, [isSubmitSuccessful, reset]);
 
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout | null = null;
+
+    if (submitSuccess) {
+      timeoutId = setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 5000);
+    }
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [submitSuccess]);
+
   const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
     const token = await recaptchaRef.current?.executeAsync();
 
     if (!token) {
+      setSubmitError('Failed to execute recaptcha. Please try again.');
       return;
     }
 
@@ -57,9 +78,17 @@ const Contact = () => {
         body: JSON.stringify({ ...data, token }),
       });
 
-      // if (response.ok)  TODO: Show user success thank you message.
+      if (response.ok) {
+        setSubmitSuccess(true);
+        setSubmitError(null);
+      } else {
+        const errorData = await response.json();
+        setSubmitError(errorData.name || 'An error occurred. Please try again.');
+      }
     } catch (error) {
-      if (error instanceof Error) console.log(error.message);
+      if (error instanceof Error) {
+        setSubmitError(error.message);
+      }
     } finally {
       recaptchaRef.current?.reset();
     }
@@ -111,7 +140,6 @@ const Contact = () => {
             {errors.email ? errors.email?.message : <>&nbsp;</>}
           </span>
         </label>
-
         <label htmlFor='message'>
           <textarea
             className={errors.message ? styles.invalidInput : ''}
@@ -124,7 +152,6 @@ const Contact = () => {
             {errors.message ? errors.message?.message : <>&nbsp;</>}
           </span>
         </label>
-
         <button
           type='submit'
           tabIndex={0}
@@ -135,6 +162,10 @@ const Contact = () => {
           data-umami-event-message={getValues('message')}>
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
+        <span className={styles.invalidMessage}>{submitError ? submitError : <>&nbsp;</>}</span>
+        <span className={styles.thankYouMessage}>
+          {submitSuccess ? 'Your message has been successfully sent!' : <>&nbsp;</>}
+        </span>
       </form>
       <Rings />
     </section>
