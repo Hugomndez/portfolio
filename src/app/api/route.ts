@@ -10,6 +10,13 @@ const requestSchema = z.object({
   token: z.string(),
 });
 
+function handleError(error: any): NextResponse {
+  if (error instanceof Error) {
+    return new NextResponse(JSON.stringify({ name: error.message }), { status: 500 });
+  }
+  return new NextResponse(JSON.stringify({ name: 'Unknown error' }), { status: 500 });
+}
+
 export async function POST(request: Request) {
   const requestData = await request.json();
 
@@ -38,11 +45,4 @@ export async function POST(request: Request) {
   } catch (error) {
     return handleError(error);
   }
-}
-
-function handleError(error: any): NextResponse {
-  if (error instanceof Error) {
-    return new NextResponse(JSON.stringify({ name: error.message }), { status: 500 });
-  }
-  return new NextResponse(JSON.stringify({ name: 'Unknown error' }), { status: 500 });
 }
