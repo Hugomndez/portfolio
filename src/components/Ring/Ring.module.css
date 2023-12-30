@@ -3,51 +3,51 @@
   pointer-events: none;
 }
 
-[data-position='top'] {
+.ring[data-position='top'] {
   top: 120px;
   right: 100%;
   transform: translate(30vw);
 }
 
-[data-position='middle'] {
+.ring[data-position='middle'] {
   top: 1400px;
   left: 100%;
   transform: translate(-30vw);
 }
 
-[data-position='bottom'] {
+.ring[data-position='bottom'] {
   top: calc(100% - 350px);
   right: 100%;
   transform: translate(40vw);
 }
 
 @media screen and (min-width: 500px) {
-  [data-position='middle'] {
+  .ring[data-position='middle'] {
     top: 1300px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  [data-position='top'] {
+  .ring[data-position='top'] {
     top: 75px;
   }
 
-  [data-position='middle'] {
+  .ring[data-position='middle'] {
     top: 1200px;
   }
 
-  [data-position='bottom'] {
+  .ring[data-position='bottom'] {
     top: calc(100% - 280px);
   }
 }
 
 @media screen and (min-width: 1110px) {
-  [data-position='top'] {
+  .ring[data-position='top'] {
     top: 98px;
     transform: translate(35vw);
   }
 
-  [data-position='bottom'] {
+  .ring[data-position='bottom'] {
     top: calc(100% - 380px);
     transform: translate(35vw);
   }
