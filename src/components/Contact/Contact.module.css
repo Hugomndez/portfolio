@@ -1,5 +1,4 @@
 .section {
-  position: relative;
   margin-inline: auto;
   padding-block: 60px 87px;
   padding-inline: 16px;
@@ -8,16 +7,6 @@
   grid-template-columns: 1fr;
   justify-items: center;
   row-gap: 50px;
-  overflow: hidden;
-}
-
-.rings {
-  position: absolute;
-  bottom: 15%;
-  right: 120%;
-  transform: translate(50%);
-  z-index: 0;
-  pointer-events: none;
 }
 
 .content {
@@ -137,10 +126,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .rings {
-    right: 113%;
-    bottom: 5%;
-  }
   .content {
     max-width: 445px;
   }
@@ -166,12 +151,6 @@
     justify-items: initial;
     padding-block: 84px 92px;
     padding-inline: 0;
-    overflow: initial;
-  }
-
-  .rings {
-    right: 110%;
-    bottom: 10%;
   }
 
   .content {

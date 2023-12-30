@@ -1,12 +1,13 @@
-import styles from './Contact.module.css';
+import styles from './Ring.module.css';
 
-export default function Rings() {
+export default function Ring({ position }: { position: 'top' | 'middle' | 'bottom' }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       width='530'
       height='129'
-      className={styles.rings}>
+      className={styles.ring}
+      data-position={position}>
       <g
         fill='none'
         fillRule='evenodd'

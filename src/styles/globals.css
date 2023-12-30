@@ -73,6 +73,9 @@ html {
 }
 
 body {
+  position: relative;
+  overflow-x: clip;
+
   font-size: var(--FS-Body-L);
   font-weight: var(--FW-Body-L);
   font-style: normal;
@@ -84,10 +87,6 @@ body {
 
   color: var(--Grey);
   background-color: var(--Black);
-}
-
-main {
-  overflow: hidden;
 }
 
 footer {

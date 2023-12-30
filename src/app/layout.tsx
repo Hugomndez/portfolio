@@ -1,4 +1,5 @@
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Ring } from 'components';
 import { spaceGrotesk } from 'fonts';
 import { Metadata, Viewport } from 'next';
 import Script from 'next/script';
@@ -84,6 +85,9 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       dir='ltr'
       className={spaceGrotesk.className}>
       <body>
+        <Ring position='top' />
+        <Ring position='middle' />
+        <Ring position='bottom' />
         {children}
         <SpeedInsights />
       </body>

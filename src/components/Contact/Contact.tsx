@@ -6,7 +6,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm, type FieldError } from 'react-hook-form';
 import { RECAPTCHA_KEY, initFormValues } from 'services/constants';
 import { validationSchema, type ValidationSchema } from 'types/validationSchema';
-import { FormError, InputField, Rings, SuccessMessage, TextAreaField } from '../Contact';
+import { FormError, InputField, SuccessMessage, TextAreaField } from '../Contact';
 import styles from './Contact.module.css';
 
 export default function Contact() {
@@ -131,7 +131,6 @@ export default function Contact() {
         <FormError error={root as FieldError} />
         <SuccessMessage messageShown={isSuccessMessageShown} />
       </form>
-      <Rings />
     </section>
   );
 }

@@ -18,7 +18,6 @@ const Skills = () => {
   return (
     <>
       <section className={styles.section}>
-        <Rings />
         <hr className={styles.hrTop} />
         <div className={styles.container}>
           {data.map((item, idx) => (

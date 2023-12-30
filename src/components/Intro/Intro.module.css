@@ -7,21 +7,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-}
-
-.rings {
-  position: absolute;
-  top: 120px;
-  right: 130%;
-  transform: translate(50%);
-  z-index: -1;
 }
 
 .circle {
   position: absolute;
   left: 100%;
   transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .content {
@@ -62,11 +54,6 @@
     flex-direction: row-reverse;
     align-items: flex-end;
     text-align: left;
-  }
-
-  .rings {
-    right: 100%;
-    top: 75px;
   }
 
   .section picture {
@@ -116,11 +103,6 @@
 @media screen and (min-width: 1110px) {
   .section {
     align-items: center;
-    overflow: initial;
-  }
-
-  .rings {
-    top: 98px;
   }
 
   .circle {
