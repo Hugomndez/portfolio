@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "18.4.3",
-    "@commitlint/config-conventional": "18.4.3",
+    "@commitlint/config-conventional": "19.0.3",
     "@sendgrid/mail": "8.1.0",
     "@types/node": "20.10.5",
     "@types/react": "18.2.45",
