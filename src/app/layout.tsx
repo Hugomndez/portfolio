@@ -15,8 +15,8 @@ const schema = {
   '@type': 'Person',
   familyName: 'Méndez',
   givenName: 'Hugo',
-  worksFor: 'https://www.nearshoretechnology.com',
-  jobTitle: 'Frontend Developer',
+  worksFor: 'https://blueriver.com/',
+  jobTitle: 'Full Stack Developer',
   alumniOf: 'https://www.uady.mx',
   image: 'https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg',
   gender: 'http://schema.org/Male',
@@ -33,12 +33,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Hugo Méndez - Frontend Developer',
+  title: 'Hugo Méndez - Full Stack Developer',
   description:
     'Personal developer portfolio showcasing my skills on HTML, CSS, JavaScript, TypeScript, React, NextJS, Web Performance, SEO and more...',
   creator: 'Hugo Méndez',
+  metadataBase: new URL('https://hugomendez.dev'),
   alternates: {
-    canonical: 'https://hugomendez.dev',
+    canonical: '/',
   },
   formatDetection: { email: false, address: false, telephone: false },
   icons: {
@@ -47,11 +48,11 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://hugomendez.dev',
-    title: 'Hugo Méndez - Frontend Developer',
+    url: '/',
+    title: 'Hugo Méndez - Full Stack Developer',
     description:
       'Personal developer portfolio showcasing my skills on HTML, CSS, JavaScript, TypeScript, React, NextJS, Web Performance, SEO and more...',
-    siteName: 'Hugo Méndez - Frontend Developer',
+    siteName: 'Hugo Méndez - Full Stack Developer',
     images: [
       {
         url: 'https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg',
@@ -66,7 +67,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hugo Méndez - Frontend Developer',
+    title: 'Hugo Méndez - Full Stack Developer',
     description:
       'Personal developer portfolio showcasing my skills on HTML, CSS, JavaScript, TypeScript, React, NextJS, Web Performance, SEO and more...',
     site: '@hugomendez_dev',
