@@ -7,6 +7,7 @@ export default function TextAreaField(Props: TextAreaFieldProps) {
   return (
     <label htmlFor={id}>
       <textarea
+        className={error ? styles.invalidTextArea : ''}
         id={id}
         rows={rows}
         placeholder={placeholder}
