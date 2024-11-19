@@ -3,7 +3,6 @@ import { Ring } from 'components';
 import { spaceGrotesk } from 'fonts';
 import { Metadata, Viewport } from 'next';
 import Script from 'next/script';
-
 import 'styles/globals.css';
 
 type RootLayoutProps = {
@@ -86,19 +85,21 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       dir='ltr'
       className={spaceGrotesk.className}>
       <body>
-        <Ring position='top' />
-        <Ring position='middle' />
-        <Ring position='bottom' />
-        {children}
+        <div style={{ position: 'relative', overflowX: 'clip' }}>
+          <Ring position='top' />
+          <Ring position='middle' />
+          <Ring position='bottom' />
+          {children}
+        </div>
         <SpeedInsights />
+        <Script
+          id='schema-json-ld'
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
+        />
       </body>
-      <Script
-        id='schema-json-ld'
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schema),
-        }}
-      />
     </html>
   );
 };
