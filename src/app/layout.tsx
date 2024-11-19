@@ -85,10 +85,12 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       dir='ltr'
       className={spaceGrotesk.className}>
       <body>
-        <Ring position='top' />
-        <Ring position='middle' />
-        <Ring position='bottom' />
-        {children}
+        <div style={{ position: 'relative', overflowX: 'clip' }}>
+          <Ring position='top' />
+          <Ring position='middle' />
+          <Ring position='bottom' />
+          {children}
+        </div>
         <SpeedInsights />
         <Script
           id='schema-json-ld'
