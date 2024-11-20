@@ -1,13 +1,13 @@
-import { LinkButton } from 'components';
+import mGImg from 'app/_assets/images/thumbnail-3code-website.webp';
+import aGAImg from 'app/_assets/images/thumbnail-advice-generator-app.webp';
+import eLImg from 'app/_assets/images/thumbnail-batatabit-website.webp';
+import aGSImg from 'app/_assets/images/thumbnail-bv-properties-website.webp';
+import dFrImg from 'app/_assets/images/thumbnail-devfinder-app.webp';
+import tWAImg from 'app/_assets/images/thumbnail-faq-accordion-card.webp';
+import dPImg from 'app/_assets/images/thumbnail-interactive-app.webp';
+import eWAImg from 'app/_assets/images/thumbnail-interactive-rating-component.webp';
 import Image, { type StaticImageData } from 'next/image';
-import mGImg from '../../assets/images/thumbnail-3code-website.webp';
-import aGAImg from '../../assets/images/thumbnail-advice-generator-app.webp';
-import eLImg from '../../assets/images/thumbnail-batatabit-website.webp';
-import aGSImg from '../../assets/images/thumbnail-bv-properties-website.webp';
-import dFrImg from '../../assets/images/thumbnail-devfinder-app.webp';
-import tWAImg from '../../assets/images/thumbnail-faq-accordion-card.webp';
-import dPImg from '../../assets/images/thumbnail-interactive-app.webp';
-import eWAImg from '../../assets/images/thumbnail-interactive-rating-component.webp';
+import { LinkButton } from '../LinkButton';
 import styles from './Projects.module.css';
 
 type Project = {

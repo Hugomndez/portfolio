@@ -4,10 +4,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm, type FieldError } from 'react-hook-form';
-import { RECAPTCHA_KEY, initFormValues } from 'services/constants';
-import { validationSchema, type ValidationSchema } from 'types/validationSchema';
-import { FormError, InputField, SuccessMessage, TextAreaField } from '../Contact';
+import { RECAPTCHA_KEY, initFormValues } from './constants';
 import styles from './Contact.module.css';
+import FormError from './FormError';
+import InputField from './InputField';
+import SuccessMessage from './SuccessMessage';
+import TextAreaField from './TextAreaField';
+import { validationSchema, type ValidationSchema } from './validationSchema';
 
 export default function Contact() {
   const { register, handleSubmit, reset, getValues, setError, clearErrors, formState } =

@@ -1,5 +1,5 @@
-import { Bar, Contact, Intro, Projects, Skills } from 'components';
 import Script from 'next/script';
+import { Bar, Contact, Intro, Projects, Skills } from './_components';
 
 export default function Page() {
   return (

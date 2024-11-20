@@ -1,4 +1,4 @@
-import { InputFieldProps } from 'types/validationSchema';
+import { InputFieldProps } from 'app/_components/Contact/validationSchema';
 import styles from './Contact.module.css';
 
 export default function InputField(Props: InputFieldProps) {

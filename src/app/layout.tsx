@@ -1,9 +1,9 @@
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Ring } from 'components';
-import { spaceGrotesk } from 'fonts';
 import { Metadata, Viewport } from 'next';
 import Script from 'next/script';
-import 'styles/globals.css';
+import { Ring } from './_components';
+import { spaceGrotesk } from './_fonts';
+import './_styles/globals.css';
 
 type RootLayoutProps = {
   children: React.ReactNode;
