@@ -56,17 +56,6 @@
     text-align: left;
   }
 
-  .section picture {
-    min-width: 322px;
-    z-index: -1;
-    user-select: none;
-  }
-
-  .img {
-    width: 322px;
-    height: 598.14px;
-  }
-
   .content {
     padding-inline: 32px 0;
   }
@@ -108,15 +97,6 @@
   .circle {
     left: 60%;
     top: 70%;
-  }
-
-  .section picture {
-    min-width: 445px;
-  }
-
-  .img {
-    width: 445px;
-    height: 720px;
   }
 
   .content {
