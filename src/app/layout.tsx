@@ -1,7 +1,7 @@
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Metadata, Viewport } from 'next';
 import Script from 'next/script';
-import { Ring } from './_components';
+import { Container } from './_components';
 import { spaceGrotesk } from './_fonts';
 import './_styles/globals.css';
 
@@ -85,20 +85,23 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       dir='ltr'
       className={spaceGrotesk.className}>
       <body>
-        <div style={{ position: 'relative', overflowX: 'clip' }}>
-          <Ring position='top' />
-          <Ring position='middle' />
-          <Ring position='bottom' />
-          {children}
-        </div>
-        <SpeedInsights />
+        <Container>{children}</Container>
         <Script
           id='schema-json-ld'
           type='application/ld+json'
+          strategy='beforeInteractive'
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(schema),
           }}
         />
+        <Script
+          id='umami-analytics'
+          strategy='lazyOnload'
+          src='https://analytics.umami.is/script.js'
+          data-website-id='8110a8a7-c042-4ada-8306-ed6b7327a5b7'
+          data-domains='hugomendez.dev'
+        />
+        <SpeedInsights />
       </body>
     </html>
   );
