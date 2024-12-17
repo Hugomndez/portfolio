@@ -14,34 +14,34 @@ const ProfileImage = () => {
     props: { srcSet: desktop },
   } = getImageProps({
     ...common,
-    width: profileDesktop.width,
-    height: profileDesktop.height,
-    src: profileDesktop.src,
     placeholder: 'blur',
     blurDataURL: profileDesktop.blurDataURL,
+    src: profileDesktop.src,
+    width: profileDesktop.width,
+    height: profileDesktop.height,
   });
   const {
     props: { srcSet: tablet },
   } = getImageProps({
     ...common,
-    width: profileTablet.width,
-    height: profileTablet.height,
-    src: profileTablet.src,
     placeholder: 'blur',
     blurDataURL: profileTablet.blurDataURL,
+    src: profileTablet.src,
+    width: profileTablet.width,
+    height: profileTablet.height,
   });
   const {
     props: { alt, srcSet: mobile, ...rest },
   } = getImageProps({
     ...common,
-    src: profileMobile.src,
     className: styles.img,
-    fetchPriority: 'high',
-    loading: 'eager',
-    width: 174,
-    height: 383,
     placeholder: 'blur',
     blurDataURL: profileMobile.blurDataURL,
+    src: profileMobile.src,
+    width: 174,
+    height: 383,
+    fetchPriority: 'high',
+    loading: 'eager',
   });
 
   return (
