@@ -7,41 +7,19 @@ import styles from './profile-image.module.css';
 const ProfileImage = () => {
   const common = {
     alt: 'Hugo Méndez profile photo',
-    quality: 85,
   };
 
   const {
     props: { srcSet: desktop },
   } = getImageProps({
     ...common,
-    placeholder: 'blur',
-    blurDataURL: profileDesktop.blurDataURL,
-    src: profileDesktop.src,
-    width: profileDesktop.width,
-    height: profileDesktop.height,
+    src: profileDesktop,
   });
   const {
     props: { srcSet: tablet },
   } = getImageProps({
     ...common,
-    placeholder: 'blur',
-    blurDataURL: profileTablet.blurDataURL,
-    src: profileTablet.src,
-    width: profileTablet.width,
-    height: profileTablet.height,
-  });
-  const {
-    props: { alt, srcSet: mobile, ...rest },
-  } = getImageProps({
-    ...common,
-    className: styles.img,
-    placeholder: 'blur',
-    blurDataURL: profileMobile.blurDataURL,
-    src: profileMobile.src,
-    width: 174,
-    height: 383,
-    fetchPriority: 'high',
-    loading: 'eager',
+    src: profileTablet,
   });
 
   return (
@@ -54,13 +32,15 @@ const ProfileImage = () => {
         media='(min-width: 768px)'
         srcSet={tablet}
       />
-      <source
-        media='(min-width: 0px)'
-        srcSet={mobile}
-      />
+
       <Image
-        {...rest}
-        alt={alt}
+        alt={common.alt}
+        className={styles.img}
+        placeholder='blur'
+        width={174}
+        height={383}
+        priority
+        src={profileMobile}
       />
     </picture>
   );
