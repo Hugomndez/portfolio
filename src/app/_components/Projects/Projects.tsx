@@ -111,9 +111,10 @@ const Projects = () => {
             <div className={styles.overlay}>
               <Image
                 className={styles.image}
-                src={item.thumbnail.url}
                 alt={item.thumbnail.alt}
+                sizes='(min-width: 1110px) 33vw,(min-width: 768px) 50vw, 100vw'
                 placeholder='blur'
+                src={item.thumbnail.url}
               />
               <div className={styles.overlayLinks}>
                 <LinkButton
