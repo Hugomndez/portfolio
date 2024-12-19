@@ -112,7 +112,7 @@ const Projects = () => {
               <Image
                 className={styles.image}
                 alt={item.thumbnail.alt}
-                sizes='(min-width: 1110px) 33vw,(min-width: 768px) 50vw, 100vw'
+                sizes='(min-width: 1110px) 540px,(min-width: 768px) 50vw, 100vw'
                 placeholder='blur'
                 src={item.thumbnail.url}
               />
