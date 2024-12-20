@@ -3,17 +3,18 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { useForm, type FieldError } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { RECAPTCHA_KEY, initFormValues } from './constants';
 import styles from './Contact.module.css';
 import FormError from './FormError';
 import InputField from './InputField';
 import SuccessMessage from './SuccessMessage';
 import TextAreaField from './TextAreaField';
-import { validationSchema, type ValidationSchema } from './validationSchema';
+import type { ValidationSchema } from './validationSchema';
+import { validationSchema } from './validationSchema';
 
 export default function Contact() {
-  const { register, handleSubmit, reset, getValues, setError, clearErrors, formState } =
+  const { control, handleSubmit, reset, getValues, setError, clearErrors, formState } =
     useForm<ValidationSchema>({
       resolver: zodResolver(validationSchema),
       mode: 'onChange',
@@ -21,13 +22,11 @@ export default function Contact() {
       defaultValues: initFormValues,
     });
 
-  const { isDirty, isValid, errors, isSubmitting, isSubmitSuccessful } = formState;
+  const { isDirty, isValid, isSubmitting, isSubmitSuccessful } = formState;
 
   const [isSuccessMessageShown, setSuccessMessageShown] = useState<boolean>(false);
 
   const reCaptchaRef = useRef<ReCAPTCHA | null>(null);
-
-  const { name, email, message, root } = errors;
 
   useEffect(() => {
     if (isSubmitSuccessful) {
@@ -98,28 +97,16 @@ export default function Contact() {
           theme='dark'
         />
         <InputField
-          register={register}
-          id='name'
-          type='text'
-          placeholder='Name'
-          autoComplete='name'
-          error={name}
+          control={control}
+          name='name'
         />
         <InputField
-          register={register}
-          id='email'
-          type='email'
-          placeholder='Email'
-          autoComplete='email'
-          error={email}
+          control={control}
+          name='email'
         />
         <TextAreaField
-          register={register}
-          id='message'
-          rows={3}
-          placeholder='Your message'
-          autoComplete='off'
-          error={message}
+          control={control}
+          name='message'
         />
         <small>
           This site is protected by reCAPTCHA and the Google{' '}
@@ -136,7 +123,7 @@ export default function Contact() {
           data-umami-event-message={getValues('message')}>
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
-        <FormError error={root as FieldError} />
+        <FormError control={control} />
         <SuccessMessage messageShown={isSuccessMessageShown} />
       </form>
     </section>

@@ -1,6 +1,13 @@
-import type { FieldError } from 'react-hook-form';
-import styles from './Contact.module.css';
+'use client';
 
-export default function FormError({ error }: { error?: FieldError }) {
-  return <span className={styles.invalidMessage}>{error ? error.message : <>&nbsp;</>}</span>;
+import type { UseFormStateProps } from 'react-hook-form';
+import { useFormState } from 'react-hook-form';
+import styles from './Contact.module.css';
+import type { ValidationSchema } from './validationSchema';
+
+export default function FormError({ control }: UseFormStateProps<ValidationSchema>) {
+  const { errors } = useFormState({ control });
+  return (
+    <span className={styles.invalidMessage}>{errors.root ? errors.root.message : <>&nbsp;</>}</span>
+  );
 }

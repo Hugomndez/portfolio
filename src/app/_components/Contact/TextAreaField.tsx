@@ -1,20 +1,26 @@
-import type { TextAreaFieldProps } from 'app/_components/Contact/validationSchema';
-import styles from './Contact.module.css';
+'use client';
 
-export default function TextAreaField(Props: TextAreaFieldProps) {
-  const { register, id, rows, placeholder, autoComplete, error } = Props;
+import type { UseControllerProps } from 'react-hook-form';
+import { useController } from 'react-hook-form';
+import styles from './Contact.module.css';
+import type { ValidationSchema } from './validationSchema';
+
+export default function TextAreaField(props: UseControllerProps<ValidationSchema>) {
+  const { field, fieldState } = useController(props);
 
   return (
-    <label htmlFor={id}>
+    <label htmlFor={field.name}>
       <textarea
-        className={error ? styles.invalidTextArea : ''}
-        id={id}
-        rows={rows}
-        placeholder={placeholder}
-        autoComplete={autoComplete}
-        {...register(id)}
+        {...field}
+        id={field.name}
+        rows={3}
+        placeholder={field.name}
+        autoComplete='off'
+        className={fieldState.error ? styles.invalidTextArea : ''}
       />
-      <span className={styles.invalidMessage}>{error ? error.message : <>&nbsp;</>}</span>
+      <span className={styles.invalidMessage}>
+        {fieldState.error ? fieldState.error.message : <>&nbsp;</>}
+      </span>
     </label>
   );
 }
