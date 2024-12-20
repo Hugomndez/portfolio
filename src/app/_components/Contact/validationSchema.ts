@@ -1,4 +1,3 @@
-import { type FieldError, type UseFormRegister } from 'react-hook-form';
 import { z } from 'zod';
 
 export const validationSchema = z.object({
@@ -11,19 +10,3 @@ export const validationSchema = z.object({
 });
 
 export type ValidationSchema = z.infer<typeof validationSchema>;
-
-export type FieldProps = {
-  register: UseFormRegister<ValidationSchema>;
-  id: keyof ValidationSchema;
-  placeholder: string;
-  autoComplete: string;
-  error?: FieldError;
-};
-
-export type InputFieldProps = FieldProps & {
-  type: string;
-};
-
-export type TextAreaFieldProps = FieldProps & {
-  rows?: number;
-};

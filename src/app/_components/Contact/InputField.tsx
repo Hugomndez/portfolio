@@ -1,20 +1,26 @@
-import type { InputFieldProps } from 'app/_components/Contact/validationSchema';
-import styles from './Contact.module.css';
+'use client';
 
-export default function InputField(Props: InputFieldProps) {
-  const { register, id, type, placeholder, autoComplete, error } = Props;
+import type { UseControllerProps } from 'react-hook-form';
+import { useController } from 'react-hook-form';
+import styles from './Contact.module.css';
+import type { ValidationSchema } from './validationSchema';
+
+export default function InputField(props: UseControllerProps<ValidationSchema>) {
+  const { field, fieldState } = useController(props);
 
   return (
-    <label htmlFor={id}>
+    <label htmlFor={field.name}>
       <input
-        className={error ? styles.invalidInput : ''}
-        type={type}
-        id={id}
-        placeholder={placeholder}
-        autoComplete={autoComplete}
-        {...register(id)}
+        {...field}
+        id={field.name}
+        type={field.name === 'email' ? 'email' : 'text'}
+        placeholder={field.name}
+        autoComplete={field.name}
+        className={fieldState.error ? styles.invalidInput : ''}
       />
-      <span className={styles.invalidMessage}>{error ? error.message : <>&nbsp;</>}</span>
+      <span className={styles.invalidMessage}>
+        {fieldState.error ? fieldState.error.message : <>&nbsp;</>}
+      </span>
     </label>
   );
 }
