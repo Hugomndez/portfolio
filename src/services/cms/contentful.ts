@@ -1,6 +1,6 @@
 import { getPlaiceholder } from 'plaiceholder';
 import { projectsCollectionQuery } from './contentful.queries';
-import { ProjectsCollectionResponse, Variables } from './contentful.types';
+import type { ProjectsCollectionResponse, Variables } from './contentful.types';
 
 if (
   !process.env.CONTENTFUL_SPACE_ID ||

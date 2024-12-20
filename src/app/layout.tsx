@@ -1,12 +1,13 @@
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Metadata, Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
+import type { ReactNode } from 'react';
 import { Container } from './_components';
 import { spaceGrotesk } from './_fonts';
 import './_styles/globals.css';
 
 type RootLayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const schema = {
