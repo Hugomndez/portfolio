@@ -49,11 +49,11 @@
 }
 
 :is(
-    ::-webkit-calendar-picker-indicator,
-    ::-webkit-clear-button,
-    ::-webkit-inner-spin-button,
-    ::-webkit-outer-spin-button
-  ) {
+  ::-webkit-calendar-picker-indicator,
+  ::-webkit-clear-button,
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button
+) {
   color: var(--Green);
 }
 
@@ -109,4 +109,8 @@ img {
   display: block;
   max-inline-size: 100%;
   block-size: auto;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
 }

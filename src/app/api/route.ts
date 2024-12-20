@@ -10,7 +10,7 @@ const requestSchema = z.object({
   token: z.string(),
 });
 
-function handleError(error: any): NextResponse {
+function handleError(error: unknown): NextResponse {
   if (error instanceof Error) {
     return new NextResponse(JSON.stringify({ name: error.message }), { status: 500 });
   }

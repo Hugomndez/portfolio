@@ -1,7 +1,9 @@
 export { Bar } from './Bar';
 export { Contact } from './Contact';
+export { Container } from './Container';
 export { Intro } from './Intro';
 export { LinkButton } from './LinkButton';
+export { ProfileImage } from './ProfileImage';
 export { Projects } from './Projects';
 export { Ring } from './Ring';
 export { Skills } from './Skills';

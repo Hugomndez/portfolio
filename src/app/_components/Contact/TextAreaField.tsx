@@ -1,4 +1,4 @@
-import { TextAreaFieldProps } from 'types/validationSchema';
+import type { TextAreaFieldProps } from 'app/_components/Contact/validationSchema';
 import styles from './Contact.module.css';
 
 export default function TextAreaField(Props: TextAreaFieldProps) {

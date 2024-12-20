@@ -1,0 +1,23 @@
+@media screen and (min-width: 768px) {
+  .picture {
+    min-width: 322px;
+    z-index: -1;
+    user-select: none;
+  }
+
+  .img {
+    width: 322px;
+    height: 598.14px;
+  }
+}
+
+@media screen and (min-width: 1110px) {
+  .picture {
+    min-width: 445px;
+  }
+
+  .img {
+    width: 445px;
+    height: 720px;
+  }
+}
