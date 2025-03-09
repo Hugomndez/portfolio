@@ -5,13 +5,14 @@ import { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { RECAPTCHA_KEY, initFormValues } from './constants';
-import styles from './Contact.module.css';
+import { contactFormAction } from './contact-form.action';
+import styles from './contact.module.css';
 import FormError from './FormError';
 import InputField from './InputField';
 import SuccessMessage from './SuccessMessage';
 import TextAreaField from './TextAreaField';
-import type { ValidationSchema } from './validationSchema';
-import { validationSchema } from './validationSchema';
+import type { ValidationSchema } from './validation.schema';
+import { validationSchema } from './validation.schema';
 
 export default function Contact() {
   const { control, handleSubmit, reset, getValues, setError, clearErrors, formState } =
@@ -62,8 +63,15 @@ export default function Contact() {
       return;
     }
 
+    const formData = new FormData();
+
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    formData.append('message', data.message);
+    formData.append('token', token);
+
     try {
-      await submitForm(data, token);
+      await contactFormAction(formData);
 
       setSuccessMessageShown(true);
       clearErrors('root');
@@ -128,16 +136,4 @@ export default function Contact() {
       </form>
     </section>
   );
-}
-
-async function submitForm(data: ValidationSchema, token: string) {
-  const response = await fetch('/api', {
-    method: 'POST',
-    body: JSON.stringify({ ...data, token }),
-  });
-
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.name || 'An error occurred. Please try again.');
-  }
 }

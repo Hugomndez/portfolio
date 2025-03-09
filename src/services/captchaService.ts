@@ -14,5 +14,10 @@ export async function validateRecaptcha(token: string): Promise<ReCAPTCHARespons
       method: 'POST',
     }
   );
-  return response.json() as Promise<ReCAPTCHAResponse>;
+
+  const rest = (await response.json()) as ReCAPTCHAResponse;
+
+  if (!rest.success) throw new Error('Invalid captcha code. Please try again.');
+
+  return rest;
 }

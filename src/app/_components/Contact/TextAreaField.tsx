@@ -2,8 +2,8 @@
 
 import type { UseControllerProps } from 'react-hook-form';
 import { useController } from 'react-hook-form';
-import styles from './Contact.module.css';
-import type { ValidationSchema } from './validationSchema';
+import styles from './contact.module.css';
+import type { ValidationSchema } from './validation.schema';
 
 export default function TextAreaField(props: UseControllerProps<ValidationSchema>) {
   const { field, fieldState } = useController(props);
