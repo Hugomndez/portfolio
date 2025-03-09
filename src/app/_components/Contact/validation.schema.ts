@@ -10,3 +10,7 @@ export const validationSchema = z.object({
 });
 
 export type ValidationSchema = z.infer<typeof validationSchema>;
+
+export const serverValidationSchema = validationSchema.extend({
+  token: z.string().min(1, { message: 'Token is required' }),
+});

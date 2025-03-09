@@ -1,4 +1,4 @@
-import type { ValidationSchema } from 'app/_components/Contact/validationSchema';
+import type { ValidationSchema } from './validation.schema';
 
 export const initFormValues: ValidationSchema = {
   name: '',
