@@ -6,7 +6,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { RECAPTCHA_KEY, initFormValues } from './constants';
 import { contactFormAction } from './contact-form.action';
-import styles from './contact.module.css';
+import styles from './Contact.module.css';
 import FormError from './FormError';
 import InputField from './InputField';
 import SuccessMessage from './SuccessMessage';
