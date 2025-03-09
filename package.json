@@ -16,7 +16,7 @@
     "url": "https://github.com/Hugomndez/portfolio/issues"
   },
   "engines": {
-    "node": "23.x",
+    "node": "22.x",
     "npm": "please-use-yarn-instead",
     "yarn": "1.x"
   },
