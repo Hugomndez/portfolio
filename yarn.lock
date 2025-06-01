@@ -818,10 +818,10 @@
   dependencies:
     undici-types "~6.21.0"
 
-"@types/react-dom@19.1.2":
-  version "19.1.2"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.1.2.tgz#bd1fe3b8c28a3a2e942f85314dcfb71f531a242f"
-  integrity sha512-XGJkWF41Qq305SKWEILa1O8vzhb3aOo3ogBlSmiqNko/WmRb6QIaweuZCXjKygVDXpzXb5wyxKTSOsmkuqj+Qw==
+"@types/react-dom@19.1.5":
+  version "19.1.5"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.1.5.tgz#cdfe2c663742887372f54804b16e8dbc26bd794a"
+  integrity sha512-CMCjrWucUBZvohgZxkjd6S9h0nZxXjzus6yDfUb+xLxYM7VvjKNH1tQrE9GWLql1XoOP4/Ds3bwFqShHUYraGg==
 
 "@types/react-google-recaptcha@2.1.9":
   version "2.1.9"
@@ -1206,7 +1206,7 @@ braces@^3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-browserslist-config-baseline@^0.4.0:
+browserslist-config-baseline@0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/browserslist-config-baseline/-/browserslist-config-baseline-0.4.0.tgz#40da300d4d370cec45f82d2f2f526dab92540be4"
   integrity sha512-ZbdPlREt1Z77Xh2vP+wdr1jGZ8udXH4wFFEpV1WQ3GP63XD8rwdyP39yv1WDYbCVGZyUYaSN8T9HlRseVjAG1w==
