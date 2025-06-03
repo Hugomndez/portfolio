@@ -1,4 +1,6 @@
-import { getPlaiceholder } from 'plaiceholder';
+import { getPixels } from '@unpic/pixels';
+import { blurhashToDataUri } from '@unpic/placeholder';
+import { encode } from 'blurhash';
 import { projectsCollectionQuery } from './contentful.queries';
 import type { ProjectsCollectionResponse, Variables } from './contentful.types';
 
@@ -50,23 +52,21 @@ const fetchContentfulData = async <T>(
   return data;
 };
 
-const fetchImageBuffer = async (url: string): Promise<Buffer> => {
-  const response = await fetch(url);
-  const arrayBuffer = await response.arrayBuffer();
-  return Buffer.from(arrayBuffer);
-};
+async function getImageBlurData(imageUrl: string) {
+  const jpgData = await getPixels(`${imageUrl}?w=100&fm=jpg`);
+  const data = Uint8ClampedArray.from(jpgData.data);
+  const blurhash = encode(data, jpgData.width, jpgData.height, 4, 4);
+  const base64ImageUri = blurhashToDataUri(blurhash);
+
+  return base64ImageUri;
+}
 
 export const getProjects = async () => {
   const { data } = await fetchContentfulData<ProjectsCollectionResponse>(projectsCollectionQuery);
 
   const projects = await Promise.all(
     data.projectsCollection.items.map(async (item) => {
-      const buffer = await fetchImageBuffer(item.image.url);
-      const { base64 } = await getPlaiceholder(buffer, {
-        size: 4,
-        lightness: 10,
-        format: ['webp'],
-      });
+      const base64ImageUri = await getImageBlurData(item.image.url);
 
       return {
         id: item._id,
@@ -76,7 +76,7 @@ export const getProjects = async () => {
         sourceCodeUrl: item.sourceCodeUrl,
         image: {
           url: item.image.url,
-          blurDataUrl: base64,
+          blurDataUrl: base64ImageUri,
           width: item.image.width,
           height: item.image.height,
           contentType: item.image.contentType,
