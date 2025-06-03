@@ -3,7 +3,7 @@ declare namespace NodeJS {
     readonly VERCEL_ENV: string;
     readonly NEXTAUTH_URL: string;
     readonly SENDGRID_API_KEY: string;
-    readonly NEXT_PUBLIC_RECAPTCHA_SITE_KEY: string;
-    readonly RECAPTCHA_SECRET_KEY: string;
+    readonly NEXT_PUBLIC_TURNSTILE_SITE_KEY: string;
+    readonly TURNSTILE_SECRET_KEY: string;
   }
 }

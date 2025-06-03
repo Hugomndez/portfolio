@@ -1,10 +1,11 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import type { TurnstileInstance } from '@marsidev/react-turnstile';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { useEffect, useRef, useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
-import { RECAPTCHA_KEY, initFormValues } from './constants';
+import { initFormValues } from './constants';
 import { contactFormAction } from './contact-form.action';
 import styles from './Contact.module.css';
 import FormError from './FormError';
@@ -13,6 +14,8 @@ import SuccessMessage from './SuccessMessage';
 import TextAreaField from './TextAreaField';
 import type { ValidationSchema } from './validation.schema';
 import { validationSchema } from './validation.schema';
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 export default function Contact() {
   const { control, handleSubmit, reset, getValues, setError, clearErrors, formState } =
@@ -27,7 +30,7 @@ export default function Contact() {
 
   const [isSuccessMessageShown, setSuccessMessageShown] = useState<boolean>(false);
 
-  const reCaptchaRef = useRef<ReCAPTCHA | null>(null);
+  const ref = useRef<TurnstileInstance | null>(null);
 
   useEffect(() => {
     if (isSubmitSuccessful) {
@@ -50,15 +53,15 @@ export default function Contact() {
   }, [isSuccessMessageShown]);
 
   async function onSubmit(data: ValidationSchema) {
-    const token = await reCaptchaRef.current?.executeAsync();
+    const token = ref.current?.getResponse();
 
     if (!token) {
       setError('root', {
         type: 'token',
-        message: 'Failed to execute reCaptcha. Please try again.',
+        message: 'Failed to execute Captcha. Please try again.',
       });
 
-      reCaptchaRef.current?.reset();
+      ref.current?.reset();
 
       return;
     }
@@ -80,7 +83,7 @@ export default function Contact() {
         setError('root', { type: 'api', message: error.message });
       }
     } finally {
-      reCaptchaRef.current?.reset();
+      ref.current?.reset();
     }
   }
 
@@ -98,11 +101,10 @@ export default function Contact() {
       <form
         className={styles.form}
         onSubmit={handleSubmit(onSubmit)}>
-        <ReCAPTCHA
-          ref={reCaptchaRef}
-          sitekey={RECAPTCHA_KEY}
-          size='invisible'
-          theme='dark'
+        <Turnstile
+          ref={ref}
+          siteKey={TURNSTILE_SITE_KEY}
+          options={{ theme: 'dark', action: 'submit-form', size: 'invisible' }}
         />
         <InputField
           control={control}
@@ -116,11 +118,7 @@ export default function Contact() {
           control={control}
           name='message'
         />
-        <small>
-          This site is protected by reCAPTCHA and the Google{' '}
-          <a href='https://policies.google.com/privacy'>Privacy Policy</a> and{' '}
-          <a href='https://policies.google.com/terms'>Terms of Service</a> apply.
-        </small>
+
         <button
           type='submit'
           tabIndex={0}

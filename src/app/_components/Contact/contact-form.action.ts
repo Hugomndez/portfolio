@@ -1,7 +1,7 @@
 'use server';
 
-import { validateRecaptcha } from 'services/captchaService';
 import { sendEmail } from 'services/emailService';
+import { validateTurnstileToken } from 'services/turnstile.service';
 import { serverValidationSchema } from './validation.schema';
 
 export async function contactFormAction(formData: FormData) {
@@ -14,7 +14,7 @@ export async function contactFormAction(formData: FormData) {
   }
 
   try {
-    await validateRecaptcha(data.token);
+    await validateTurnstileToken(data.token);
     await sendEmail(data.name, data.email, data.message);
   } catch (error) {
     if (error instanceof Error) {
