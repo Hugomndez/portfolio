@@ -1,5 +1,4 @@
 import { FlatCompat } from '@eslint/eslintrc';
-import reactCompiler from 'eslint-plugin-react-compiler';
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
@@ -9,6 +8,13 @@ const eslintConfig = [
   ...compat.config({
     extends: ['next/core-web-vitals', 'next/typescript', 'prettier'],
     rules: {
+      'no-console': [
+        'warn',
+        {
+          allow: ['debug', 'info', 'warn', 'error'],
+        },
+      ],
+      'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -30,7 +36,9 @@ const eslintConfig = [
         },
       ],
     },
-    ignorePatterns: [
+  }),
+  {
+    ignores: [
       '**/.next',
       '**/.cache',
       '**/package-lock.json',
@@ -38,16 +46,8 @@ const eslintConfig = [
       '**/node_modules',
       '**/next-env.d.ts',
       '**/yarn.lock',
-      '**/src/types/generated/contentful.d.ts',
     ],
-  }),
-  {
-    plugins: {
-      'react-compiler': reactCompiler,
-    },
-    rules: {
-      'react-compiler/react-compiler': 'error',
-    },
   },
 ];
+
 export default eslintConfig;
