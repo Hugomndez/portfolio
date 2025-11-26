@@ -1,4 +1,4 @@
-import { Bar, Contact, Intro, Projects, Skills } from './_components';
+import { Bar, Contact, Intro, Projects, Skills } from '@/components';
 
 export default function Page() {
   return (

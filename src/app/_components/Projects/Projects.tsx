@@ -1,5 +1,5 @@
+import { getProjects } from '@/services/cms/contentful';
 import Image from 'next/image';
-import { getProjects } from 'services/cms/contentful';
 import { LinkButton } from '../LinkButton';
 import styles from './Projects.module.css';
 

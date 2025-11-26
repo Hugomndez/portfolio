@@ -1,10 +1,10 @@
+import { Container } from '@/components';
+import { spaceGrotesk } from '@/fonts';
+import '@/styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
-import { Container } from './_components';
-import { spaceGrotesk } from './_fonts';
-import './_styles/globals.css';
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -97,7 +97,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         />
         <Script
           id='umami-analytics'
-          strategy='lazyOnload'
+          strategy='afterInteractive'
           src='https://analytics.umami.is/script.js'
           data-website-id='8110a8a7-c042-4ada-8306-ed6b7327a5b7'
           data-domains='hugomendez.dev'
