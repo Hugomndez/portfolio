@@ -1,7 +1,7 @@
 'use server';
 
-import { sendEmail } from 'services/emailService';
-import { validateTurnstileToken } from 'services/turnstile.service';
+import { sendEmail } from '@/services/emailService';
+import { validateTurnstileToken } from '@/services/turnstile.service';
 import { serverValidationSchema } from './validation.schema';
 
 export async function contactFormAction(formData: FormData) {
