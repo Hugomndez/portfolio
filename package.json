@@ -26,8 +26,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint --cache --cache-location .next/cache/eslint/",
     "lint:fix": "eslint --fix",
+    "lint:inspect": "eslint --inspect-config",
     "prettier": "prettier --write .",
     "postinstall": "husky"
   },
