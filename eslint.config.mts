@@ -8,7 +8,7 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
-import { configs as tseslintConfigs } from 'typescript-eslint';
+import eslintTS from 'typescript-eslint';
 
 const ignoreConfig = defineConfig([
   {
@@ -19,7 +19,7 @@ const ignoreConfig = defineConfig([
 
 const jsConfig = defineConfig([
   {
-    name: 'project/javascript-recommended',
+    name: 'project/javascript',
     files: ['**/*.{js,mjs,ts,tsx}'],
     extends: [eslintJS.configs.recommended],
     rules: { 'no-console': ['warn', { allow: ['warn', 'error'] }] },
@@ -28,9 +28,9 @@ const jsConfig = defineConfig([
 
 const tsConfig = defineConfig([
   {
-    name: 'project/typescript-recommended',
+    name: 'project/typescript',
     files: ['**/*.{ts,mts,tsx,mjs}'],
-    extends: [...tseslintConfigs.recommended],
+    extends: [eslintTS.configs.recommended],
     languageOptions: {
       parserOptions: {
         // Automatically detects tsconfig.json
@@ -80,12 +80,13 @@ const tsConfig = defineConfig([
           fixStyle: 'separate-type-imports',
         },
       ],
+      '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
     },
   },
   {
     name: 'project/javascript-disable-type-check',
     files: ['**/*.{js,mjs,cjs}'],
-    ...tseslintConfigs.disableTypeChecked,
+    ...eslintTS.configs.disableTypeChecked,
   },
 ]);
 

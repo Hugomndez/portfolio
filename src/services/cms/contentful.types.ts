@@ -11,12 +11,12 @@ export type ContentfulGraphQLErrorExtensions = {
   };
 };
 
-export interface Variables {
+export type Variables = {
   preview: boolean;
   locale: string;
-}
+};
 
-export interface Project {
+export type Project = {
   _id: string;
   title: string;
   techStack: string[];
@@ -30,12 +30,12 @@ export interface Project {
     fileName: string;
     title: string;
   };
-}
+};
 
-export interface ProjectsCollectionResponse {
+export type ProjectsCollectionResponse = {
   data: {
     projectsCollection: {
       items: Project[];
     };
   };
-}
+};
