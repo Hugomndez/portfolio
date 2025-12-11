@@ -2,7 +2,7 @@ import { getPixels } from '@unpic/pixels';
 import { blurhashToDataUri } from '@unpic/placeholder';
 import { encode } from 'blurhash';
 import { projectsCollectionQuery } from './contentful.queries';
-import type { ProjectsCollectionResponse, Variables } from './contentful.types';
+import type { GraphQLError, ProjectsCollectionResponse, Variables } from './contentful.types';
 
 if (
   !process.env.CONTENTFUL_SPACE_ID ||
@@ -34,7 +34,7 @@ const fetchContentfulData = async <T>(
   variables: Partial<Variables> = {}
 ): Promise<T> => {
   const response = await fetch(CONTENTFUL_API_URL, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 3600 }, // Do i need to revalidate only on production?
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -43,10 +43,14 @@ const fetchContentfulData = async <T>(
     body: JSON.stringify({ query, variables }),
   });
 
-  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`); // throwing here but not catching later fix later
+  }
 
-  if (data.errors) {
-    throw new Error(`GraphQL errors: ${JSON.stringify(data.errors)}`);
+  const data = (await response.json()) as T & { errors?: GraphQLError[] };
+
+  if (data.errors && data.errors.length > 0) {
+    throw new Error(`Failed to fetch data`); // throwing here but not catching later fix later
   }
 
   return data;

@@ -45,7 +45,7 @@
 
   padding-inline: 24px;
   padding-block-end: 16px;
-  font-family: inherit;
+  font-family: inherit, var(--FF-Primary), sans-serif;
   font-size: 1.6rem;
   line-height: 2.6rem;
   font-weight: 500;
@@ -59,7 +59,12 @@
 
 .form textarea {
   text-transform: none;
-  resize: none;
+}
+
+@supports (resize: none) {
+  .form textarea {
+    resize: none;
+  }
 }
 
 .form textarea::placeholder {
