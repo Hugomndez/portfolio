@@ -1,6 +1,7 @@
+import { env } from '@/utils/env/env.server';
 import mail from '@sendgrid/mail';
 
-mail.setApiKey(process.env.SENDGRID_API_KEY);
+mail.setApiKey(env.SENDGRID_API_KEY);
 
 export async function sendEmail(name: string, email: string, message: string): Promise<void> {
   const templateMessage = `

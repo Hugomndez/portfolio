@@ -1,5 +1,8 @@
 import type { NextConfig } from 'next';
 
+import './src/utils/env/env.client';
+import './src/utils/env/env.server';
+
 const nextConfig: NextConfig = {
   reactCompiler: true,
   images: {
