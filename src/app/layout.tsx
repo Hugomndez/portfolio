@@ -84,6 +84,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
     <html
       lang='en'
       dir='ltr'
+      data-scroll-behavior='smooth'
       className={spaceGrotesk.className}>
       <body>
         <Container>{children}</Container>

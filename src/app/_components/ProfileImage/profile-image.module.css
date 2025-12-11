@@ -2,7 +2,12 @@
   .picture {
     min-width: 322px;
     z-index: -1;
-    user-select: none;
+  }
+
+  @supports (user-select: none) {
+    .picture {
+      user-select: none;
+    }
   }
 
   .img {

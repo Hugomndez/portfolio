@@ -1,9 +1,22 @@
-export interface Variables {
+export type GraphQLError = {
+  message: string; // Human readable error message
+  extensions?: ContentfulGraphQLErrorExtensions; // Vendor-specific error metadata
+};
+
+export type ContentfulGraphQLErrorExtensions = {
+  contentful: {
+    code: string; // unique error identifier.
+    requestId: string; // unique request identifier.
+    // details: optional object with details about a specific kind of error.
+  };
+};
+
+export type Variables = {
   preview: boolean;
   locale: string;
-}
+};
 
-export interface Project {
+export type Project = {
   _id: string;
   title: string;
   techStack: string[];
@@ -17,12 +30,12 @@ export interface Project {
     fileName: string;
     title: string;
   };
-}
+};
 
-export interface ProjectsCollectionResponse {
+export type ProjectsCollectionResponse = {
   data: {
     projectsCollection: {
       items: Project[];
     };
   };
-}
+};

@@ -1,32 +1,17 @@
+import { env } from '@/utils/env/env.server';
 import { getPixels } from '@unpic/pixels';
 import { blurhashToDataUri } from '@unpic/placeholder';
 import { encode } from 'blurhash';
 import { projectsCollectionQuery } from './contentful.queries';
-import type { ProjectsCollectionResponse, Variables } from './contentful.types';
+import type { GraphQLError, ProjectsCollectionResponse, Variables } from './contentful.types';
 
-if (
-  !process.env.CONTENTFUL_SPACE_ID ||
-  !process.env.CONTENTFUL_ENVIRONMENT ||
-  !process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN ||
-  !process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN
-) {
-  throw new Error('Missing Contentful environment variables');
-}
-
-const {
-  CONTENTFUL_SPACE_ID,
-  CONTENTFUL_ENVIRONMENT,
-  CONTENTFUL_PREVIEW_ACCESS_TOKEN,
-  CONTENTFUL_DELIVERY_ACCESS_TOKEN,
-} = process.env;
-
-const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/${CONTENTFUL_ENVIRONMENT}`;
+const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`;
 
 const getAccessToken = (variables: Partial<Variables>) => {
   if ('preview' in variables && variables.preview) {
-    return CONTENTFUL_PREVIEW_ACCESS_TOKEN;
+    return env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
   }
-  return CONTENTFUL_DELIVERY_ACCESS_TOKEN;
+  return env.CONTENTFUL_DELIVERY_ACCESS_TOKEN;
 };
 
 const fetchContentfulData = async <T>(
@@ -34,7 +19,7 @@ const fetchContentfulData = async <T>(
   variables: Partial<Variables> = {}
 ): Promise<T> => {
   const response = await fetch(CONTENTFUL_API_URL, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 3600 }, // Do i need to revalidate only on production?
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -43,10 +28,14 @@ const fetchContentfulData = async <T>(
     body: JSON.stringify({ query, variables }),
   });
 
-  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`); // throwing here but not catching later fix later
+  }
 
-  if (data.errors) {
-    throw new Error(`GraphQL errors: ${JSON.stringify(data.errors)}`);
+  const data = (await response.json()) as T & { errors?: GraphQLError[] };
+
+  if (data.errors && data.errors.length > 0) {
+    throw new Error(`Failed to fetch data`); // throwing here but not catching later fix later
   }
 
   return data;

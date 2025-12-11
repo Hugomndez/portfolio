@@ -32,20 +32,28 @@
   --FS-Body-L: 1.8rem;
   --FW-Body-L: 500;
   --FL-Body-L: 2.8rem;
+}
 
-  accent-color: var(--Green);
+@supports (accent-color: auto) {
+  :root {
+    accent-color: var(--Green);
+  }
 }
 
 :focus-visible {
   outline: none;
 }
 
-::selection {
-  background-color: var(--Green);
+@supports selector(::selection) {
+  ::selection {
+    background-color: var(--Green);
+  }
 }
 
-::marker {
-  color: var(--Green);
+@supports selector(::marker) {
+  ::marker {
+    color: var(--Green);
+  }
 }
 
 :is(
@@ -67,9 +75,8 @@
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
   font-size: 62.5%;
-  --scroll-behavior: smooth !important;
-  scroll-behavior: smooth !important;
 }
 
 body {
@@ -78,12 +85,18 @@ body {
   font-style: normal;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 
   color: var(--Grey);
   background-color: var(--Black);
+}
+
+@supports (text-size-adjust: none) {
+  body {
+    text-size-adjust: none;
+  }
 }
 
 footer {

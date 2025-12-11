@@ -1,5 +1,6 @@
 'use client';
 
+import { env } from '@/utils/env/env.client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { TurnstileInstance } from '@marsidev/react-turnstile';
 import { Turnstile } from '@marsidev/react-turnstile';
@@ -14,8 +15,6 @@ import SuccessMessage from './SuccessMessage';
 import TextAreaField from './TextAreaField';
 import type { ValidationSchema } from './validation.schema';
 import { validationSchema } from './validation.schema';
-
-const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 export default function Contact() {
   const { control, handleSubmit, reset, getValues, setError, clearErrors, formState } =
@@ -103,7 +102,7 @@ export default function Contact() {
         onSubmit={handleSubmit(onSubmit)}>
         <Turnstile
           ref={ref}
-          siteKey={TURNSTILE_SITE_KEY}
+          siteKey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
           options={{ theme: 'dark', action: 'submit-form', size: 'invisible' }}
         />
         <InputField
