@@ -8,7 +8,7 @@ export const validationSchema = z.object({
     .trim()
     .toLowerCase()
     .pipe(z.email('Invalid email address')),
-  message: z.string().min(1, 'Message is required'),
+  message: z.string().min(1, 'Message is required').max(500, 'Message is to long'),
 });
 
 export type ValidationSchema = z.infer<typeof validationSchema>;

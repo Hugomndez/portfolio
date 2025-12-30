@@ -1,6 +1,6 @@
 'use server';
 
-import { sendEmail } from '@/services/emailService';
+import { sendEmail } from '@/services/email.service';
 import { validateTurnstileToken } from '@/services/turnstile.service';
 import { serverValidationSchema } from './validation.schema';
 
@@ -18,7 +18,7 @@ export async function contactFormAction(formData: FormData) {
     await sendEmail(data.name, data.email, data.message);
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(error.message);
+      throw new Error('Internal server error');
     }
 
     throw new Error('Unknown error');
