@@ -16,16 +16,16 @@
     "url": "https://github.com/Hugomndez/portfolio/issues"
   },
   "engines": {
-    "node": "22.x",
+    "node": "24.x",
     "npm": "please-use-yarn-instead",
     "yarn": "1.x"
   },
-  "packageManager": "yarn@1.22.19",
+  "packageManager": "yarn@1.22.22",
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build:analyze": "next experimental-analyze",
     "build": "next build",
+    "build:analyze": "next experimental-analyze",
     "start": "next start",
     "lint": "eslint --cache --cache-location .next/cache/eslint/",
     "lint:fix": "eslint --fix",
