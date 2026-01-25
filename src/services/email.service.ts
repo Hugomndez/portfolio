@@ -50,19 +50,35 @@ export async function sendEmail(name: string, email: string, message: string): P
     saveToSentItems: false,
   };
 
-  const response = await fetch(
-    `https://graph.microsoft.com/v1.0/users/${emailAdminAddress}/sendMail`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-      body: JSON.stringify(emailMessage),
-    }
-  );
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
 
-  if (!response.ok) {
+  try {
+    const response = await fetch(
+      `https://graph.microsoft.com/v1.0/users/${emailAdminAddress}/sendMail`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(emailMessage),
+        signal: controller.signal,
+      }
+    );
+    if (!response.ok) {
+      const bodyText = await response.text().catch(() => '<unreadable>');
+      console.error('Microsoft Graph sendMail failed', { status: response.status, bodyText });
+      throw new Error('Failed to send email via Microsoft Graph API');
+    }
+  } catch (err) {
+    if (err instanceof Error && err.name === 'AbortError') {
+      console.error('sendEmail request timed out');
+      throw new Error('Email service timed out');
+    }
+    console.error('sendEmail error', err);
     throw new Error('Failed to send email via Microsoft Graph API');
+  } finally {
+    clearTimeout(timeout);
   }
 }
