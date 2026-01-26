@@ -74,5 +74,8 @@
   },
   "browserslist": [
     "extends browserslist-config-baseline"
-  ]
+  ],
+  "browserslist-config-baseline": {
+    "baselineYear": 2024
+  }
 }
