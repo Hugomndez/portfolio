@@ -17,9 +17,9 @@ const Intro = () => {
           SEO principles and best practices building high-performance websites.
         </p>
         <LinkButton
-          path='#contact'
+          pathname='#contact'
           title='Contact me'
-          internal
+          isInternal
         />
       </div>
     </section>

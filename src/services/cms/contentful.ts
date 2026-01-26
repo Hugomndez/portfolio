@@ -115,7 +115,7 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
 
   const projects = await Promise.all(
     items.map(async (item) => {
-      let blurDataUrl: string | undefined = undefined;
+      let blurDataUrl: `data:image/bmp;base64,${string}` | undefined = undefined;
       try {
         blurDataUrl = await getImageBlurData(item.image.url);
       } catch (e) {

@@ -60,15 +60,15 @@ const Projects = async () => {
               />
               <div className={styles.overlayLinks}>
                 <LinkButton
-                  path={p.liveSiteUrl}
+                  href={p.liveSiteUrl}
                   title='View Project'
-                  internal={false}
+                  isInternal={false}
                 />
                 {p.sourceCodeUrl && (
                   <LinkButton
-                    path={p.sourceCodeUrl}
+                    href={p.sourceCodeUrl}
                     title='View Code'
-                    internal={false}
+                    isInternal={false}
                   />
                 )}
               </div>
@@ -85,15 +85,15 @@ const Projects = async () => {
             </div>
             <div className={styles.links}>
               <LinkButton
-                path={p.liveSiteUrl}
+                href={p.liveSiteUrl}
                 title='View Project'
-                internal={false}
+                isInternal={false}
               />
               {p.sourceCodeUrl && (
                 <LinkButton
-                  path={p.sourceCodeUrl}
+                  href={p.sourceCodeUrl}
                   title='View Code'
-                  internal={false}
+                  isInternal={false}
                 />
               )}
             </div>
