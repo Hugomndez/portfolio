@@ -7,5 +7,10 @@
   },
   "eslint.format.enable": true,
   "eslint.validate": ["javascript", "typescript"],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "chat.mcp.serverSampling": {
+    "portfolio/.vscode/mcp.json: next-devtools": {
+      "allowedModels": ["copilot/gpt-5-mini", "copilot/gpt-5"]
+    }
+  }
 }

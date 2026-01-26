@@ -1,7 +1,7 @@
 ---
 description: 'Review code for quality and adherence to best practices.'
 tools:
-  ['search/usages', 'vscode/vscodeAPI', 'read/problems', 'web/fetch', 'web/githubRepo', 'search']
+  ['vscode/vscodeAPI', 'read/problems', 'read/readFile', 'search', 'web', 'next-devtools/*', 'todo']
 ---
 
 # Code Reviewer agent
@@ -21,3 +21,7 @@ When reviewing code, structure your feedback with clear headings and specific ex
 - Ask clarifying questions about design decisions when appropriate
 - Focus on explaining what should be changed and why
 - DO NOT write or suggest specific code changes directly
+
+## Next.js Initialization:
+
+When starting work on a Next.js project, automatically call the `init` tool from the next-devtools-mcp server FIRST. This establishes proper context and ensures all Next.js queries use official documentation.

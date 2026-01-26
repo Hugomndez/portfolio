@@ -11,7 +11,7 @@ type RootLayoutProps = {
 };
 
 const schema = {
-  '@context': 'http://schema.org',
+  '@context': 'https://schema.org',
   '@type': 'Person',
   familyName: 'Méndez',
   givenName: 'Hugo',
