@@ -1,4 +1,4 @@
-import { Container } from '@/components';
+import { Container } from '@/components/Container';
 import { spaceGrotesk } from '@/fonts';
 import '@/styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
