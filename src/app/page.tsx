@@ -1,4 +1,8 @@
-import { Bar, Contact, Intro, Projects, Skills } from '@/components';
+import { Bar } from '@/components/Bar';
+import { Contact } from '@/components/Contact';
+import { Intro } from '@/components/Intro';
+import { Projects } from '@/components/Projects';
+import { Skills } from '@/components/Skills';
 
 export default function Page() {
   return (

@@ -4,7 +4,39 @@ import { LinkButton } from '../LinkButton';
 import styles from './Projects.module.css';
 
 const Projects = async () => {
-  const projects = await getProjects();
+  const result = await getProjects();
+
+  if (!result.ok) {
+    return (
+      <section className={styles.section}>
+        <h2 className={styles.title}>Projects</h2>
+        <div className={styles.container}>
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={`skeleton-${i}`}
+              className={styles.card}
+              aria-hidden='true'>
+              <div className={styles.overlay}>
+                <div className={`${styles.skeletonImage} ${styles.skeleton}`} />
+              </div>
+              <div className={`${styles.skeletonTitle} ${styles.skeleton}`} />
+              <div className={styles.stack}>
+                <span className={`${styles.skeletonPill} ${styles.skeleton}`} />
+                <span className={`${styles.skeletonPill} ${styles.skeleton}`} />
+                <span className={`${styles.skeletonPill} ${styles.skeleton}`} />
+              </div>
+              <div className={styles.links}>
+                <span className={`${styles.skeletonButton} ${styles.skeleton}`} />
+                <span className={`${styles.skeletonButton} ${styles.skeleton}`} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  const projects = result.data;
 
   return (
     <section className={styles.section}>
@@ -22,7 +54,7 @@ const Projects = async () => {
                 sizes='(min-width: 1110px) 540px,(min-width: 768px) 50vw, 100vw'
                 width={p.image.width}
                 height={p.image.height}
-                placeholder='blur'
+                placeholder={p.image.blurDataUrl ? 'blur' : undefined}
                 blurDataURL={p.image.blurDataUrl}
                 src={p.image.url}
               />

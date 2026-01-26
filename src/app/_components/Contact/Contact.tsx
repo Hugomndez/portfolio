@@ -17,7 +17,7 @@ import type { ValidationSchema } from './validation.schema';
 import { validationSchema } from './validation.schema';
 
 export default function Contact() {
-  const { control, handleSubmit, reset, getValues, setError, clearErrors, formState } =
+  const { control, handleSubmit, reset, setError, clearErrors, formState } =
     useForm<ValidationSchema>({
       resolver: zodResolver(validationSchema),
       mode: 'onChange',
@@ -120,12 +120,8 @@ export default function Contact() {
 
         <button
           type='submit'
-          tabIndex={0}
           disabled={!isDirty || !isValid || isSubmitting}
-          data-umami-event='Submit button'
-          data-umami-event-name={getValues('name')}
-          data-umami-event-email={getValues('email')}
-          data-umami-event-message={getValues('message')}>
+          data-umami-event='Submit Contact'>
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
         <FormError control={control} />
