@@ -23,7 +23,6 @@ const LinkButton = <T extends string>(props: LinkButtonProps<T>) => {
         href={props.href}
         target='_blank'
         rel='noopener noreferrer'
-        tabIndex={0}
         className={styles.button}
         data-umami-event='Link button'
         data-umami-event-path={props.href}
@@ -36,7 +35,6 @@ const LinkButton = <T extends string>(props: LinkButtonProps<T>) => {
   return (
     <Link
       href={props.pathname}
-      tabIndex={0}
       className={styles.button}
       data-umami-event='Link button'
       data-umami-event-path={String(props.pathname)}
