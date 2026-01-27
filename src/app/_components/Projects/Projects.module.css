@@ -17,28 +17,28 @@
   row-gap: 40px;
 }
 
+.card {
+  display: grid;
+  grid-template-areas:
+    'media'
+    'name'
+    'stack'
+    'actions';
+}
+
 .overlay {
   position: relative;
+  grid-area: media;
 }
 
 .image {
   opacity: 1;
+  transition:
+    filter 0.5s ease,
+    opacity 0.5s ease;
   transition: 0.5s ease;
   backface-visibility: hidden;
-}
-
-.overlayLinks {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 48px;
-  transition: 0.5s ease;
+  filter: none;
 }
 
 .name {
@@ -47,12 +47,16 @@
   line-height: 3.4rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  grid-area: name;
 }
 
 .stack {
   margin-block-end: 20px;
   display: flex;
   gap: 18px;
+  grid-area: stack;
+  list-style: none;
+  padding: 0;
 }
 
 .tech {
@@ -62,9 +66,18 @@
   text-transform: uppercase;
 }
 
-.links {
+.actions {
   display: flex;
   gap: 30px;
+  grid-area: actions;
+}
+
+.cardHeader {
+  display: contents;
+}
+
+.cardFooter {
+  display: contents;
 }
 
 /* Skeleton */
@@ -158,20 +171,28 @@
     row-gap: 69px;
   }
 
-  .overlayLinks {
-    visibility: visible;
-  }
-
-  .overlay:is(:hover, :focus-within) .image {
+  .card:is(:hover, :focus-within) .image {
     opacity: 0.3;
+    filter: blur(2px);
   }
 
-  .overlay:is(:hover, :focus-within) .overlayLinks {
+  .card:is(:hover, :focus-within) .actions {
     opacity: 1;
   }
 
-  .links {
-    display: none;
+  .actions {
+    grid-area: media;
+    justify-self: center;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    opacity: 0;
+    visibility: visible;
+    transition: 0.5s ease;
+    position: relative;
+    z-index: 1;
   }
 
   .skeletonImage {
