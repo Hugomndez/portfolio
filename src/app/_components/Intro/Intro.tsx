@@ -34,6 +34,7 @@ const Circle = () => {
       xmlns='http://www.w3.org/2000/svg'
       width='129'
       height='129'
+      aria-hidden='true'
       className={styles.circle}>
       <circle
         cx='830.5'
