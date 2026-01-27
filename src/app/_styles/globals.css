@@ -41,7 +41,8 @@
 }
 
 :focus-visible {
-  outline: none;
+  outline: 2px solid var(--Green);
+  outline-offset: 2px;
 }
 
 @supports selector(::selection) {

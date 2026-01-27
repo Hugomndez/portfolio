@@ -71,9 +71,14 @@
   text-transform: uppercase;
 }
 
-.form input:focus,
-.form textarea:focus {
+.form input:is(:hover, :focus),
+.form textarea:is(:hover, :focus) {
   border-bottom-color: var(--Green);
+}
+
+.form input:is(:focus-visible),
+.form textarea:is(:focus-visible) {
+  outline: none;
 }
 
 .form .invalidInput,
