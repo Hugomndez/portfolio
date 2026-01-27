@@ -33,7 +33,7 @@ const Bar = () => {
           <a
             href='https://www.frontendmentor.io/profile/Hugomndez'
             target='_blank'
-            rel='noreferrer'
+            rel='noreferrer noopener'
             aria-label='Frontend Mentor Link'
             data-umami-event='Frontend Mentor Link'>
             <svg
@@ -50,7 +50,7 @@ const Bar = () => {
           <a
             href='https://www.linkedin.com/in/hugomndez/'
             target='_blank'
-            rel='noreferrer'
+            rel='noreferrer noopener'
             aria-label='LinkedIn Link'
             data-umami-event='LinkedIn Link'>
             <svg
