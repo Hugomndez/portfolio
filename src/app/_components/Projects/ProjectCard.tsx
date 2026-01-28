@@ -1,11 +1,11 @@
+import type { ProjectWithBlur } from '@/services/cms/contentful.types';
 import Image from 'next/image';
 import { LinkButton } from '../LinkButton';
 import styles from './Projects.module.css';
-import type { ProjectWithBlur } from '@/services/cms/contentful.types';
 
-export interface ProjectCardProps {
+export type ProjectCardProps = {
   project: ProjectWithBlur;
-}
+};
 
 export const ProjectCard = ({ project: p }: ProjectCardProps) => {
   return (
@@ -15,7 +15,7 @@ export const ProjectCard = ({ project: p }: ProjectCardProps) => {
           className={styles.image}
           alt={p.image.title}
           quality={85}
-          sizes="(min-width: 1110px) 540px,(min-width: 768px) 50vw, 100vw"
+          sizes='(min-width: 1110px) 540px,(min-width: 768px) 50vw, 100vw'
           width={p.image.width}
           height={p.image.height}
           placeholder={p.image.blurDataUrl ? 'blur' : undefined}
@@ -28,16 +28,26 @@ export const ProjectCard = ({ project: p }: ProjectCardProps) => {
       </header>
       <ul className={styles.stack}>
         {p.techStack.map((t) => (
-          <li key={t} className={styles.tech}>
+          <li
+            key={t}
+            className={styles.tech}>
             {t}
           </li>
         ))}
       </ul>
       <footer className={styles.cardFooter}>
         <div className={styles.actions}>
-          <LinkButton href={p.liveSiteUrl} title="View Project" isInternal={false} />
+          <LinkButton
+            href={p.liveSiteUrl}
+            title='View Project'
+            isInternal={false}
+          />
           {p.sourceCodeUrl && (
-            <LinkButton href={p.sourceCodeUrl} title="View Code" isInternal={false} />
+            <LinkButton
+              href={p.sourceCodeUrl}
+              title='View Code'
+              isInternal={false}
+            />
           )}
         </div>
       </footer>
