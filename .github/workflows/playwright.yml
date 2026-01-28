@@ -21,6 +21,10 @@ jobs:
         env:
           BASE_URL: ${{ github.event.client_payload.url }}
           # VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+      - name: 'notify vercel'
+        uses: 'vercel/repository-dispatch/actions/status@v1'
+        with:
+          name: 'Vercel - portfolio: tests'
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
