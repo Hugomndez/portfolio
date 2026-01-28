@@ -8,6 +8,11 @@ import type { ValidationSchema } from './validation.schema';
 export default function FormError({ control }: UseFormStateProps<ValidationSchema>) {
   const { errors } = useFormState({ control });
   return (
-    <span className={styles.invalidMessage}>{errors.root ? errors.root.message : <>&nbsp;</>}</span>
+    <span
+      className={styles.invalidMessage}
+      role={errors.root ? 'alert' : undefined}
+      aria-live={errors.root ? 'polite' : undefined}>
+      {errors.root ? errors.root.message : <>&nbsp;</>}
+    </span>
   );
 }

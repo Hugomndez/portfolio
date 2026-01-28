@@ -49,7 +49,7 @@ export type ProjectWithBlur = {
     fileName: string;
     title: string;
     // Optional to allow graceful handling when blur computation fails
-    blurDataUrl?: string;
+    blurDataUrl?: `data:image/bmp;base64,${string}`;
   };
 };
 

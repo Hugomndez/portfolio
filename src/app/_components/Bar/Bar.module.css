@@ -29,6 +29,12 @@
 .socialMedia {
   display: flex;
   gap: 25.6px;
+
+  & a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .socialMedia a:is(:hover, :focus) svg path {

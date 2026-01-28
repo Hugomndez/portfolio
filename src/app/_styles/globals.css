@@ -41,7 +41,8 @@
 }
 
 :focus-visible {
-  outline: none;
+  outline: 2px solid var(--Green);
+  outline-offset: 2px;
 }
 
 @supports selector(::selection) {
@@ -122,4 +123,13 @@ img {
   display: block;
   max-inline-size: 100%;
   block-size: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

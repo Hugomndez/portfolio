@@ -27,6 +27,8 @@
     "build": "next build",
     "build:analyze": "next experimental-analyze",
     "start": "next start",
+    "test:e2e": "playwright test",
+    "test:e2e:report": "playwright show-report",
     "lint": "eslint --cache --cache-location .next/cache/eslint/",
     "lint:fix": "eslint --fix",
     "lint:inspect": "eslint --inspect-config",
@@ -51,6 +53,7 @@
     "@commitlint/config-conventional": "20.3.1",
     "@eslint/css": "0.14.1",
     "@next/eslint-plugin-next": "16.1.4",
+    "@playwright/test": "^1.58.0",
     "@types/eslint-plugin-jsx-a11y": "6.10.1",
     "@types/node": "25.0.9",
     "@types/react": "19.2.9",
@@ -60,6 +63,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "blurhash": "2.0.5",
     "browserslist-config-baseline": "0.5.0",
+    "dotenv": "^17.2.3",
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.32.0",
@@ -74,5 +78,8 @@
   },
   "browserslist": [
     "extends browserslist-config-baseline"
-  ]
+  ],
+  "browserslist-config-baseline": {
+    "baselineYear": 2024
+  }
 }

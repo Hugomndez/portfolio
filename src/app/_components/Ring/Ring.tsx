@@ -6,6 +6,7 @@ export default function Ring({ position }: { position: 'top' | 'middle' | 'botto
       xmlns='http://www.w3.org/2000/svg'
       width='530'
       height='129'
+      aria-hidden='true'
       className={styles.ring}
       data-position={position}>
       <g

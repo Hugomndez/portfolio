@@ -13,6 +13,10 @@
   color: var(--Green);
 }
 
+.button:is(:focus-visible) {
+  outline: none;
+}
+
 .button:active {
   color: hsl(153, 71%, 39%);
   border-bottom-color: hsl(153, 71%, 39%);

@@ -7,6 +7,9 @@ import type { ValidationSchema } from './validation.schema';
 
 export default function InputField(props: UseControllerProps<ValidationSchema>) {
   const { field, fieldState } = useController(props);
+  const hasError = !!fieldState.error;
+  const errorId = `${field.name}-error`;
+  const ariaLabel = field.name === 'email' ? 'Email address' : 'Name';
 
   return (
     <label htmlFor={field.name}>
@@ -16,10 +19,19 @@ export default function InputField(props: UseControllerProps<ValidationSchema>) 
         type={field.name === 'email' ? 'email' : 'text'}
         placeholder={field.name}
         autoComplete={field.name}
-        className={fieldState.error ? styles.invalidInput : ''}
+        className={hasError ? styles.invalidInput : ''}
+        aria-invalid={hasError || undefined}
+        aria-describedby={hasError ? errorId : undefined}
+        aria-required={true}
+        aria-label={ariaLabel}
       />
-      <span className={styles.invalidMessage}>
-        {fieldState.error ? fieldState.error.message : <>&nbsp;</>}
+      <span
+        id={errorId}
+        className={styles.invalidMessage}
+        role={hasError ? 'alert' : undefined}
+        aria-live={hasError ? 'polite' : undefined}
+        aria-hidden={hasError ? undefined : true}>
+        {hasError ? fieldState.error?.message : <>&nbsp;</>}
       </span>
     </label>
   );
