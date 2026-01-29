@@ -11,7 +11,7 @@ const Projects = async () => {
       <section className={styles.section}>
         <h2 className={styles.title}>Projects</h2>
         <div className={styles.container}>
-          {[...Array(6)].map((_, i) => (
+          {[1, 2, 3, 4, 5, 6].map((_, i) => (
             <ProjectCardSkeleton key={`skeleton-${i}`} />
           ))}
         </div>
@@ -26,7 +26,10 @@ const Projects = async () => {
       <h2 className={styles.title}>Projects</h2>
       <div className={styles.container}>
         {projects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
+          <ProjectCard
+            key={p.id}
+            project={p}
+          />
         ))}
       </div>
     </section>
