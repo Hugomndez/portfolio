@@ -1,8 +1,14 @@
 name: End to End Tests
+
 on:
   repository_dispatch:
     types:
       - 'vercel.deployment.ready'
+
+env:
+  BASE_URL: ${{ github.event.client_payload.url }}
+  # VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+
 jobs:
   test:
     timeout-minutes: 60
@@ -12,19 +18,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
+
       - name: Install dependencies
         run: npm install -g yarn && yarn
+
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps --only-shell
+
       - name: Run Playwright tests
         run: yarn playwright test
-        env:
-          BASE_URL: ${{ github.event.client_payload.url }}
-          # VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+
       - name: 'notify vercel'
         uses: 'vercel/repository-dispatch/actions/status@v1'
         with:
           name: 'Vercel - portfolio: tests'
+
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
