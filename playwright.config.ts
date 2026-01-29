@@ -15,11 +15,11 @@ const PORT = process.env.PORT ?? 3000;
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
 const baseURL = process.env.BASE_URL ?? `http://localhost:${PORT}`;
 
-console.log('Using - BASE_URL:', baseURL);
-console.log(
-  'Is Set - VERCEL_AUTOMATION_BYPASS_SECRET:',
-  process.env.VERCEL_AUTOMATION_BYPASS_SECRET ? 'true' : 'false'
-);
+// console.log('Using - BASE_URL:', baseURL);
+// console.log(
+//   'Is Set - VERCEL_AUTOMATION_BYPASS_SECRET:',
+//   process.env.VERCEL_AUTOMATION_BYPASS_SECRET ? 'true' : 'false'
+// );
 
 /**
  * See https://playwright.dev/docs/test-configuration.
