@@ -5,10 +5,11 @@ on:
     types:
       - 'vercel.deployment.ready'
 
-run-name: Vercel Deployment Event - ${{ github.event.client_payload.project.name }} (${{ github.event.client_payload.state.type }})
+run-name: Vercel ${{ github.event.client_payload.project.name }} Deployment -  (${{ github.event.client_payload.state.type }})
 
 jobs:
   test:
+    if: ${{ github.event.client_payload.environment == 'production' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
