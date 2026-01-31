@@ -47,5 +47,5 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
-/tests/.artifacts/
-/tests/.reports/
+/tests/artifacts/
+/tests/reports/

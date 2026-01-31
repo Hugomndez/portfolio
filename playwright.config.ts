@@ -11,7 +11,7 @@ const baseURL = process.env.BASE_URL ?? `http://localhost:${PORT}`;
  */
 export default defineConfig({
   testDir: './tests/e2e',
-  outputDir: './tests/.artifacts',
+  outputDir: './tests/artifacts',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -21,7 +21,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { outputFolder: './tests/.reports/', open: 'never' }]],
+  reporter: [['html', { outputFolder: './tests/reports/', open: 'never' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: baseURL,
