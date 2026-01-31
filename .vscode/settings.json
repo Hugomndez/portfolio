@@ -12,5 +12,6 @@
     "portfolio/.vscode/mcp.json: next-devtools": {
       "allowedModels": ["copilot/gpt-5-mini", "copilot/gpt-5"]
     }
-  }
+  },
+  "github-actions.workflows.pinned.workflows": [".github/workflows/playwright.yml"]
 }
