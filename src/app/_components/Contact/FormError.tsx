@@ -9,6 +9,7 @@ export default function FormError({ control }: UseFormStateProps<ValidationSchem
   const { errors } = useFormState({ control });
   return (
     <span
+      data-testid={`form-error-message`}
       className={styles.invalidMessage}
       role={errors.root ? 'alert' : undefined}
       aria-live={errors.root ? 'polite' : undefined}>

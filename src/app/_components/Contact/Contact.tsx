@@ -98,6 +98,7 @@ export default function Contact() {
         </p>
       </div>
       <form
+        data-testid='contact-form'
         className={styles.form}
         onSubmit={handleSubmit(onSubmit)}>
         <Turnstile

@@ -27,6 +27,7 @@ export default function InputField(props: UseControllerProps<ValidationSchema>) 
       />
       <span
         id={errorId}
+        data-testid={`${field.name}-error`}
         className={styles.invalidMessage}
         role={hasError ? 'alert' : undefined}
         aria-live={hasError ? 'polite' : undefined}
