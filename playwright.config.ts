@@ -7,19 +7,13 @@ import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
-dotenv.config();
+dotenv.config({ quiet: true });
 
 // Use process.env.PORT by default and fallback to port 3000
 const PORT = process.env.PORT ?? 3000;
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
 const baseURL = process.env.BASE_URL ?? `http://localhost:${PORT}`;
-
-console.log('Using - BASE_URL:', baseURL);
-console.log(
-  'Is Set - VERCEL_AUTOMATION_BYPASS_SECRET:',
-  process.env.VERCEL_AUTOMATION_BYPASS_SECRET ? 'true' : 'false'
-);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
