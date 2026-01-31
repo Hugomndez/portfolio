@@ -16,6 +16,11 @@ jobs:
       - name: Vercel Dispatch Debug
         uses: vercel/repository-dispatch/actions/debug@v1
 
+      - name: 'Notify Vercel'
+        uses: 'vercel/repository-dispatch/actions/status@v1'
+        with:
+          name: 'Vercel - portfolio: tests'
+
       - name: Checkout Repository
         uses: actions/checkout@v6
 
@@ -35,11 +40,6 @@ jobs:
         env:
           BASE_URL: ${{ github.event.client_payload.url }}
           #VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
-
-      - name: 'Notify Vercel'
-        uses: 'vercel/repository-dispatch/actions/status@v1'
-        with:
-          name: 'Vercel - portfolio: tests'
 
       - name: Upload Playwright Report
         uses: actions/upload-artifact@v6
