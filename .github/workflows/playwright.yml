@@ -9,14 +9,10 @@ run-name: E2E Tests on ${{ github.event.client_payload.project.name }} deploymen
 
 jobs:
   test:
-    if: ${{ github.event.client_payload.environment == 'production' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
     steps:
-      - name: Vercel Dispatch Debug
-        uses: vercel/repository-dispatch/actions/debug@v1
-
       - name: 'Notify Vercel'
         uses: 'vercel/repository-dispatch/actions/status@v1'
         with:
@@ -40,7 +36,6 @@ jobs:
         run: yarn playwright test
         env:
           BASE_URL: ${{ github.event.client_payload.url }}
-          #VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
 
       - name: Upload Playwright Report
         uses: actions/upload-artifact@v6
