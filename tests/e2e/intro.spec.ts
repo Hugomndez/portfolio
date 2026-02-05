@@ -12,7 +12,7 @@ test('heading is visible with correct text', async ({ page }) => {
 });
 
 test('profile image is visible with correct alt text', async ({ page }) => {
-  const img = page.getByAltText('Hugo Méndez profile photo');
+  const img = page.getByAltText('Hugo Méndez - Full-Stack Developer Portfolio Picture');
   await expect(img).toBeVisible();
 });
 

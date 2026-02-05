@@ -1,13 +1,17 @@
 import profileDesktop from '@/assets/images/hugo-mendez-profile-photo-large-low-res.webp';
 import profileTablet from '@/assets/images/hugo-mendez-profile-photo-medium-low-res.webp';
 import profileMobile from '@/assets/images/hugo-mendez-profile-photo-small-low-res.webp';
-import Image, { getImageProps, type ImageProps } from 'next/image';
+import { getImageProps, type ImageProps } from 'next/image';
 import styles from './profile-image.module.css';
 
 const ProfileImage = () => {
   const common: Omit<ImageProps, 'src'> = {
-    alt: 'Hugo Méndez profile photo',
+    className: styles.img,
+    alt: 'Hugo Méndez - Full-Stack Developer Portfolio Picture',
     quality: 90,
+    loading: 'eager',
+    fetchPriority: 'high',
+    placeholder: 'blur',
   };
 
   const {
@@ -16,11 +20,22 @@ const ProfileImage = () => {
     ...common,
     src: profileDesktop,
   });
+
   const {
     props: { srcSet: tablet },
   } = getImageProps({
     ...common,
     src: profileTablet,
+  });
+
+  const {
+    props: { srcSet: mobile, ...rest },
+  } = getImageProps({
+    ...common,
+    width: 174,
+    height: 383,
+    overrideSrc: 'hugo-mendez-fullstack-developer-portafolio-profile-photo-small-low-res.webp',
+    src: profileMobile,
   });
 
   return (
@@ -34,16 +49,12 @@ const ProfileImage = () => {
         srcSet={tablet}
       />
 
-      <Image
-        alt={common.alt}
-        className={styles.img}
-        quality={common.quality}
-        placeholder='blur'
-        width={174}
-        height={383}
-        priority
-        src={profileMobile}
+      <source
+        media='(min-width: 0px)'
+        srcSet={mobile}
       />
+
+      <img {...rest} />
     </picture>
   );
 };
