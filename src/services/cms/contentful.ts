@@ -33,7 +33,7 @@ const fetchContentfulData = async <T>(
 
   try {
     const response = await fetch(CONTENTFUL_API_URL, {
-      next: { revalidate: 3600 },
+      next: { tags: [`contentful-${operation}`] },
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
