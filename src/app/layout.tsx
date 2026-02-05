@@ -15,8 +15,6 @@ const schema = {
   '@type': 'Person',
   familyName: 'Méndez',
   givenName: 'Hugo',
-  worksFor: 'https://blueriver.com/',
-  jobTitle: 'Full Stack Developer',
   alumniOf: 'https://www.uady.mx',
   image: 'https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg',
   gender: 'http://schema.org/Male',
@@ -42,9 +40,6 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   formatDetection: { email: false, address: false, telephone: false },
-  icons: {
-    icon: '/favicon.ico',
-  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -63,7 +58,6 @@ export const metadata: Metadata = {
         alt: 'Hugo Méndez profile photo',
       },
     ],
-    emails: 'hello@hugomendez.dev',
   },
   twitter: {
     card: 'summary_large_image',
