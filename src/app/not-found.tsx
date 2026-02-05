@@ -1,6 +1,9 @@
+import { headers } from 'next/headers';
 import Link from 'next/link';
 
-export default function NotFound() {
+export default async function NotFound() {
+  const headersList = await headers();
+  const referer = headersList.get('referer') || 'unknown domain';
   return (
     <div
       style={{
@@ -11,7 +14,7 @@ export default function NotFound() {
         alignContent: 'center',
         gap: '10px',
       }}>
-      <h1>Not Found</h1>
+      <h1>Not Found: {referer}</h1>
       <p>Could not find requested resource.</p>
       <Link
         href='/'
