@@ -100,6 +100,9 @@ async function getImageBlurData(imageUrl: string) {
   return base64ImageUri;
 }
 
+const DEFAULT_BLUR_DATA_URL =
+  'data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAKRYaKhobLiEeMSghMisiMSggLSEcKRcZKRoaLiIeODAmQDssQz4uQDorNy8kLSAbKR4aMikhQTsuTUg3UUw6TEY2QDksMScfKiAaNCsjRj4yU0s+V09BUUo8RDwwMyohKx8aMykiQzkxT0Y8U0lATkQ7QjgwMicgLBwaMSMfOy8qQzgyRjw1QzgxOi4oLyEdLBkaLhwbMCIeMyghNCoiMyggMCIdLBkZLRcaLBgZKxwXKh8VKiEUKyAUKxsWKhYX';
+
 export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>> => {
   const result = await fetchContentfulData<ProjectsCollectionResponse>(
     projectsCollectionQuery,
@@ -116,6 +119,7 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
   const projects = await Promise.all(
     items.map(async (item) => {
       let blurDataUrl: `data:image/bmp;base64,${string}` | undefined = undefined;
+
       try {
         blurDataUrl = await getImageBlurData(item.image.url);
       } catch (e) {
@@ -128,14 +132,14 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
       }
 
       return {
-        id: item._id,
+        _id: item._id,
         title: item.title,
         techStack: item.techStack,
         liveSiteUrl: item.liveSiteUrl,
         sourceCodeUrl: item.sourceCodeUrl,
         image: {
           url: item.image.url,
-          blurDataUrl,
+          blurDataUrl: blurDataUrl ?? DEFAULT_BLUR_DATA_URL,
           width: item.image.width,
           height: item.image.height,
           contentType: item.image.contentType,

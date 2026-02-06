@@ -34,24 +34,13 @@ export type Project = {
   };
 };
 
-// Projects with computed blur data for images
-export type ProjectWithBlur = {
-  id: string;
-  title: string;
-  techStack: string[];
-  liveSiteUrl: string;
-  sourceCodeUrl: string | null;
+type ImageWithBlur = {
   image: {
-    url: string;
-    width: number;
-    height: number;
-    contentType: string;
-    fileName: string;
-    title: string;
-    // Optional to allow graceful handling when blur computation fails
-    blurDataUrl?: `data:image/bmp;base64,${string}`;
+    blurDataUrl: `data:image/bmp;base64,${string}`;
   };
 };
+
+export type ProjectWithBlur = Project & ImageWithBlur;
 
 export type ProjectsCollectionResponse = {
   data: {

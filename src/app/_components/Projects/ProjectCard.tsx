@@ -18,7 +18,7 @@ export const ProjectCard = ({ project: p }: ProjectCardProps) => {
           sizes='(min-width: 1110px) 540px,(min-width: 768px) 50vw, 100vw'
           width={p.image.width}
           height={p.image.height}
-          placeholder={p.image.blurDataUrl ? p.image.blurDataUrl : undefined}
+          placeholder={p.image.blurDataUrl}
           fetchPriority='low'
           decoding='async'
           overrideSrc={p.image.fileName}

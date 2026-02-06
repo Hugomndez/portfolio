@@ -27,7 +27,7 @@ const Projects = async () => {
       <div className={styles.container}>
         {projects.map((p) => (
           <ProjectCard
-            key={p.id}
+            key={p._id}
             project={p}
           />
         ))}
