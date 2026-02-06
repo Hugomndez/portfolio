@@ -52,7 +52,8 @@ const fetchContentfulData = async <T>(
         bodyText,
         durationMs: Date.now() - start,
       });
-      return { ok: false };
+
+      throw new Error('Failed to fetch from Contentful');
     }
 
     const data = (await response.json()) as unknown as WithErrors<T>;
@@ -67,10 +68,11 @@ const fetchContentfulData = async <T>(
         code: ext?.code,
         messages,
       });
-      return { ok: false };
+
+      throw new Error('Contentful GraphQL errors: ' + messages.join('; '));
     }
 
-    return { ok: true, data: data as T };
+    return data;
   } catch (err) {
     if (err instanceof Error && err.name === 'AbortError') {
       console.error('Contentful fetch timed out', {
@@ -78,14 +80,14 @@ const fetchContentfulData = async <T>(
         durationMs: Date.now() - start,
         timeoutMs: CONTENTFUL_TIMEOUT_MS,
       });
-      return { ok: false };
+      throw new Error('Contentful request timed out');
     }
     console.error('Contentful fetch error', {
       operation,
       durationMs: Date.now() - start,
       cause: String(err instanceof Error ? err.message : err),
     });
-    return { ok: false };
+    throw new Error('Contentful request failed');
   } finally {
     clearTimeout(timeout);
   }
@@ -110,11 +112,7 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
     'projectsCollection'
   );
 
-  if (!result.ok) {
-    return { ok: false };
-  }
-
-  const items = result.data.data.projectsCollection.items;
+  const items = result.data.projectsCollection.items;
 
   const projects = await Promise.all(
     items.map(async (item) => {
@@ -150,5 +148,5 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
     })
   );
 
-  return { ok: true, data: projects };
+  return projects;
 };

@@ -50,11 +50,8 @@ export type ProjectsCollectionResponse = {
   };
 };
 
-export type ContentfulResult<T> =
-  | {
-      ok: true;
-      data: T;
-    }
-  | {
-      ok: false;
-    };
+// Use this type if you want to handle errors.
+// type ContentfulResult<T> =
+//   | { ok: true; data: T }
+//   | { ok: false };
+export type ContentfulResult<T> = T;
