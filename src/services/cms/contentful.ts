@@ -20,27 +20,19 @@ const getAccessToken = (variables: Partial<Variables>) => {
   return env.CONTENTFUL_DELIVERY_ACCESS_TOKEN;
 };
 
-const CONTENTFUL_TIMEOUT_MS = 5000;
-
 const fetchContentfulData = async <T>(
   query: string,
   variables: Partial<Variables> = {},
   operation = 'unknown'
 ): Promise<ContentfulResult<T>> => {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), CONTENTFUL_TIMEOUT_MS);
-  const start = Date.now();
-
   try {
     const response = await fetch(CONTENTFUL_API_URL, {
-      next: { tags: [`contentful-${operation}`] },
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${getAccessToken(variables)}`,
       },
       body: JSON.stringify({ query, variables }),
-      signal: controller.signal,
     });
 
     if (!response.ok) {
@@ -50,7 +42,6 @@ const fetchContentfulData = async <T>(
         status: response.status,
         statusText: response.statusText,
         bodyText,
-        durationMs: Date.now() - start,
       });
 
       throw new Error('Failed to fetch from Contentful');
@@ -63,7 +54,6 @@ const fetchContentfulData = async <T>(
       const ext = data.errors[0]?.extensions?.contentful;
       console.warn('Contentful GraphQL errors', {
         operation,
-        durationMs: Date.now() - start,
         requestId: ext?.requestId,
         code: ext?.code,
         messages,
@@ -74,22 +64,15 @@ const fetchContentfulData = async <T>(
 
     return data;
   } catch (err) {
-    if (err instanceof Error && err.name === 'AbortError') {
-      console.error('Contentful fetch timed out', {
+    if (err instanceof Error) {
+      console.error('Contentful fetch error', {
         operation,
-        durationMs: Date.now() - start,
-        timeoutMs: CONTENTFUL_TIMEOUT_MS,
+        cause: String(err instanceof Error ? err.message : err),
       });
-      throw new Error('Contentful request timed out');
+      throw new Error('Contentful request failed: ' + err.message);
     }
-    console.error('Contentful fetch error', {
-      operation,
-      durationMs: Date.now() - start,
-      cause: String(err instanceof Error ? err.message : err),
-    });
-    throw new Error('Contentful request failed');
-  } finally {
-    clearTimeout(timeout);
+
+    throw new Error('Contentful request failed with unknown error');
   }
 };
 

@@ -6,6 +6,7 @@ import './src/utils/env/env.server';
 const nextConfig: NextConfig = {
   reactCompiler: true,
   typedRoutes: true,
+  cacheComponents: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [75, 85, 90],

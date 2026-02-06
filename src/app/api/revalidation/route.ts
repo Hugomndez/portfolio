@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: 'unauthorized' }, { status: 401 });
   }
 
-  revalidateTag('contentful-projectsCollection', { expire: 0 });
+  revalidateTag('projectsCollection', { expire: 0 });
 
   return NextResponse.json({ revalidated: true, now: Date.now() });
 }

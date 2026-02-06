@@ -9,8 +9,8 @@ test('projects section renders: heading and cards or skeletons', async ({ page }
   const skeletonCount = await skeletons.count();
 
   if (skeletonCount > 0) {
-    // When CMS envs are missing, skeleton fallback shows 6 items
-    expect(skeletonCount).toBe(6);
+    // When CMS envs are missing, skeleton fallback shows 4 items
+    expect(skeletonCount).toBe(4);
   } else {
     // With CMS configured, expect at least one project card with action links
     await expect(page.getByRole('link', { name: 'View Project' }).first()).toBeVisible();

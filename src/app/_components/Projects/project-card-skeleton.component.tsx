@@ -1,8 +1,16 @@
 import styles from './Projects.module.css';
 
+const data = [1, 2, 3, 4];
+
 export const ProjectCardSkeleton = () => {
+  return data.map((item) => <SkeletonCard key={item} />);
+};
+
+function SkeletonCard() {
   return (
-    <article className={styles.card} aria-hidden="true">
+    <article
+      className={styles.card}
+      aria-hidden='true'>
       <div className={styles.overlay}>
         <div className={`${styles.skeletonImage} ${styles.skeleton}`} />
       </div>
@@ -22,4 +30,4 @@ export const ProjectCardSkeleton = () => {
       </footer>
     </article>
   );
-};
+}
