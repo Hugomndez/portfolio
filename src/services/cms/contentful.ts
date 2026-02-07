@@ -76,6 +76,9 @@ const fetchContentfulData = async <T>(
   }
 };
 
+const FALLBACK_BLUR_DATA_URL =
+  'data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAKRYaKhobLiEeMSghMisiMSggLSEcKRcZKRoaLiIeODAmQDssQz4uQDorNy8kLSAbKR4aMikhQTsuTUg3UUw6TEY2QDksMScfKiAaNCsjRj4yU0s+V09BUUo8RDwwMyohKx8aMykiQzkxT0Y8U0lATkQ7QjgwMicgLBwaMSMfOy8qQzgyRjw1QzgxOi4oLyEdLBkaLhwbMCIeMyghNCoiMyggMCIdLBkZLRcaLBgZKxwXKh8VKiEUKyAUKxsWKhYX';
+
 async function getImageBlurData(imageUrl: string) {
   const jpgData = await getPixels(`${imageUrl}?w=100&fm=jpg`);
   const data = Uint8ClampedArray.from(jpgData.data);
@@ -84,9 +87,6 @@ async function getImageBlurData(imageUrl: string) {
 
   return base64ImageUri;
 }
-
-const DEFAULT_BLUR_DATA_URL =
-  'data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAKRYaKhobLiEeMSghMisiMSggLSEcKRcZKRoaLiIeODAmQDssQz4uQDorNy8kLSAbKR4aMikhQTsuTUg3UUw6TEY2QDksMScfKiAaNCsjRj4yU0s+V09BUUo8RDwwMyohKx8aMykiQzkxT0Y8U0lATkQ7QjgwMicgLBwaMSMfOy8qQzgyRjw1QzgxOi4oLyEdLBkaLhwbMCIeMyghNCoiMyggMCIdLBkZLRcaLBgZKxwXKh8VKiEUKyAUKxsWKhYX';
 
 export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>> => {
   const result = await fetchContentfulData<ProjectsCollectionResponse>(
@@ -120,7 +120,7 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
         sourceCodeUrl: item.sourceCodeUrl,
         image: {
           url: item.image.url,
-          blurDataUrl: blurDataUrl ?? DEFAULT_BLUR_DATA_URL,
+          blurDataUrl: blurDataUrl ?? FALLBACK_BLUR_DATA_URL,
           width: item.image.width,
           height: item.image.height,
           contentType: item.image.contentType,
