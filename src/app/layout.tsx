@@ -5,24 +5,55 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
+import type { Graph, Person, WebSite } from 'schema-dts';
 
-type RootLayoutProps = {
-  children: ReactNode;
+const websiteSchema: WebSite = {
+  '@type': 'WebSite',
+  name: 'Hugo Méndez - Full Stack Developer',
+  url: 'https://hugomendez.dev',
+  description:
+    'Personal developer portfolio showcasing my skills on HTML, CSS, JavaScript, TypeScript, React, NextJS, Web Performance, SEO and more...',
 };
 
-const schema = {
-  '@context': 'https://schema.org',
+const personSchema: Person = {
   '@type': 'Person',
-  familyName: 'Méndez',
+  name: 'Hugo Méndez',
   givenName: 'Hugo',
-  alumniOf: 'https://www.uady.mx',
-  image: 'https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg',
+  familyName: 'Méndez',
   gender: 'http://schema.org/Male',
+  image: 'https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg',
+  knowsLanguage: ['English', 'Spanish'],
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: 'Full Stack Developer',
+  },
+  knowsAbout: [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'NextJS',
+    'Web Performance',
+    'SEO',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Cozumel',
+    addressRegion: 'Quintana Roo',
+    addressCountry: 'Mexico',
+  },
   sameAs: [
+    'https://hugomendez.dev',
     'https://www.linkedin.com/in/hugomndez/',
     'https://www.instagram.com/hugomndez/',
     'https://github.com/Hugomndez',
   ],
+};
+
+const graph: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [websiteSchema, personSchema],
 };
 
 export const viewport: Viewport = {
@@ -73,7 +104,7 @@ export const metadata: Metadata = {
   },
 };
 
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html
       lang='en'
@@ -87,7 +118,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
           type='application/ld+json'
           strategy='beforeInteractive'
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schema),
+            __html: JSON.stringify(graph),
           }}
         />
         <Script
