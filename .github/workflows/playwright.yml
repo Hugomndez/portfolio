@@ -16,7 +16,7 @@ jobs:
       - name: 'Notify Vercel'
         uses: 'vercel/repository-dispatch/actions/status@v1'
         with:
-          name: 'Vercel - portfolio: tests'
+          name: 'GitHub Action - portfolio: e2e tests'
 
       - name: Checkout Repository
         uses: actions/checkout@v6
