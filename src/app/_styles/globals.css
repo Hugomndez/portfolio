@@ -1,17 +1,12 @@
 :root {
   /* COLORS */
 
-  --Green: hsl(153, 71%, 59%);
-
-  --Black: hsl(0, 0%, 8%);
-
-  --DarkGrey: hsl(0, 0%, 14%);
-
-  --Grey: hsl(0, 0%, 85%);
-
-  --White: hsl(0, 0%, 100%);
-
-  --Invalid: hsla(7, 100%, 68%, 1);
+  --Green: hsl(153 71 59);
+  --Black: hsl(0 0 8);
+  --DarkGrey: hsl(0 0 14);
+  --Grey: hsl(0 0 85);
+  --White: hsl(0 0 100);
+  --Invalid: hsl(7 100 68 / 1);
 
   /* TYPOGRAPHY */
 
