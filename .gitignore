@@ -48,3 +48,5 @@ next-env.d.ts
 /playwright/.auth/
 /tests/artifacts/
 /tests/reports/
+# next-agents-md
+.next-docs/
