@@ -110,7 +110,7 @@ const reactConfig = defineConfig([
     },
     settings: {
       react: {
-        version: 'detect', // Automatically detect React version
+        version: '19', // explicitly set React version
       },
       'import/parsers': {
         '@typescript-eslint/parser': ['.ts', '.mts', '.cts', '.tsx', '.d.ts'],
