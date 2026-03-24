@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/#contact');
 });
 
-test('contact form: submit is disabled initially', async ({ page }) => {
+test('contact form: submit is enabled initially', async ({ page }) => {
   // No accessibility alerts should be present initially
   const form = page.getByTestId('contact-form');
   await expect(form.getByRole('alert')).toHaveCount(0);
@@ -22,12 +22,12 @@ test('contact form: submit is disabled initially', async ({ page }) => {
   await expect(messageInput).not.toHaveAttribute('aria-invalid', 'true');
   await expect(messageInput).not.toHaveAttribute('aria-describedby', /.+/);
 
-  // Submit should be disabled
+  // Submit should be enabled initially
   const submit = page.getByRole('button', { name: 'Send Message' });
-  await expect(submit).toBeDisabled();
+  await expect(submit).toBeEnabled();
 });
 
-test('contact form: invalid email keeps submit disabled and shows input email error', async ({
+test('contact form: invalid email keeps submit enabled and shows input email error', async ({
   page,
 }) => {
   await page.getByLabel('Name').fill('Playwright Tester');
@@ -61,12 +61,14 @@ test('contact form: invalid email keeps submit disabled and shows input email er
   await expect(msgError).not.toHaveAttribute('role', 'alert');
   await expect(msgError).toHaveAttribute('aria-hidden', 'true');
 
-  // Submit should remain disabled
+  // Submit should remain enabled even with invalid email to allow user to correct it
   const submit = page.getByRole('button', { name: 'Send Message' });
-  await expect(submit).toBeDisabled();
+  await expect(submit).toBeEnabled();
 });
 
-test('contact form: valid inputs enable submit and show no validation alerts', async ({ page }) => {
+test('contact form: valid inputs keep submit enabled and show no validation alerts', async ({
+  page,
+}) => {
   await page.getByLabel('Name').fill('Playwright Tester');
   await page.getByLabel('Email address').fill('user@example.com');
   await page.getByLabel('Message').fill('Hello from Playwright');
@@ -93,7 +95,7 @@ test('contact form: valid inputs enable submit and show no validation alerts', a
   await expect(submitButton).toBeEnabled();
 });
 
-test('contact form: max length validation errors keep submit disabled and show input length errors', async ({
+test('contact form: max length validation errors keep submit enabled and show input length errors', async ({
   page,
 }) => {
   await page.getByLabel('Name').fill('a'.repeat(31));
@@ -131,7 +133,7 @@ test('contact form: max length validation errors keep submit disabled and show i
   await expect(emailError).not.toHaveAttribute('role', 'alert');
   await expect(emailError).toHaveAttribute('aria-hidden', 'true');
 
-  // Submit remains disabled
+  // Submit remains enabled to allow user to correct errors
   const submit = page.getByRole('button', { name: 'Send Message' });
-  await expect(submit).toBeDisabled();
+  await expect(submit).toBeEnabled();
 });
