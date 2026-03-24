@@ -1,17 +1,50 @@
 {
+  // 🎨 CODE FORMATTING (Prettier)
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // 📏 WORD WRAPPING
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 130,
+
+  // 🛠️ CODE ACTIONS (Fix + Organize)
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "explicit"
   },
-  "eslint.format.enable": true,
-  "eslint.validate": ["javascript", "typescript"],
-  "typescript.tsdk": "node_modules/typescript/lib",
+
+  // 🧑‍💻 TYPESCRIPT SDK PATH
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+
+  // 🔍 ESLINT LINTING
+  "eslint.enable": true, // Enable ESLint
+  "eslint.run": "onType", // Run on each keystroke
+  "eslint.probe": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"], // File types to lint
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto" // Automatically detect and lint in all relevant directories
+    }
+  ],
+
+  // 🧑‍💻 GITHUB ACTIONS WORKFLOWS
+  "github-actions.workflows.pinned.workflows": [".github/workflows/playwright.yml"],
+
+  // 🤖 AI CODE SUGGESTIONS (Copilot)
   "chat.mcp.serverSampling": {
     "portfolio/.vscode/mcp.json: next-devtools": {
       "allowedModels": ["copilot/gpt-5-mini", "copilot/gpt-5"]
     }
   },
-  "github-actions.workflows.pinned.workflows": [".github/workflows/playwright.yml"]
+
+  // 🧹 FILE EXCLUSIONS
+  "files.exclude": {
+    "**/dist": true,
+    "**/.astro": true,
+    "**/.next": true,
+    "**/.vercel": true,
+    "**/.next-docs": true,
+    "**/next-env.d.ts": true,
+    "**/node_modules": true,
+    "**/.turbo/**": true
+  }
 }
