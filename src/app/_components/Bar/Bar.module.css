@@ -24,6 +24,10 @@
   letter-spacing: -0.33px;
   font-weight: var(--FW-Heading);
   color: var(--White);
+
+  &:is(:focus-within, :hover) {
+    color: var(--Green);
+  }
 }
 
 .socialMedia {
@@ -37,7 +41,7 @@
   }
 }
 
-.socialMedia a:is(:hover, :focus) svg path {
+.socialMedia a:is(:focus-within, :hover) svg path {
   fill: var(--Green);
 }
 
