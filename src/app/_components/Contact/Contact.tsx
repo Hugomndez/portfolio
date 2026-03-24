@@ -1,6 +1,7 @@
 'use client';
 
 import { env } from '@/utils/env/env.client';
+import { useAutoHide } from '@/utils/hooks/useAutoHide';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { TurnstileInstance } from '@marsidev/react-turnstile';
 import { Turnstile } from '@marsidev/react-turnstile';
@@ -25,31 +26,20 @@ export default function Contact() {
       defaultValues: initFormValues,
     });
 
-  const { isDirty, isValid, isSubmitting, isSubmitSuccessful } = formState;
-
-  const [isSuccessMessageShown, setSuccessMessageShown] = useState<boolean>(false);
+  const [isSuccessMessageVisible, setSuccessMessageVisible] = useState<boolean>(false);
 
   const ref = useRef<TurnstileInstance | null>(null);
 
   useEffect(() => {
-    if (isSubmitSuccessful) {
+    if (formState.isSubmitSuccessful) {
       reset(initFormValues);
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [formState.isSubmitSuccessful, reset]);
 
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout | undefined;
-
-    if (isSuccessMessageShown) {
-      timeoutId = setTimeout(() => {
-        setSuccessMessageShown(false);
-      }, 5000);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [isSuccessMessageShown]);
+  useAutoHide({
+    isVisible: isSuccessMessageVisible,
+    onHide: () => setSuccessMessageVisible(false),
+  });
 
   async function onSubmit(data: ValidationSchema) {
     const token = ref.current?.getResponse();
@@ -75,7 +65,7 @@ export default function Contact() {
     try {
       await contactFormAction(formData);
 
-      setSuccessMessageShown(true);
+      setSuccessMessageVisible(true);
       clearErrors('root');
     } catch (error) {
       if (error instanceof Error) {
@@ -118,15 +108,14 @@ export default function Contact() {
           control={control}
           name='message'
         />
-
         <button
           type='submit'
-          disabled={!isDirty || !isValid || isSubmitting}
+          disabled={formState.isSubmitting}
           data-umami-event='Submit Contact'>
-          {isSubmitting ? 'Sending...' : 'Send Message'}
+          {formState.isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
         <FormError control={control} />
-        <SuccessMessage messageShown={isSuccessMessageShown} />
+        <SuccessMessage isVisible={isSuccessMessageVisible} />
       </form>
     </section>
   );
