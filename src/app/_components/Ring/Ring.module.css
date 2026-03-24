@@ -1,6 +1,8 @@
 .ring {
   position: absolute;
   pointer-events: none;
+  animation: ringFloat 7s ease-in-out infinite;
+  will-change: transform;
 }
 
 .ring[data-position='top'] {
@@ -13,12 +15,16 @@
   top: 1400px;
   left: 100%;
   transform: translate(-30vw);
+  animation-duration: 8s;
+  animation-delay: 0.8s;
 }
 
 .ring[data-position='bottom'] {
   top: calc(100% - 350px);
   right: 100%;
   transform: translate(40vw);
+  animation-duration: 9s;
+  animation-delay: 1.4s;
 }
 
 @media screen and (min-width: 500px) {
@@ -50,5 +56,15 @@
   .ring[data-position='bottom'] {
     top: calc(100% - 380px);
     transform: translate(35vw);
+  }
+}
+
+@keyframes ringFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
   }
 }
