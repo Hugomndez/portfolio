@@ -52,7 +52,7 @@
     "@commitlint/cli": "20.5.0",
     "@commitlint/config-conventional": "20.5.0",
     "@eslint/css": "1.0.0",
-    "@next/eslint-plugin-next": "16.2.1",
+    "@next/eslint-plugin-next": "16.2.2",
     "@playwright/test": "1.58.2",
     "@types/eslint-plugin-jsx-a11y": "6.10.1",
     "@types/node": "25.5.0",
