@@ -391,10 +391,10 @@
     mdn-data "2.23.0"
     source-map-js "^1.0.1"
 
-"@eslint/css@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@eslint/css/-/css-1.0.0.tgz#0f011f12f2ea6ba132c7ad5e4f0cbd42eeaac90a"
-  integrity sha512-2MjyL517F1wrLrmmfaFntKKiImudiXW6Dd80oE7VRIRu64bT5YieRs+WPgdZy9m8izs/tSUqi3j2mBnjUrqJfA==
+"@eslint/css@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@eslint/css/-/css-1.1.0.tgz#e5fb9cc64e4e359b70e696c9c8c60108bd02bbbb"
+  integrity sha512-sNwfLcU3nKXv/v2YglqujwMU4Iv3BDhxldNUd/2FckVab0zdvc9pPlKWxjR6Ap/EU+Y8Pdu853iwvcUpemRhRw==
   dependencies:
     "@eslint/core" "^1.1.1"
     "@eslint/css-tree" "^3.6.9"
