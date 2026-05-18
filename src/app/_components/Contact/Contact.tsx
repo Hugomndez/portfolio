@@ -20,7 +20,8 @@ export default function Contact() {
   const { formState, control, handleSubmit, reset, setError, clearErrors, setValue } =
     useForm<ValidationSchema>({
       resolver: zodResolver(validationSchema),
-      mode: 'onBlur',
+      mode: 'onChange',
+      delayError: 2500,
       defaultValues: initFormValues,
     });
 
