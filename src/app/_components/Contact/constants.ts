@@ -4,4 +4,5 @@ export const initFormValues: ValidationSchema = {
   name: '',
   email: '',
   message: '',
+  token: '',
 };

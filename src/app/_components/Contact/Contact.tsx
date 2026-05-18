@@ -3,9 +3,8 @@
 import { env } from '@/utils/env/env.client';
 import { useAutoHide } from '@/utils/hooks/useAutoHide';
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { TurnstileInstance } from '@marsidev/react-turnstile';
-import { Turnstile } from '@marsidev/react-turnstile';
-import { useEffect, useRef, useState } from 'react';
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { initFormValues } from './constants';
 import { contactFormAction } from './contact-form.action';
@@ -18,23 +17,15 @@ import type { ValidationSchema } from './validation.schema';
 import { validationSchema } from './validation.schema';
 
 export default function Contact() {
-  const { control, handleSubmit, reset, setError, clearErrors, formState } =
+  const { formState, control, handleSubmit, reset, setError, clearErrors, setValue } =
     useForm<ValidationSchema>({
       resolver: zodResolver(validationSchema),
-      mode: 'onChange',
-      delayError: 2500,
+      mode: 'onBlur',
       defaultValues: initFormValues,
     });
 
-  const [isSuccessMessageVisible, setSuccessMessageVisible] = useState<boolean>(false);
-
   const ref = useRef<TurnstileInstance | null>(null);
-
-  useEffect(() => {
-    if (formState.isSubmitSuccessful) {
-      reset(initFormValues);
-    }
-  }, [formState.isSubmitSuccessful, reset]);
+  const [isSuccessMessageVisible, setSuccessMessageVisible] = useState<boolean>(false);
 
   useAutoHide({
     isVisible: isSuccessMessageVisible,
@@ -42,29 +33,17 @@ export default function Contact() {
   });
 
   async function onSubmit(data: ValidationSchema) {
-    const token = ref.current?.getResponse();
-
-    if (!token) {
-      setError('root', {
-        type: 'token',
-        message: 'Failed to execute Captcha. Please try again.',
-      });
-
-      ref.current?.reset();
-
-      return;
-    }
-
     const formData = new FormData();
 
     formData.append('name', data.name);
     formData.append('email', data.email);
     formData.append('message', data.message);
-    formData.append('token', token);
+    formData.append('token', data.token);
 
     try {
       await contactFormAction(formData);
 
+      reset(initFormValues);
       setSuccessMessageVisible(true);
       clearErrors('root');
     } catch (error) {
@@ -95,6 +74,20 @@ export default function Contact() {
           ref={ref}
           siteKey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
           options={{ theme: 'dark', action: 'submit-form', size: 'invisible' }}
+          onSuccess={(token) => {
+            setValue('token', token, {
+              shouldValidate: true,
+            });
+          }}
+          onExpire={() => {
+            ref.current?.reset();
+          }}
+          onError={() => {
+            setError('root', {
+              type: 'token',
+              message: 'Captcha verification failed. Please try again.',
+            });
+          }}
         />
         <InputField
           control={control}
