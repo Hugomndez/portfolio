@@ -9,11 +9,7 @@ export const validationSchema = z.object({
     .toLowerCase()
     .pipe(z.email('Invalid email address')),
   message: z.string().min(1, 'Message is required').max(500, 'Message is too long'),
+  token: z.string().min(1, 'Token is required'),
 });
 
 export type ValidationSchema = z.infer<typeof validationSchema>;
-
-export const serverValidationSchema = z.object({
-  ...validationSchema.shape,
-  token: z.string().min(1, 'Token is required'),
-});

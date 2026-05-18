@@ -4,12 +4,12 @@ import 'server-only';
 
 import { sendEmail } from '@/services/email.service';
 import { validateTurnstileToken } from '@/services/turnstile.service';
-import { serverValidationSchema } from './validation.schema';
+import { validationSchema } from './validation.schema';
 
 export async function contactFormAction(formData: FormData) {
   const rawFormData = Object.fromEntries(formData);
 
-  const { data, error } = serverValidationSchema.safeParse(rawFormData);
+  const { data, error } = validationSchema.safeParse(rawFormData);
 
   if (error) {
     console.warn('Contact form validation failed', { issues: error.issues });
