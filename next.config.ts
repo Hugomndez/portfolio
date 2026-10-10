@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
     ],
   },
   logging: { fetches: { fullUrl: true, hmrRefreshes: true } },
-  experimental: { mcpServer: true },
+  experimental: { mcpServer: true, turbopackRustReactCompiler: true },
 };
 
 export default nextConfig;
