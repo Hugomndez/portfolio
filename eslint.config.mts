@@ -94,9 +94,9 @@ const reactConfig = defineConfig([
   {
     name: 'project/react',
     files: ['**/*.{jsx,tsx}'],
+    extends: [reactHooks.configs.flat.recommended],
     plugins: {
       react,
-      'react-hooks': reactHooks,
     },
     rules: {
       ...react.configs.recommended.rules,
