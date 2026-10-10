@@ -1,11 +1,12 @@
 import { Container } from '@/components/Container';
 import { spaceGrotesk } from '@/fonts';
-import '@/styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
 import type { Graph, Person, WebSite } from 'schema-dts';
+
+import '@/styles/globals.css';
 
 const websiteSchema: WebSite = {
   '@type': 'WebSite',
