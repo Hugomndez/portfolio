@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   typedRoutes: true,
   cacheComponents: true,
+  partialPrefetching: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [75, 85, 90],
@@ -18,7 +19,13 @@ const nextConfig: NextConfig = {
     ],
   },
   logging: { fetches: { fullUrl: true, hmrRefreshes: true } },
-  experimental: { mcpServer: true },
+  experimental: {
+    mcpServer: true,
+    turbopackRustReactCompiler: true,
+    turbopackGc: true,
+    turbopackLazyDynamicImports: true,
+    turbopackPluginRuntimeStrategy: 'workerThreads',
+  },
 };
 
 export default nextConfig;
