@@ -1,11 +1,11 @@
 import { getProjects } from '@/services/cms/contentful';
-import { cacheTag } from 'next/cache';
+import { cacheLife, cacheTag } from 'next/cache';
 import { ProjectCard } from './project-card.component';
 
 async function ProjectList() {
   'use cache';
-
   cacheTag('projectsCollection');
+  cacheLife('max');
 
   const projects = await getProjects();
 
