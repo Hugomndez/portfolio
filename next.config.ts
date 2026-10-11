@@ -4,10 +4,11 @@ import './src/utils/env/env.client';
 import './src/utils/env/env.server';
 
 const nextConfig: NextConfig = {
-  reactCompiler: true,
   typedRoutes: true,
+  reactCompiler: true,
   cacheComponents: true,
   partialPrefetching: true,
+  logging: { fetches: { fullUrl: true, hmrRefreshes: true } },
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [75, 85, 90],
@@ -18,8 +19,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  logging: { fetches: { fullUrl: true, hmrRefreshes: true } },
   experimental: {
+    inlineCss: true,
     mcpServer: true,
     turbopackRustReactCompiler: true,
     turbopackGc: true,
