@@ -4,7 +4,7 @@ import { Intro } from '@/components/Intro';
 import { Projects } from '@/components/Projects';
 import { Skills } from '@/components/Skills';
 
-export default function Page(_props: PageProps<'/'>) {
+export default function Page() {
   return (
     <>
       <header>
