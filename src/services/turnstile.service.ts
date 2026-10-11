@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { env } from '@/utils/env/env.server';
 import type { TurnstileServerValidationResponse } from '@marsidev/react-turnstile';
 

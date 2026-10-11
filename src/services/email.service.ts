@@ -1,6 +1,7 @@
+import 'server-only';
+
 import { env } from '@/utils/env/env.server';
 import * as msal from '@azure/msal-node';
-
 const msalClient = new msal.ConfidentialClientApplication({
   auth: {
     clientId: env.MS_GRAPH_CLIENT_ID,

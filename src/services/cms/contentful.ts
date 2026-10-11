@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { env } from '@/utils/env/env.server';
 import { getPixels } from '@unpic/pixels';
 import { blurhashToDataUri } from '@unpic/placeholder';

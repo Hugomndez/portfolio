@@ -1,7 +1,5 @@
 'use server';
 
-import 'server-only';
-
 import { sendEmail } from '@/services/email.service';
 import { validateTurnstileToken } from '@/services/turnstile.service';
 import { validationSchema } from './validation.schema';
