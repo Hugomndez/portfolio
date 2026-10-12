@@ -69,7 +69,7 @@ export default defineConfig({
   webServer: process.env.CI
     ? undefined
     : {
-        command: 'yarn start',
+        command: 'pnpm start',
         url: baseURL,
         reuseExistingServer: !process.env.CI,
       },

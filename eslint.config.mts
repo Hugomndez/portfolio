@@ -13,7 +13,7 @@ import eslintTS from 'typescript-eslint';
 const ignoreConfig = defineConfig([
   {
     name: 'project/ignores',
-    ignores: ['.next/**', 'out/**', 'build/**', 'public/**', 'next-env.d.ts', 'yarn.lock'],
+    ignores: ['.next/**', 'out/**', 'build/**', 'public/**', 'next-env.d.ts', 'pnpm-lock.yaml'],
   },
 ]);
 
@@ -22,7 +22,10 @@ const jsConfig = defineConfig([
     name: 'project/javascript',
     files: ['**/*.{js,mjs,ts,tsx}'],
     extends: [eslintJS.configs.recommended],
-    rules: { 'no-console': ['warn', { allow: ['warn', 'error'] }] },
+    rules: {
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'preserve-caught-error': ['warn'],
+    },
   },
 ]);
 

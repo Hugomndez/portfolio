@@ -21,22 +21,26 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
+          cache: pnpm
 
       - name: Install Dependencies
-        run: npm install -g yarn && yarn
+        run: pnpm install --frozen-lockfile
 
       - name: Install Playwright Browsers
         run: |
-          yarn playwright install chromium --only-shell
+          pnpm exec playwright install chromium --only-shell
           sudo apt-get update
           sudo apt-get install -y libnss3 libatk-bridge2.0-0 libdrm2 libxcomposite1 libxdamage1 libxrandr2 libgbm1
 
       - name: Run Playwright Tests
-        run: yarn playwright test
+        run: pnpm test:e2e
         env:
           BASE_URL: ${{ github.event.client_payload.url }}
 
