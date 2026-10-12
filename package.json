@@ -16,11 +16,9 @@
     "url": "https://github.com/Hugomndez/portfolio/issues"
   },
   "engines": {
-    "node": "24.x",
-    "npm": "please-use-yarn-instead",
-    "yarn": "1.x"
+    "node": "24.x"
   },
-  "packageManager": "yarn@1.22.22",
+  "packageManager": "pnpm@12.11.2+sha512.25a51652a196785af5f28bda6dfe8dc582ebefa4ac1d180221ce1390231c5fb76637822ea4b6e4633ce74acdcb0a77f725af11bad38177fdeddaee818a955cb9",
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -51,7 +49,9 @@
   "devDependencies": {
     "@commitlint/cli": "21.2.3",
     "@commitlint/config-conventional": "21.2.3",
+    "@commitlint/types": "21.2.3",
     "@eslint/css": "2.0.0",
+    "@eslint/js": "10.0.1",
     "@next/eslint-plugin-next": "16.4.0",
     "@playwright/test": "1.64.0",
     "@types/eslint-plugin-jsx-a11y": "6.10.1",
@@ -82,9 +82,5 @@
   ],
   "browserslist-config-baseline": {
     "baselineYear": 2024
-  },
-  "resolutions": {
-    "@types/react": "19.3.0",
-    "@types/react-dom": "19.3.0"
   }
 }
