@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   cacheComponents: true,
   partialPrefetching: true,
-  logging: { fetches: { fullUrl: true, hmrRefreshes: true } },
+  logging: { fetches: { fullUrl: true, hmrRefreshes: true }, browserToTerminal: true },
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [75, 85, 90],
