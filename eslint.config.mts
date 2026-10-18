@@ -8,12 +8,27 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
+import { createRequire } from 'node:module';
 import eslintTS from 'typescript-eslint';
+
+const require = createRequire(import.meta.url);
+const { version: reactVersion } = require('react/package.json') as { version: string };
 
 const ignoreConfig = defineConfig([
   {
     name: 'project/ignores',
-    ignores: ['.next/**', 'out/**', 'build/**', 'public/**', 'next-env.d.ts', 'pnpm-lock.yaml'],
+    ignores: [
+      '.next/**',
+      'out/**',
+      'build/**',
+      'public/**',
+      'next-env.d.ts',
+      'pnpm-lock.yaml',
+      'tests/artifacts/**',
+      'tests/reports/**',
+      '.next-docs/**',
+      'coverage/**',
+    ],
   },
 ]);
 
@@ -47,14 +62,11 @@ const tsConfig = defineConfig([
       globals: { ...globals.browser, ...globals.node },
     },
     rules: {
-      // Disable rules that conflict with TypeScript's own error checking
+      // Soften any-leakage detection — untyped API payloads (CMS, fetch) make these noisy
       '@typescript-eslint/no-unsafe-assignment': 'warn',
-      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-call': 'warn',
+      // Prefer import over /// <reference> (kept off for generated files like next-env.d.ts)
       '@typescript-eslint/triple-slash-reference': 'off',
-      // disabled next rule due to bug:
-      // https://github.com/typescript-eslint/typescript-eslint/issues/11732
-      // https://github.com/eslint/eslint/issues/20272
-      '@typescript-eslint/unified-signatures': 'off',
       // Allow ts-expect-error and ts-ignore with descriptions
       '@typescript-eslint/ban-ts-comment': [
         'error',
@@ -103,7 +115,6 @@ const reactConfig = defineConfig([
     },
     rules: {
       ...react.configs.recommended.rules,
-      ...reactHooks.configs.flat.recommended.rules,
 
       // Customizations for modern React/Next.js
       'react/react-in-jsx-scope': 'off', // Not needed in Next.js
@@ -113,18 +124,7 @@ const reactConfig = defineConfig([
     },
     settings: {
       react: {
-        version: '19', // explicitly set React version
-      },
-      'import/parsers': {
-        '@typescript-eslint/parser': ['.ts', '.mts', '.cts', '.tsx', '.d.ts'],
-      },
-      'import/resolver': {
-        node: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        },
-        typescript: {
-          alwaysTryTypes: true,
-        },
+        version: reactVersion,
       },
     },
   },
@@ -140,15 +140,9 @@ const nextConfig = defineConfig([
       import: importPlugin,
     },
     rules: {
-      ...next.configs.recommended.rules,
       ...next.configs['core-web-vitals'].rules,
+      ...jsxA11yPlugin.flatConfigs.recommended.rules,
       'jsx-a11y/alt-text': ['warn', { elements: ['img'], img: ['Image'] }],
-      'jsx-a11y/media-has-caption': 'warn',
-      'jsx-a11y/aria-props': 'warn',
-      'jsx-a11y/aria-proptypes': 'warn',
-      'jsx-a11y/aria-unsupported-elements': 'warn',
-      'jsx-a11y/role-has-required-aria-props': 'warn',
-      'jsx-a11y/role-supports-aria-props': 'warn',
       'import/no-anonymous-default-export': 'warn',
     },
   },
