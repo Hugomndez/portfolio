@@ -7,7 +7,7 @@ const verifyEndpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverif
 const TURNSTILE_TIMEOUT_MS = 5000;
 
 export async function validateTurnstileToken(
-  token: string
+  token: string,
 ): Promise<TurnstileServerValidationResponse> {
   const formData = new FormData();
   formData.append('secret', env.TURNSTILE_SECRET_KEY);

@@ -25,7 +25,7 @@ const getAccessToken = (variables: Partial<Variables>) => {
 const fetchContentfulData = async <T>(
   query: string,
   variables: Partial<Variables> = {},
-  operation = 'unknown'
+  operation = 'unknown',
 ): Promise<ContentfulResult<T>> => {
   try {
     const response = await fetch(CONTENTFUL_API_URL, {
@@ -94,7 +94,7 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
   const result = await fetchContentfulData<ProjectsCollectionResponse>(
     projectsCollectionQuery,
     {},
-    'projectsCollection'
+    'projectsCollection',
   );
 
   const items = result.data.projectsCollection.items;
@@ -130,7 +130,7 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
           title: item.image.title,
         },
       };
-    })
+    }),
   );
 
   return projects;

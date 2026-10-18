@@ -65,7 +65,7 @@ export async function sendEmail(name: string, email: string, message: string): P
         },
         body: JSON.stringify(emailMessage),
         signal: controller.signal,
-      }
+      },
     );
     if (!response.ok) {
       const bodyText = await response.text().catch(() => '<unreadable>');
