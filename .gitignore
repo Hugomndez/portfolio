@@ -31,13 +31,9 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Playwright
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
+# playwright
 /tests/artifacts/
 /tests/reports/
+
 # next-agents-md
 .next-docs/
