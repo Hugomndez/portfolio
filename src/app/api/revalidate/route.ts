@@ -3,7 +3,7 @@ import { revalidateTag } from 'next/cache';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
+export function POST(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   const secret = requestHeaders.get('x-vercel-reval-key');
 

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default async function NotFound() {
+export default function NotFound() {
   return (
     <div
       style={{
