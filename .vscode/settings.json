@@ -1,54 +1,41 @@
 {
-  // 🎨 CODE FORMATTING (Prettier)
+  // ═══════════════════════════════════════════
+  // ✍️  EDITOR — core editing behavior
+  // ═══════════════════════════════════════════
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-
-  // 📏 WORD WRAPPING
   "editor.wordWrap": "wordWrapColumn",
-  "editor.wordWrapColumn": 130,
-
-  // 🛠️ CODE ACTIONS (Fix + Organize)
+  "editor.wordWrapColumn": 100,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "explicit"
   },
 
-  // 🧑‍💻 TYPESCRIPT SDK PATH
-  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  // ═══════════════════════════════════════════
+  // 🧑‍💻 LANGUAGES — TypeScript & ESLint
+  // ═══════════════════════════════════════════
+  "js/ts.tsdk.path": "node_modules/typescript/lib", // workspace TS SDK (activate via "TypeScript: Select TypeScript Version")
+  "eslint.workingDirectories": [{ "mode": "auto" }],
 
-  // 🔍 ESLINT LINTING
-  "eslint.enable": true, // Enable ESLint
-  "eslint.run": "onType", // Run on each keystroke
-  "eslint.probe": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"], // File types to lint
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto" // Automatically detect and lint in all relevant directories
-    }
-  ],
+  // ═══════════════════════════════════════════
+  // 📦 PROJECT TOOLING
+  // ═══════════════════════════════════════════
+  "npm.packageManager": "pnpm",
 
-  // 🧑‍💻 GITHUB ACTIONS WORKFLOWS
-  "github-actions.workflows.pinned.workflows": [".github/workflows/playwright.yml"],
-
-  // 🤖 AI CODE SUGGESTIONS (Copilot)
-  "chat.mcp.serverSampling": {
-    "portfolio/.vscode/mcp.json: next-devtools": {
-      "allowedModels": ["copilot/gpt-5-mini", "copilot/gpt-5"]
-    }
-  },
-
-  // 🧹 FILE EXCLUSIONS
+  // ═══════════════════════════════════════════
+  // 🗂️  WORKBENCH — visibility & navigation
+  // ═══════════════════════════════════════════
   "files.exclude": {
-    "**/dist": true,
-    "**/.astro": true,
     "**/.next": true,
-    "**/.vercel": true,
     "**/.next-docs": true,
-    "**/next-env.d.ts": true,
-    "**/node_modules": true,
-    "**/.turbo/**": true
+    "**/.vercel": true,
+    "**/tests/artifacts": true,
+    "**/tests/reports": true,
+    "**/next-env.d.ts": true
   },
-
-  // 🏷️ CUSTOM EDITOR LABELS
+  "search.exclude": {
+    "**/pnpm-lock.yaml": true // committed, not gitignored — everything else is covered by .gitignore (search.useIgnoreFiles)
+  },
   "workbench.editor.customLabels.patterns": {
     "**/app/**/page.tsx": "${dirname(1)}/${dirname} - page.tsx",
     "**/app/**/layout.tsx": "${dirname(1)}/${dirname} - layout.tsx",
@@ -58,5 +45,15 @@
     "**/app/**/template.tsx": "${dirname(1)}/${dirname} - template.tsx",
     "**/app/**/default.tsx": "${dirname(1)}/${dirname} - default.tsx",
     "**/app/**/route.ts": "${dirname(1)}/${dirname} - route.ts"
+  },
+
+  // ═══════════════════════════════════════════
+  // 🔌 INTEGRATIONS — external tooling
+  // ═══════════════════════════════════════════
+  "github-actions.workflows.pinned.workflows": [".github/workflows/playwright.yml"],
+  "chat.mcp.serverSampling": {
+    "portfolio/.vscode/mcp.json: next-devtools": {
+      "allowedModels": ["copilot/gpt-5-mini", "copilot/gpt-5"]
+    }
   }
 }
