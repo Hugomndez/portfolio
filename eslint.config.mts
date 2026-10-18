@@ -35,7 +35,7 @@ const ignoreConfig = defineConfig([
 const jsConfig = defineConfig([
   {
     name: 'project/javascript',
-    files: ['**/*.{js,mjs,ts,tsx}'],
+    files: ['**/*.{js,mjs,cjs,jsx}'],
     extends: [eslintJS.configs.recommended],
     rules: {
       'no-console': ['warn', { allow: ['warn', 'error'] }],
@@ -47,11 +47,10 @@ const jsConfig = defineConfig([
 const tsConfig = defineConfig([
   {
     name: 'project/typescript',
-    files: ['**/*.{ts,mts,tsx,mjs}'],
-    extends: [eslintTS.configs.recommended],
+    files: ['**/*.{ts,mts,cts,tsx}'],
+    extends: [eslintTS.configs.recommendedTypeChecked],
     languageOptions: {
       parserOptions: {
-        // Automatically detects tsconfig.json
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
         ecmaFeatures: {
@@ -65,6 +64,13 @@ const tsConfig = defineConfig([
       // Soften any-leakage detection — untyped API payloads (CMS, fetch) make these noisy
       '@typescript-eslint/no-unsafe-assignment': 'warn',
       '@typescript-eslint/no-unsafe-call': 'warn',
+      '@typescript-eslint/no-unsafe-argument': 'warn',
+      '@typescript-eslint/no-unsafe-member-access': 'warn',
+      '@typescript-eslint/no-unsafe-return': 'warn',
+      '@typescript-eslint/no-misused-promises': [
+        'error',
+        { checksVoidReturn: { attributes: false } },
+      ],
       // Prefer import over /// <reference> (kept off for generated files like next-env.d.ts)
       '@typescript-eslint/triple-slash-reference': 'off',
       // Allow ts-expect-error and ts-ignore with descriptions
@@ -100,22 +106,25 @@ const tsConfig = defineConfig([
   },
   {
     name: 'project/javascript-disable-type-check',
-    files: ['**/*.{js,mjs,cjs}'],
+    files: ['**/*.{js,mjs,cjs,jsx}'],
     ...eslintTS.configs.disableTypeChecked,
   },
 ]);
 
 const reactConfig = defineConfig([
   {
+    name: 'project/react-hooks',
+    files: ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
+    extends: [reactHooks.configs.flat.recommended],
+  },
+  {
     name: 'project/react',
     files: ['**/*.{jsx,tsx}'],
-    extends: [reactHooks.configs.flat.recommended],
     plugins: {
       react,
     },
     rules: {
       ...react.configs.recommended.rules,
-
       // Customizations for modern React/Next.js
       'react/react-in-jsx-scope': 'off', // Not needed in Next.js
       'react/prop-types': 'off', // Use TypeScript instead
@@ -132,18 +141,22 @@ const reactConfig = defineConfig([
 
 const nextConfig = defineConfig([
   {
+    name: 'project/import',
+    files: ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
+    plugins: { import: importPlugin },
+    rules: { 'import/no-anonymous-default-export': 'warn' },
+  },
+  {
     name: 'project/next',
     files: ['**/*.{jsx,tsx}'],
     plugins: {
       '@next/next': next,
       'jsx-a11y': jsxA11yPlugin,
-      import: importPlugin,
     },
     rules: {
       ...next.configs['core-web-vitals'].rules,
       ...jsxA11yPlugin.flatConfigs.recommended.rules,
       'jsx-a11y/alt-text': ['warn', { elements: ['img'], img: ['Image'] }],
-      'import/no-anonymous-default-export': 'warn',
     },
   },
 ]);
