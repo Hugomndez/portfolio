@@ -5,14 +5,14 @@ import { getImageProps, type ImageProps } from 'next/image';
 import styles from './profile-image.module.css';
 
 const ProfileImage = () => {
-  const common: Omit<ImageProps, 'src'> = {
+  const common = {
     className: styles.img,
     alt: 'Hugo Méndez - Full-Stack Developer Portfolio Picture',
     quality: 90,
     loading: 'eager',
     fetchPriority: 'high',
     placeholder: 'blur',
-  };
+  } as const satisfies Omit<ImageProps, 'src'>;
 
   const {
     props: { srcSet: desktop },
@@ -29,12 +29,11 @@ const ProfileImage = () => {
   });
 
   const {
-    props: { srcSet: mobile, ...rest },
+    props: { srcSet: mobile, alt, ...rest },
   } = getImageProps({
     ...common,
     width: 174,
-    height: 383,
-    overrideSrc: 'hugo-mendez-fullstack-developer-portafolio-profile-photo-small-low-res.webp',
+    height: 314,
     src: profileMobile,
   });
 
@@ -54,7 +53,10 @@ const ProfileImage = () => {
         srcSet={mobile}
       />
 
-      <img {...rest} />
+      <img
+        {...rest}
+        alt={alt}
+      />
     </picture>
   );
 };
