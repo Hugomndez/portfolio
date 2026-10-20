@@ -1,5 +1,4 @@
 import css from '@eslint/css';
-import eslintJS from '@eslint/js';
 import next from '@next/eslint-plugin-next';
 import prettier from 'eslint-config-prettier/flat';
 import importPlugin from 'eslint-plugin-import';
@@ -36,10 +35,14 @@ const jsConfig = defineConfig([
   {
     name: 'project/javascript',
     files: ['**/*.{js,mjs,cjs,jsx}'],
-    extends: [eslintJS.configs.recommended],
     rules: {
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
-      'preserve-caught-error': ['warn'],
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: '*',
+          message: 'JavaScript files are not allowed in this repo — use TypeScript.',
+        },
+      ],
     },
   },
 ]);
@@ -61,6 +64,8 @@ const tsConfig = defineConfig([
       globals: { ...globals.browser, ...globals.node },
     },
     rules: {
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      '@/preserve-caught-error': 'warn',
       // Soften any-leakage detection — untyped API payloads (CMS, fetch) make these noisy
       '@typescript-eslint/no-unsafe-assignment': 'warn',
       '@typescript-eslint/no-unsafe-call': 'warn',
@@ -107,14 +112,14 @@ const tsConfig = defineConfig([
   {
     name: 'project/javascript-disable-type-check',
     files: ['**/*.{js,mjs,cjs,jsx}'],
-    ...eslintTS.configs.disableTypeChecked,
+    extends: [eslintTS.configs.disableTypeChecked],
   },
 ]);
 
 const reactConfig = defineConfig([
   {
     name: 'project/react-hooks',
-    files: ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
+    files: ['**/*.{ts,mts,cts,tsx}'],
     extends: [reactHooks.configs.flat.recommended],
   },
   {
@@ -142,7 +147,7 @@ const reactConfig = defineConfig([
 const nextConfig = defineConfig([
   {
     name: 'project/import',
-    files: ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
+    files: ['**/*.{ts,mts,cts,tsx}'],
     plugins: { import: importPlugin },
     rules: { 'import/no-anonymous-default-export': 'warn' },
   },
