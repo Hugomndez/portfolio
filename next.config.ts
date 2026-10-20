@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
     turbopackRustReactCompiler: true,
     turbopackGc: true,
     turbopackLazyDynamicImports: true,
-    turbopackPluginRuntimeStrategy: 'workerThreads',
+    turbopackPluginRuntimeStrategy: 'forceWorkerThreads',
   },
 };
 
