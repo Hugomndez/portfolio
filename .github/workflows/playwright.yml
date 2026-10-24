@@ -19,19 +19,14 @@ jobs:
           name: 'GitHub Action - portfolio: e2e tests'
 
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v6
+      - name: Install pnpm | node.js
+        uses: pnpm/setup@v3
         with:
-          node-version: lts/*
-          cache: pnpm
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+          cache: true
+          save-cache: ${{ github.ref == 'refs/heads/main' }}
+          require-lockfile: true
 
       - name: Install Playwright Browsers
         run: |
