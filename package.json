@@ -18,7 +18,12 @@
   "version": "0.0.2",
   "engines": {
     "node": "24.x",
-    "pnpm": "12.x"
+    "pnpm": "12.x",
+    "runtime": {
+      "name": "node",
+      "version": "24.x",
+      "onFail": "download"
+    }
   },
   "devEngines": {
     "runtime": {
