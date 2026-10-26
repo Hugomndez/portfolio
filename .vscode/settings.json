@@ -15,6 +15,15 @@
   // 🧑‍💻 LANGUAGES — TypeScript & ESLint
   // ═══════════════════════════════════════════
   //"js/ts.tsdk.path": "node_modules/typescript/lib", // workspace TS SDK (activate via "TypeScript: Select TypeScript Version")
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+    "github-actions-workflow"
+  ],
   "eslint.workingDirectories": [{ "mode": "auto" }],
 
   // ═══════════════════════════════════════════

@@ -3,7 +3,7 @@ name: End to End Tests
 on:
   repository_dispatch:
     types:
-      - 'vercel.deployment.ready'
+      - vercel.deployment.ready
 
 run-name: E2E Tests on ${{ github.event.client_payload.project.name }} deployment (${{ github.event.client_payload.environment }})
 

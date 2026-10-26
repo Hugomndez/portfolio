@@ -5,6 +5,7 @@ import importPlugin from 'eslint-plugin-import';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
+import eslintYml from 'eslint-plugin-yml';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import { createRequire } from 'node:module';
@@ -183,6 +184,21 @@ const cssConfig = defineConfig([
   },
 ]);
 
+const ymlConfig = defineConfig([
+  ...eslintYml.configs.standard,
+  {
+    name: 'project/yml',
+    files: ['**/*.yml', '**/*.yaml'],
+    plugins: {
+      yml: eslintYml,
+    },
+    language: 'yml/yaml',
+    rules: {
+      'yml/quotes': ['warn', { prefer: 'single', avoidEscape: true }],
+    },
+  },
+]);
+
 const eslintConfig = defineConfig([
   ...ignoreConfig,
   ...jsConfig,
@@ -190,6 +206,7 @@ const eslintConfig = defineConfig([
   ...reactConfig,
   ...nextConfig,
   ...cssConfig,
+  ...ymlConfig,
   prettier,
 ]);
 
