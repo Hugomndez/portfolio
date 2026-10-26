@@ -7,9 +7,6 @@ autoDedupe: true
 dedupePeers: true
 resolvePeersFromWorkspaceRoot: true
 
-lockfile:
-  includeResolutionSettings: true
-
 trustPolicy: no-downgrade
 trustPolicyExclude:
   - semver@6.3.1
