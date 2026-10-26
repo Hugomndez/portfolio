@@ -91,7 +91,8 @@
     "next-devtools-mcp": "0.4.0",
     "prettier": "3.9.10",
     "schema-dts": "2.1.0",
-    "typescript": "6.0.3",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
     "typescript-eslint": "8.71.1"
   },
   "browserslist": [
