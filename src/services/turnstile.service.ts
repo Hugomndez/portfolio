@@ -40,10 +40,10 @@ export async function validateTurnstileToken(
   } catch (err) {
     if (err instanceof Error && err.name === 'AbortError') {
       console.error('Turnstile verification timed out');
-      throw new Error('Captcha verification timed out');
+      throw new Error('Captcha verification timed out', { cause: err });
     }
     console.error('Turnstile verification error', err);
-    throw new Error('Captcha verification failed');
+    throw new Error('Captcha verification failed', { cause: err });
   } finally {
     clearTimeout(timeout);
   }

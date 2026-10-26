@@ -69,12 +69,12 @@ const fetchContentfulData = async <T>(
     if (err instanceof Error) {
       console.error('Contentful fetch error', {
         operation,
-        cause: String(err instanceof Error ? err.message : err),
+        cause: err,
       });
-      throw new Error('Contentful request failed: ' + err.message);
+      throw new Error('Contentful request failed: ', { cause: err });
     }
 
-    throw new Error('Contentful request failed with unknown error');
+    throw new Error('Contentful request failed with unknown error', { cause: err });
   }
 };
 

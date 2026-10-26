@@ -75,10 +75,10 @@ export async function sendEmail(name: string, email: string, message: string): P
   } catch (err) {
     if (err instanceof Error && err.name === 'AbortError') {
       console.error('sendEmail request timed out');
-      throw new Error('Email service timed out');
+      throw new Error('Email service timed out', { cause: err });
     }
-    console.error('sendEmail error', err);
-    throw new Error('Failed to send email via Microsoft Graph API');
+    console.error('sendEmail error');
+    throw new Error('Failed to send email via Microsoft Graph API', { cause: err });
   } finally {
     clearTimeout(timeout);
   }
