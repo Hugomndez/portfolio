@@ -13,8 +13,6 @@ trustPolicyExclude:
 
 update:
   githubActions: true
-  ignoreDeps:
-    - typescript # Ignore updates for TypeScript until v7 supports JS API
 
 overrides:
   '@types/react': 19.3.0
