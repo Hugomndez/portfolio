@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
     turbopackGc: true,
     turbopackLazyDynamicImports: true,
     turbopackPluginRuntimeStrategy: 'forceWorkerThreads',
+    useTypeScriptCli: true,
   },
 };
 
