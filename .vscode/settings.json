@@ -2,29 +2,33 @@
   // ═══════════════════════════════════════════
   // ✍️  EDITOR — core editing behavior
   // ═══════════════════════════════════════════
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 100,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
-  },
 
   // ═══════════════════════════════════════════
-  // 🧑‍💻 LANGUAGES — TypeScript & ESLint
+  // 🧑‍💻 LANGUAGES — TypeScript
   // ═══════════════════════════════════════════
   //"js/ts.tsdk.path": "node_modules/typescript/lib", // workspace TS SDK (activate via "TypeScript: Select TypeScript Version")
 
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "yaml",
-    "github-actions-workflow"
-  ],
-  "eslint.workingDirectories": [{ "mode": "auto" }],
+  // "eslint.workingDirectories": [{ "mode": "auto" }], find oxc similar setting if needed
+
+  // ═══════════════════════════════════════════
+  // 🧑‍💻 LANGUAGES — OXC
+  // ═══════════════════════════════════════════
+
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSaveMode": "file", // tell oxfmt to format the whole file, not only the modified lines
+  "editor.formatOnSave": false, // disable default behavior
+  "editor.codeActionsOnSave": {
+    "source.format.oxc": "always", // run formatter first
+    "source.fixAll.oxc": "always", // run lint fixes after
+    "source.organizeImports": "explicit"
+  },
+  "oxc.typeAware": true,
+  // Or enable it for specific file types:
+  // "[javascript]": {
+  //   "editor.defaultFormatter": "oxc.oxc-vscode"
+  // },
 
   // ═══════════════════════════════════════════
   // 📦 PROJECT TOOLING

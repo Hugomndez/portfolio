@@ -1,42 +1,21 @@
 {
   "name": "portfolio",
+  "version": "0.0.2",
+  "private": true,
   "description": "My portfolio site build with NextJS",
+  "homepage": "https://hugomendez.dev",
+  "bugs": {
+    "url": "https://github.com/Hugomndez/portfolio/issues"
+  },
   "author": {
     "name": "Hugo Méndez",
     "url": "https://hugomendez.dev"
   },
-  "homepage": "https://hugomendez.dev",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hugomndez/portfolio"
   },
-  "bugs": {
-    "url": "https://github.com/Hugomndez/portfolio/issues"
-  },
-  "private": true,
   "type": "module",
-  "version": "0.0.2",
-  "engines": {
-    "node": "24.x",
-    "pnpm": "12.x",
-    "runtime": {
-      "name": "node",
-      "version": "24.x",
-      "onFail": "download"
-    }
-  },
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": "24.22.1",
-      "onFail": "download"
-    },
-    "packageManager": {
-      "name": "pnpm",
-      "version": "12.15.0",
-      "onFail": "download"
-    }
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -45,10 +24,11 @@
     "test:e2e": "playwright test",
     "test:e2e:report": "playwright show-report tests/reports",
     "test:clean": "rm -rf tests/artifacts tests/reports",
-    "lint": "eslint --cache --cache-location .next/cache/eslint/",
-    "lint:fix": "eslint --fix",
-    "lint:inspect": "eslint --inspect-config",
-    "prettier": "prettier --write .",
+    "lint": "oxlint ",
+    "lint:fix": "oxlint --fix",
+    "lint:rules": "oxlint --rules",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
     "postinstall": "husky"
   },
   "dependencies": {
@@ -67,38 +47,48 @@
     "@commitlint/cli": "21.2.3",
     "@commitlint/config-conventional": "21.2.3",
     "@commitlint/types": "21.2.3",
-    "@eslint/css": "2.0.0",
-    "@eslint/js": "10.0.1",
-    "@next/eslint-plugin-next": "16.4.0",
     "@playwright/test": "1.64.0",
-    "@types/eslint-plugin-jsx-a11y": "6.10.1",
     "@types/node": "26.6.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "@typescript/native": "npm:typescript@7.0.2",
     "@unpic/pixels": "1.3.0",
     "@unpic/placeholder": "0.1.2",
     "blurhash": "2.0.5",
     "browserslist-config-baseline": "0.5.0",
     "dotenv": "18.0.7",
-    "eslint": "10.12.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-yml": "3.9.0",
-    "globals": "17.13.0",
     "husky": "9.1.7",
     "next-devtools-mcp": "0.4.0",
-    "prettier": "3.9.10",
+    "oxfmt": "0.74.0",
+    "oxlint": "1.89.0",
+    "oxlint-tsgolint": "7.0.2005",
     "schema-dts": "2.1.0",
-    "typescript": "npm:@typescript/typescript6@6.0.2",
-    "typescript-eslint": "8.71.1"
+    "typescript": "7.0.2"
   },
   "browserslist": [
     "extends browserslist-config-baseline"
   ],
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.15.0",
+      "onFail": "download"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "24.22.1",
+      "onFail": "download"
+    }
+  },
+  "engines": {
+    "node": "24.x",
+    "pnpm": "12.x",
+    "runtime": {
+      "name": "node",
+      "version": "24.x",
+      "onFail": "download"
+    }
+  },
   "browserslist-config-baseline": {
     "baselineYear": 2024
   }

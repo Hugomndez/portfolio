@@ -1,17 +1,18 @@
 import styles from './Skills.module.css';
 
 type Experience = {
+  id: number;
   skill: string;
   years: number;
 };
 
 const data: Experience[] = [
-  { skill: 'SEO', years: 10 },
-  { skill: 'JAMstack', years: 3 },
-  { skill: 'Performance', years: 3 },
-  { skill: 'TypeScript', years: 2 },
-  { skill: 'React', years: 2 },
-  { skill: 'NextJS', years: 2 },
+  { id: 1, skill: 'SEO', years: 10 },
+  { id: 2, skill: 'JAMstack', years: 3 },
+  { id: 3, skill: 'Performance', years: 3 },
+  { id: 4, skill: 'TypeScript', years: 2 },
+  { id: 5, skill: 'React', years: 2 },
+  { id: 6, skill: 'NextJS', years: 2 },
 ];
 
 const Skills = () => {
@@ -20,9 +21,9 @@ const Skills = () => {
       <section className={styles.section}>
         <hr className={styles.hrTop} />
         <div className={styles.container}>
-          {data.map((item, idx) => (
+          {data.map((item) => (
             <div
-              key={idx}
+              key={item.id}
               className={styles.card}>
               <p className={styles.skill}>{item.skill}</p>
               <p className={styles.years}>{item.years} Years Experience</p>

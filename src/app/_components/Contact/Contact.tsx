@@ -16,6 +16,8 @@ import TextAreaField from './TextAreaField';
 import type { ValidationSchema } from './validation.schema';
 import { validationSchema } from './validation.schema';
 
+const turnstileOptions = { theme: 'dark', action: 'submit-form', size: 'invisible' } as const;
+
 export default function Contact() {
   const { formState, control, handleSubmit, reset, setError, clearErrors, setValue } =
     useForm<ValidationSchema>({
@@ -56,6 +58,23 @@ export default function Contact() {
     }
   }
 
+  function onTurnstileSuccess(token: string) {
+    setValue('token', token, {
+      shouldValidate: true,
+    });
+  }
+
+  function onTurnstileExpire() {
+    ref.current?.reset();
+  }
+
+  function onTurnstileError() {
+    setError('root', {
+      type: 'token',
+      message: 'Captcha verification failed. Please try again.',
+    });
+  }
+
   return (
     <section
       className={styles.section}
@@ -74,21 +93,10 @@ export default function Contact() {
         <Turnstile
           ref={ref}
           siteKey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-          options={{ theme: 'dark', action: 'submit-form', size: 'invisible' }}
-          onSuccess={(token) => {
-            setValue('token', token, {
-              shouldValidate: true,
-            });
-          }}
-          onExpire={() => {
-            ref.current?.reset();
-          }}
-          onError={() => {
-            setError('root', {
-              type: 'token',
-              message: 'Captcha verification failed. Please try again.',
-            });
-          }}
+          options={turnstileOptions}
+          onSuccess={onTurnstileSuccess}
+          onExpire={onTurnstileExpire}
+          onError={onTurnstileError}
         />
         <InputField
           control={control}
