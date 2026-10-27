@@ -66,6 +66,8 @@ const graph: Graph = {
   '@graph': [websiteSchema, personSchema],
 };
 
+const serializedGraph = { __html: JSON.stringify(graph) };
+
 export const viewport: Viewport = {
   themeColor: '#151515',
   colorScheme: 'dark',
@@ -127,9 +129,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
           id='schema-json-ld'
           type='application/ld+json'
           strategy='beforeInteractive'
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(graph),
-          }}
+          dangerouslySetInnerHTML={serializedGraph}
         />
         <Script
           id='umami-analytics'

@@ -27,12 +27,10 @@ export default defineConfig({
     baseURL: baseURL,
 
     extraHTTPHeaders: {
-      ...(process.env.VERCEL_AUTOMATION_BYPASS_SECRET
-        ? {
-            'x-vercel-protection-bypass': process.env.VERCEL_AUTOMATION_BYPASS_SECRET,
-            //'x-vercel-set-bypass-cookie': 'samesitenone' // Set SameSite to None if deploying through an iframe or other indirect way.
-          }
-        : {}),
+      ...(process.env.VERCEL_AUTOMATION_BYPASS_SECRET && {
+        'x-vercel-protection-bypass': process.env.VERCEL_AUTOMATION_BYPASS_SECRET,
+        //'x-vercel-set-bypass-cookie': 'samesitenone' // Set SameSite to None if deploying through an iframe or other indirect way.
+      }),
     },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
