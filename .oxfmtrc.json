@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "trailingComma": "all",
   "tabWidth": 2,
   "printWidth": 100,
@@ -7,5 +8,7 @@
   "jsxSingleQuote": true,
   "bracketSameLine": true,
   "arrowParens": "always",
-  "singleAttributePerLine": true
+  "singleAttributePerLine": true,
+  // "sortPackageJson": false,
+  "ignorePatterns": ["pnpm-lock.yaml", "AGENT.md"]
 }
