@@ -9,6 +9,5 @@
   "bracketSameLine": true,
   "arrowParens": "always",
   "singleAttributePerLine": true,
-  // "sortPackageJson": false,
   "ignorePatterns": ["pnpm-lock.yaml", "AGENT.md"]
 }

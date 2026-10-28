@@ -21,7 +21,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { outputFolder: './tests/reports/', open: 'never' }]],
+  reporter: [['html', { open: 'never', outputFolder: './tests/reports/' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL,
@@ -68,7 +68,7 @@ export default defineConfig({
     ? undefined
     : {
         command: 'pnpm start',
-        url: baseURL,
         reuseExistingServer: !process.env.CI,
+        url: baseURL,
       },
 });

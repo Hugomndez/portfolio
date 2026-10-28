@@ -17,7 +17,7 @@ import TextAreaField from './TextAreaField';
 import type { ValidationSchema } from './validation.schema';
 import { validationSchema } from './validation.schema';
 
-const turnstileOptions = { theme: 'dark', action: 'submit-form', size: 'invisible' } as const;
+const turnstileOptions = {  action: 'submit-form', size: 'invisible', theme: 'dark' } as const;
 
 export default function Contact() {
   const { formState, control, handleSubmit, reset, setError, clearErrors, setValue } =
