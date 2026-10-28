@@ -37,13 +37,13 @@ export async function validateTurnstileToken(
     }
 
     return outcome;
-  } catch (err) {
-    if (err instanceof Error && err.name === 'AbortError') {
+  } catch (error) {
+    if (error instanceof Error && error.name === 'AbortError') {
       console.error('Turnstile verification timed out');
-      throw new Error('Captcha verification timed out', { cause: err });
+      throw new Error('Captcha verification timed out', { cause: error });
     }
-    console.error('Turnstile verification error', err);
-    throw new Error('Captcha verification failed', { cause: err });
+    console.error('Turnstile verification error', error);
+    throw new Error('Captcha verification failed', { cause: error });
   } finally {
     clearTimeout(timeout);
   }

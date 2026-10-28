@@ -4,7 +4,7 @@ test('skills section shows multiple experience cards', async ({ page }) => {
   await page.goto('/');
 
   // Expect at least several entries with "Years Experience"
-  const yearsLoc = page.locator('text=/\\d+ Years Experience/i');
+  const yearsLoc = page.locator(String.raw`text=/\d+ Years Experience/i`);
   const count = await yearsLoc.count();
   expect(count).toBeGreaterThanOrEqual(3);
 

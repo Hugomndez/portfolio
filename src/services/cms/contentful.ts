@@ -6,11 +6,11 @@ import { blurhashToDataUri } from '@unpic/placeholder';
 import { encode } from 'blurhash';
 import { projectsCollectionQuery } from './contentful.queries';
 import type {
-  ContentfulResult,
-  ProjectsCollectionResponse,
-  ProjectWithBlur,
-  Variables,
-  WithErrors,
+    ContentfulResult,
+    ProjectWithBlur,
+    ProjectsCollectionResponse,
+    Variables,
+    WithErrors,
 } from './contentful.types';
 
 const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`;
@@ -29,52 +29,52 @@ const fetchContentfulData = async <T>(
 ): Promise<ContentfulResult<T>> => {
   try {
     const response = await fetch(CONTENTFUL_API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${getAccessToken(variables)}`,
-      },
       body: JSON.stringify({ query, variables }),
+      headers: {
+        Authorization: `Bearer ${getAccessToken(variables)}`,
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
     });
 
     if (!response.ok) {
       const bodyText = await response.text().catch(() => '<unreadable>');
       console.error('Contentful fetch non-2xx', {
+        bodyText,
         operation,
         status: response.status,
         statusText: response.statusText,
-        bodyText,
       });
 
       throw new Error('Failed to fetch from Contentful');
     }
 
-    const data = (await response.json()) as unknown as WithErrors<T>;
+const data = (await response.json()) as unknown as WithErrors<T>;
 
     if (Array.isArray(data.errors) && data.errors.length > 0) {
       const messages = data.errors.map((e) => e.message).filter(Boolean);
       const ext = data.errors[0]?.extensions?.contentful;
       console.warn('Contentful GraphQL errors', {
-        operation,
-        requestId: ext?.requestId,
         code: ext?.code,
         messages,
+        operation,
+        requestId: ext?.requestId,
       });
 
-      throw new Error('Contentful GraphQL errors: ' + messages.join('; '));
+      throw new Error(`Contentful GraphQL errors: ${messages.join('; ')}`);
     }
 
     return data;
-  } catch (err) {
-    if (err instanceof Error) {
+  } catch (error) {
+    if (error instanceof Error) {
       console.error('Contentful fetch error', {
         operation,
-        cause: err,
+        cause: error,
       });
-      throw new Error('Contentful request failed: ', { cause: err });
+      throw new Error('Contentful request failed: ', { cause: error });
     }
 
-    throw new Error('Contentful request failed with unknown error', { cause: err });
+    throw new Error('Contentful request failed with unknown error', { cause: error });
   }
 };
 
@@ -97,7 +97,7 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
     'projectsCollection',
   );
 
-  const items = result.data.projectsCollection.items;
+  const {items} = result.data.projectsCollection;
 
   const projects = await Promise.all(
     items.map(async (item) => {
@@ -105,30 +105,30 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
 
       try {
         blurDataUrl = await getImageBlurData(item.image.url);
-      } catch (e) {
+      } catch (error) {
         console.warn('Blurhash generation failed for image', {
           service: 'contentful',
           operation: 'projectsCollection',
           imageUrl: item.image.url,
-          cause: String(e instanceof Error ? e.message : e),
+          cause: String(error instanceof Error ? error.message : error),
         });
       }
 
       return {
         _id: item._id,
-        title: item.title,
-        techStack: item.techStack,
-        liveSiteUrl: item.liveSiteUrl,
-        sourceCodeUrl: item.sourceCodeUrl,
         image: {
-          url: item.image.url,
           blurDataUrl: blurDataUrl ?? FALLBACK_BLUR_DATA_URL,
-          width: item.image.width,
-          height: item.image.height,
           contentType: item.image.contentType,
           fileName: item.image.fileName,
+          height: item.image.height,
           title: item.image.title,
+          url: item.image.url,
+          width: item.image.width,
         },
+        liveSiteUrl: item.liveSiteUrl,
+        sourceCodeUrl: item.sourceCodeUrl,
+        techStack: item.techStack,
+        title: item.title,
       };
     }),
   );

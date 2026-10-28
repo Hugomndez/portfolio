@@ -1,14 +1,11 @@
-import * as z from 'zod/mini';
+import type { output } from 'zod/mini';
+import { email, maxLength, minLength, object, string, toLowerCase, trim, } from 'zod/mini';
 
-export const validationSchema = z.object({
-  name: z.string().check(z.minLength(1, 'Name is required'), z.maxLength(30, 'Name is too long')),
-  email: z
-    .email('Invalid email address')
-    .check(z.minLength(1, 'Email is required'), z.trim(), z.toLowerCase()),
-  message: z
-    .string()
-    .check(z.minLength(1, 'Message is required'), z.maxLength(500, 'Message is too long')),
-  token: z.string().check(z.minLength(1, 'Token is required')),
+export const validationSchema = object({
+  name: string().check(minLength(1, 'Name is required'), maxLength(30, 'Name is too long')),
+  email: email('Invalid email address').check(minLength(1, 'Email is required'), trim(), toLowerCase()),
+  message: string().check(minLength(1, 'Message is required'), maxLength(500, 'Message is too long')),
+  token: string().check(minLength(1, 'Token is required')),
 });
 
-export type ValidationSchema = z.infer<typeof validationSchema>;
+export type ValidationSchema = output<typeof validationSchema>;

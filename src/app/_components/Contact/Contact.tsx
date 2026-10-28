@@ -3,7 +3,8 @@
 import { env } from '@/utils/env/env.client';
 import { useAutoHide } from '@/utils/hooks/useAutoHide';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
+import type { TurnstileInstance } from '@marsidev/react-turnstile';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { initFormValues } from './constants';
@@ -28,11 +29,11 @@ export default function Contact() {
     });
 
   const ref = useRef<TurnstileInstance | null>(null);
-  const [isSuccessMessageVisible, setSuccessMessageVisible] = useState<boolean>(false);
+  const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState<boolean>(false);
 
   useAutoHide({
     isVisible: isSuccessMessageVisible,
-    onHide: () => setSuccessMessageVisible(false),
+    onHide: () => setIsSuccessMessageVisible(false),
   });
 
   async function onSubmit(data: ValidationSchema) {
@@ -47,7 +48,7 @@ export default function Contact() {
       await contactFormAction(formData);
 
       reset(initFormValues);
-      setSuccessMessageVisible(true);
+      setIsSuccessMessageVisible(true);
       clearErrors('root');
     } catch (error) {
       if (error instanceof Error) {

@@ -7,7 +7,7 @@ import type { ValidationSchema } from './validation.schema';
 
 export default function TextAreaField(props: UseControllerProps<ValidationSchema>) {
   const { field, fieldState } = useController(props);
-  const hasError = !!fieldState.error;
+  const hasError = Boolean(fieldState.error);
   const errorId = `${field.name}-error`;
 
   return (
@@ -21,7 +21,7 @@ export default function TextAreaField(props: UseControllerProps<ValidationSchema
         className={hasError ? styles.invalidTextArea : ''}
         aria-invalid={hasError || undefined}
         aria-describedby={hasError ? errorId : undefined}
-        aria-required={true}
+        aria-required
         aria-label='Message'
       />
       <span

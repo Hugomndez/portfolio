@@ -1,8 +1,9 @@
 import 'server-only';
 
 import { env } from '@/utils/env/env.server';
-import * as msal from '@azure/msal-node';
-const msalClient = new msal.ConfidentialClientApplication({
+import { ConfidentialClientApplication } from '@azure/msal-node';
+
+const msalClient = new ConfidentialClientApplication({
   auth: {
     clientId: env.MS_GRAPH_CLIENT_ID,
     clientSecret: env.MS_GRAPH_CLIENT_SECRET,
@@ -72,13 +73,13 @@ export async function sendEmail(name: string, email: string, message: string): P
       console.error('Microsoft Graph sendMail failed', { status: response.status, bodyText });
       throw new Error('Failed to send email via Microsoft Graph API');
     }
-  } catch (err) {
-    if (err instanceof Error && err.name === 'AbortError') {
+  } catch (error) {
+    if (error instanceof Error && error.name === 'AbortError') {
       console.error('sendEmail request timed out');
-      throw new Error('Email service timed out', { cause: err });
+      throw new Error('Email service timed out', { cause: error });
     }
     console.error('sendEmail error');
-    throw new Error('Failed to send email via Microsoft Graph API', { cause: err });
+    throw new Error('Failed to send email via Microsoft Graph API', { cause: error });
   } finally {
     clearTimeout(timeout);
   }
