@@ -9,26 +9,51 @@
   // 🧑‍💻 LANGUAGES — TypeScript
   // ═══════════════════════════════════════════
   //"js/ts.tsdk.path": "node_modules/typescript/lib", // workspace TS SDK (activate via "TypeScript: Select TypeScript Version")
-
   // "eslint.workingDirectories": [{ "mode": "auto" }], find oxc similar setting if needed
+  "js/ts.experimental.useTsgo": true,
 
   // ═══════════════════════════════════════════
   // 🧑‍💻 LANGUAGES — OXC
   // ═══════════════════════════════════════════
 
   "editor.defaultFormatter": "oxc.oxc-vscode",
-  "editor.formatOnSaveMode": "file", // tell oxfmt to format the whole file, not only the modified lines
   "editor.formatOnSave": false, // disable default behavior
+  "editor.formatOnSaveMode": "file", // tell oxfmt to format the whole file, not only the modified lines
   "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
     "source.format.oxc": "always", // run formatter first
     "source.fixAll.oxc": "always", // run lint fixes after
-    "source.organizeImports": "explicit"
   },
   "oxc.typeAware": true,
-  // Or enable it for specific file types:
-  // "[javascript]": {
-  //   "editor.defaultFormatter": "oxc.oxc-vscode"
-  // },
+
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+
 
   // ═══════════════════════════════════════════
   // 📦 PROJECT TOOLING
@@ -69,5 +94,5 @@
       "allowedModels": ["copilot/gpt-5-mini", "copilot/gpt-5"]
     }
   },
-  "js/ts.experimental.useTsgo": true
+
 }
