@@ -1,8 +1,14 @@
+type ImageWithBlur = {
+  image: {
+    blurDataUrl: `data:image/bmp;base64,${string}`;
+  };
+};
+
 export type ContentfulGraphQLErrorExtensions = {
   contentful: {
-    code: string; // unique error identifier.
-    requestId: string; // unique request identifier.
-    // details: optional object with details about a specific kind of error.
+    code: string; // Unique error identifier.
+    requestId: string; // Unique request identifier.
+    // Details: optional object with details about a specific kind of error.
   };
 };
 
@@ -34,12 +40,6 @@ export type Project = {
   };
 };
 
-type ImageWithBlur = {
-  image: {
-    blurDataUrl: `data:image/bmp;base64,${string}`;
-  };
-};
-
 export type ProjectWithBlur = Project & ImageWithBlur;
 
 export type ProjectsCollectionResponse = {
@@ -51,7 +51,7 @@ export type ProjectsCollectionResponse = {
 };
 
 // Use this type if you want to handle errors.
-// type ContentfulResult<T> =
+// Type ContentfulResult<T> =
 //   | { ok: true; data: T }
 //   | { ok: false };
 export type ContentfulResult<T> = T;

@@ -1,32 +1,33 @@
 import 'server-only';
 
-import { env } from '@/utils/env/env.server';
+import env from '@/utils/env/env.server';
 import { getPixels } from '@unpic/pixels';
 import { blurhashToDataUri } from '@unpic/placeholder';
 import { encode } from 'blurhash';
-import { projectsCollectionQuery } from './contentful.queries';
+import projectsCollectionQuery from './contentful.queries';
 import type {
-    ContentfulResult,
-    ProjectWithBlur,
-    ProjectsCollectionResponse,
-    Variables,
-    WithErrors,
+  ContentfulResult,
+  ProjectWithBlur,
+  ProjectsCollectionResponse,
+  Variables,
+  WithErrors,
 } from './contentful.types';
 
 const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`;
 
-const getAccessToken = (variables: Partial<Variables>) => {
+function getAccessToken(variables: Partial<Variables>) {
   if ('preview' in variables && variables.preview) {
     return env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
   }
-  return env.CONTENTFUL_DELIVERY_ACCESS_TOKEN;
-};
 
-const fetchContentfulData = async <T>(
+  return env.CONTENTFUL_DELIVERY_ACCESS_TOKEN;
+}
+
+async function fetchContentfulData<T>(
   query: string,
   variables: Partial<Variables> = {},
   operation = 'unknown',
-): Promise<ContentfulResult<T>> => {
+): Promise<ContentfulResult<T>> {
   try {
     const response = await fetch(CONTENTFUL_API_URL, {
       body: JSON.stringify({ query, variables }),
@@ -49,10 +50,10 @@ const fetchContentfulData = async <T>(
       throw new Error('Failed to fetch from Contentful');
     }
 
-const data = (await response.json()) as unknown as WithErrors<T>;
+    const data = (await response.json()) as unknown as WithErrors<T>;
 
     if (Array.isArray(data.errors) && data.errors.length > 0) {
-      const messages = data.errors.map((e) => e.message).filter(Boolean);
+      const messages = data.errors.map((error) => error.message).filter(Boolean);
       const ext = data.errors[0]?.extensions?.contentful;
       console.warn('Contentful GraphQL errors', {
         code: ext?.code,
@@ -76,7 +77,7 @@ const data = (await response.json()) as unknown as WithErrors<T>;
 
     throw new Error('Contentful request failed with unknown error', { cause: error });
   }
-};
+}
 
 const FALLBACK_BLUR_DATA_URL =
   'data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAKRYaKhobLiEeMSghMisiMSggLSEcKRcZKRoaLiIeODAmQDssQz4uQDorNy8kLSAbKR4aMikhQTsuTUg3UUw6TEY2QDksMScfKiAaNCsjRj4yU0s+V09BUUo8RDwwMyohKx8aMykiQzkxT0Y8U0lATkQ7QjgwMicgLBwaMSMfOy8qQzgyRjw1QzgxOi4oLyEdLBkaLhwbMCIeMyghNCoiMyggMCIdLBkZLRcaLBgZKxwXKh8VKiEUKyAUKxsWKhYX';
@@ -90,14 +91,14 @@ async function getImageBlurData(imageUrl: string) {
   return base64ImageUri;
 }
 
-export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>> => {
+async function GetProjects(): Promise<ContentfulResult<ProjectWithBlur[]>> {
   const result = await fetchContentfulData<ProjectsCollectionResponse>(
     projectsCollectionQuery,
     {},
     'projectsCollection',
   );
 
-  const {items} = result.data.projectsCollection;
+  const { items } = result.data.projectsCollection;
 
   const projects = await Promise.all(
     items.map(async (item) => {
@@ -116,6 +117,10 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
 
       return {
         _id: item._id,
+        title: item.title,
+        liveSiteUrl: item.liveSiteUrl,
+        sourceCodeUrl: item.sourceCodeUrl,
+        techStack: item.techStack,
         image: {
           blurDataUrl: blurDataUrl ?? FALLBACK_BLUR_DATA_URL,
           contentType: item.image.contentType,
@@ -125,13 +130,11 @@ export const getProjects = async (): Promise<ContentfulResult<ProjectWithBlur[]>
           url: item.image.url,
           width: item.image.width,
         },
-        liveSiteUrl: item.liveSiteUrl,
-        sourceCodeUrl: item.sourceCodeUrl,
-        techStack: item.techStack,
-        title: item.title,
       };
     }),
   );
 
   return projects;
-};
+}
+
+export default GetProjects;

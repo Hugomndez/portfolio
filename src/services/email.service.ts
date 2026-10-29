@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { env } from '@/utils/env/env.server';
+import env from '@/utils/env/env.server';
 import { ConfidentialClientApplication } from '@azure/msal-node';
 
 const msalClient = new ConfidentialClientApplication({
@@ -23,7 +23,11 @@ async function getAccessToken(): Promise<string> {
   return response.accessToken;
 }
 
-export async function sendEmail(name: string, email: string, message: string): Promise<void> {
+export default async function sendEmail(
+  name: string,
+  email: string,
+  message: string,
+): Promise<void> {
   const accessToken = await getAccessToken();
   const emailAdminAddress = env.MS_GRAPH_SENDER_EMAIL;
 

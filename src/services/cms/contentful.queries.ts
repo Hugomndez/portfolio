@@ -1,4 +1,4 @@
-export const projectsCollectionQuery = `
+ const projectsCollectionQuery = `
 {
   projectsCollection(order: displayOrder_ASC) {
     items {
@@ -19,3 +19,5 @@ export const projectsCollectionQuery = `
   }
 }
 `;
+
+export default projectsCollectionQuery;

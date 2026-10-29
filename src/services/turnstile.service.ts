@@ -1,12 +1,12 @@
 import 'server-only';
 
-import { env } from '@/utils/env/env.server';
+import env from '@/utils/env/env.server';
 import type { TurnstileServerValidationResponse } from '@marsidev/react-turnstile';
 
 const verifyEndpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const TURNSTILE_TIMEOUT_MS = 5000;
 
-export async function validateTurnstileToken(
+export default async function validateTurnstileToken(
   token: string,
 ): Promise<TurnstileServerValidationResponse> {
   const formData = new FormData();
