@@ -1,4 +1,4 @@
-import { env } from '@/utils/env/env.server';
+import env from '@/utils/env/env.server';
 import { revalidateTag } from 'next/cache';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';

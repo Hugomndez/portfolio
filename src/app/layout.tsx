@@ -1,5 +1,5 @@
 import { Container } from '@/components/Container';
-import { spaceGrotesk } from '@/fonts';
+import spaceGrotesk from '@/fonts';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
@@ -68,6 +68,34 @@ const graph: Graph = {
 
 const serializedGraph = { __html: JSON.stringify(graph) };
 
+const RootLayout = ({ children }: { children: ReactNode }) => (
+  <html
+    lang='en'
+    dir='ltr'
+    data-scroll-behavior='smooth'
+    className={spaceGrotesk.className}>
+    <body>
+      <Container>{children}</Container>
+      <Script
+        id='schema-json-ld'
+        type='application/ld+json'
+        strategy='beforeInteractive'
+        dangerouslySetInnerHTML={serializedGraph}
+      />
+      <Script
+        id='umami-analytics'
+        strategy='afterInteractive'
+        src='https://analytics.umami.is/script.js'
+        data-website-id='8110a8a7-c042-4ada-8306-ed6b7327a5b7'
+        data-domains='hugomendez.dev'
+      />
+      <SpeedInsights />
+    </body>
+  </html>
+);
+
+export default RootLayout;
+
 export const viewport: Viewport = {
   themeColor: '#151515',
   colorScheme: 'dark',
@@ -115,33 +143,3 @@ export const metadata: Metadata = {
     },
   },
 };
-
-const RootLayout = ({ children }: { children: ReactNode }) => {
-  return (
-    <html
-      lang='en'
-      dir='ltr'
-      data-scroll-behavior='smooth'
-      className={spaceGrotesk.className}>
-      <body>
-        <Container>{children}</Container>
-        <Script
-          id='schema-json-ld'
-          type='application/ld+json'
-          strategy='beforeInteractive'
-          dangerouslySetInnerHTML={serializedGraph}
-        />
-        <Script
-          id='umami-analytics'
-          strategy='afterInteractive'
-          src='https://analytics.umami.is/script.js'
-          data-website-id='8110a8a7-c042-4ada-8306-ed6b7327a5b7'
-          data-domains='hugomendez.dev'
-        />
-        <SpeedInsights />
-      </body>
-    </html>
-  );
-};
-
-export default RootLayout;
