@@ -59,14 +59,10 @@
     // End of rules that are too strict //
 
     // Custom rules for code style and conventions //
-    "unicorn/filename-case": "error",
     "capitalized-comments": ["error", "always"],
     "id-length": ["error", { "min": 2, "checkGeneric": false }],
     "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
-    "arrow-body-style": "error",
     "one-var": ["error", "never"],
-    "import/exports-last": "error",
-    "import/no-anonymous-default-export": "error",
     "react/jsx-max-depth": ["error", { "max": 4 }],
     "react/jsx-props-no-spreading": ["error", { "html": "ignore" }],
     "react/function-component-definition": [
@@ -116,12 +112,12 @@
     // End of custom rules for YAML files //
   },
   "overrides": [
+    // Only rules that differ from oxlint's built-in defaults are kept in overrides.
+    // correctness/perf/style categories already enable the rest at "error".
     {
       "files": ["**/*.{ts,mts,cts,tsx}"],
       "rules": {
         "no-array-constructor": "error",
-        "no-implied-eval": "off",
-        "no-unused-expressions": "error",
         "no-unused-vars": [
           "error",
           {
@@ -132,10 +128,6 @@
             "ignoreRestSiblings": true
           }
         ],
-        "no-throw-literal": "off",
-        "prefer-promise-reject-errors": "off",
-        "require-await": "off",
-        "typescript/await-thenable": "error",
         "typescript/ban-ts-comment": [
           "error",
           {
@@ -146,17 +138,8 @@
             "minimumDescriptionLength": 3
           }
         ],
-        "typescript/no-array-delete": "error",
-        "typescript/no-base-to-string": "error",
-        "typescript/no-duplicate-enum-values": "error",
-        "typescript/no-duplicate-type-constituents": "error",
         "typescript/no-empty-object-type": "error",
         "typescript/no-explicit-any": "error",
-        "typescript/no-extra-non-null-assertion": "error",
-        "typescript/no-floating-promises": "error",
-        "typescript/no-for-in-array": "error",
-        "typescript/no-implied-eval": "error",
-        "typescript/no-misused-new": "error",
         "typescript/no-misused-promises": [
           "error",
           {
@@ -166,31 +149,21 @@
           }
         ],
         "typescript/no-namespace": "error",
-        "typescript/no-non-null-asserted-optional-chain": "error",
-        "typescript/no-redundant-type-constituents": "error",
         "typescript/no-require-imports": "error",
-        "typescript/no-this-alias": "error",
         "typescript/no-unnecessary-type-assertion": "error",
         "typescript/no-unnecessary-type-constraint": "error",
         "typescript/no-unsafe-argument": "warn",
         "typescript/no-unsafe-assignment": "warn",
         "typescript/no-unsafe-call": "warn",
-        "typescript/no-unsafe-declaration-merging": "error",
         "typescript/no-unsafe-enum-comparison": "error",
         "typescript/no-unsafe-function-type": "error",
         "typescript/no-unsafe-member-access": "warn",
         "typescript/no-unsafe-return": "warn",
-        "typescript/no-unsafe-unary-minus": "error",
-        "typescript/no-wrapper-object-types": "error",
         "typescript/only-throw-error": "error",
-        "typescript/prefer-as-const": "error",
-        "typescript/prefer-namespace-keyword": "error",
         "typescript/prefer-promise-reject-errors": "error",
         "typescript/require-await": "error",
         "typescript/restrict-plus-operands": "error",
-        "typescript/restrict-template-expressions": "error",
         "typescript/triple-slash-reference": "off",
-        "typescript/unbound-method": "error",
         "no-console": [
           "warn",
           {
@@ -211,22 +184,9 @@
       "files": ["**/*.{jsx,tsx}"],
       "rules": {
         "react/display-name": "error",
-        "react/jsx-key": "error",
         "react/jsx-no-comment-textnodes": "error",
-        "react/jsx-no-duplicate-props": "error",
-        "react/jsx-no-target-blank": "off",
-        "react/jsx-no-undef": "error",
-        "react/no-children-prop": "error",
-        "react/no-danger-with-children": "error",
-        "react/no-direct-mutation-state": "error",
-        "react/no-find-dom-node": "error",
-        "react/no-is-mounted": "error",
-        "react/no-render-return-value": "error",
-        "react/no-string-refs": "error",
         "react/no-unescaped-entities": "error",
-        "react/no-unknown-property": "off",
         "react/no-unsafe": "off",
-        "react/react-in-jsx-scope": "off",
         "react/require-render-return": "error"
       }
     },
@@ -235,17 +195,7 @@
       "rules": {
         "react/rules-of-hooks": "error",
         "react/exhaustive-deps": "warn",
-        "react/static-components": "error",
-        "react/use-memo": "error",
-        "react/preserve-manual-memoization": "error",
         "react/incompatible-library": "warn",
-        "react/immutability": "error",
-        "react/globals": "error",
-        "react/refs": "error",
-        "react/set-state-in-effect": "error",
-        "react/error-boundaries": "error",
-        "react/purity": "error",
-        "react/set-state-in-render": "error",
         "react/unsupported-syntax": "warn"
       }
     },
@@ -259,20 +209,12 @@
         "nextjs/no-before-interactive-script-outside-document": "warn",
         "nextjs/no-css-tags": "warn",
         "nextjs/no-head-element": "warn",
-        "nextjs/no-html-link-for-pages": "error",
         "nextjs/no-img-element": "warn",
         "nextjs/no-page-custom-font": "warn",
         "nextjs/no-styled-jsx-in-document": "warn",
-        "nextjs/no-sync-scripts": "error",
         "nextjs/no-title-in-document-head": "warn",
         "nextjs/no-typos": "warn",
-        "nextjs/no-unwanted-polyfillio": "warn",
-        "nextjs/inline-script-id": "error",
-        "nextjs/no-assign-module-variable": "error",
-        "nextjs/no-document-import-in-page": "error",
-        "nextjs/no-duplicate-head": "error",
-        "nextjs/no-head-import-in-document": "error",
-        "nextjs/no-script-component-in-head": "error"
+        "nextjs/no-unwanted-polyfillio": "warn"
       }
     },
     {
@@ -285,16 +227,6 @@
             "img": ["Image"]
           }
         ],
-        "jsx-a11y/anchor-ambiguous-text": "off",
-        "jsx-a11y/anchor-has-content": "error",
-        "jsx-a11y/anchor-is-valid": "error",
-        "jsx-a11y/aria-activedescendant-has-tabindex": "error",
-        "jsx-a11y/aria-props": "error",
-        "jsx-a11y/aria-proptypes": "error",
-        "jsx-a11y/aria-role": "error",
-        "jsx-a11y/aria-unsupported-elements": "error",
-        "jsx-a11y/autocomplete-valid": "error",
-        "jsx-a11y/click-events-have-key-events": "error",
         "jsx-a11y/control-has-associated-label": [
           2,
           {
@@ -315,10 +247,6 @@
             "depth": 3
           }
         ],
-        "jsx-a11y/heading-has-content": "error",
-        "jsx-a11y/html-has-lang": "error",
-        "jsx-a11y/iframe-has-title": "error",
-        "jsx-a11y/img-redundant-alt": "error",
         "jsx-a11y/interactive-supports-focus": [
           "error",
           {
@@ -333,12 +261,6 @@
             ]
           }
         ],
-        "jsx-a11y/label-has-associated-control": "error",
-        "jsx-a11y/media-has-caption": "error",
-        "jsx-a11y/mouse-events-have-key-events": "error",
-        "jsx-a11y/no-access-key": "error",
-        "jsx-a11y/no-autofocus": "error",
-        "jsx-a11y/no-distracting-elements": "error",
         "jsx-a11y/no-interactive-element-to-noninteractive-role": [
           "error",
           {
@@ -393,7 +315,6 @@
             "allowExpressionValues": true
           }
         ],
-        "jsx-a11y/no-redundant-roles": "error",
         "jsx-a11y/no-static-element-interactions": [
           "error",
           {
@@ -407,11 +328,7 @@
               "onKeyUp"
             ]
           }
-        ],
-        "jsx-a11y/role-has-required-aria-props": "error",
-        "jsx-a11y/role-supports-aria-props": "error",
-        "jsx-a11y/scope": "error",
-        "jsx-a11y/tabindex-no-positive": "error"
+        ]
       }
     }
   ]
