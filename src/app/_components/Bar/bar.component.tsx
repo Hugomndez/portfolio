@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './bar.module.css';
+import styles from './bar-test.module.css';
 
 const SocialMedia = () => (
   <div className={styles.socialMedia}>

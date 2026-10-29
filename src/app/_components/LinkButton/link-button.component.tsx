@@ -1,6 +1,6 @@
 import type { Route } from 'next';
 import Link from 'next/link';
-import styles from './link-button.module.css';
+import styles from './link-button-test.module.css';
 
 type InternalLinkProps<T extends string> = {
   pathname: Route<T>;

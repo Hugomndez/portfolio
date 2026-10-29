@@ -1,6 +1,6 @@
 import { LinkButton } from '../LinkButton';
 import { ProfileImage } from '../ProfileImage';
-import styles from './intro.module.css';
+import styles from './intro-test.module.css';
 
 const Circle = () => (
   <svg

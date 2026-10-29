@@ -2,8 +2,8 @@ import profileDesktop from '@/assets/images/hugo-mendez-profile-photo-large-low-
 import profileTablet from '@/assets/images/hugo-mendez-profile-photo-medium-low-res.webp';
 import profileMobile from '@/assets/images/hugo-mendez-profile-photo-small-low-res.webp';
 import type { ImageProps } from 'next/image';
-import { getImageProps, } from 'next/image';
-import styles from './profile-image.module.css';
+import { getImageProps } from 'next/image';
+import styles from './profile-image-test.module.css';
 
 const ProfileImage = () => {
   const common = {

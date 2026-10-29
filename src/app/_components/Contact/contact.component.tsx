@@ -9,7 +9,7 @@ import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import initFormValues from './constants';
 import contactFormAction from './contact-form.action';
-import styles from './contact.module.css';
+import styles from './contact-test.module.css';
 import FormError from './form-error.component';
 import InputField from './input-field.component';
 import SuccessMessage from './success-message.component';
