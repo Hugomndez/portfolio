@@ -11,14 +11,13 @@
     "react",
     "react-perf",
     "nextjs",
-    "jsx-a11y",
+    "jsx-a11y"
   ],
   "jsPlugins": ["eslint-plugin-yml"],
   "categories": {
     "correctness": "error",
     "perf": "error",
     "style": "error"
-
   },
   "options": {
     "typeAware": true,
@@ -57,21 +56,23 @@
     "import/prefer-default-export": "off",
     "import/no-named-export": "off",
     "no-magic-numbers": "off",
-  // End of rules that are too strict //
+    // End of rules that are too strict //
 
-
-// Custom rules for code style and conventions //
+    // Custom rules for code style and conventions //
     "unicorn/filename-case": "error",
-    "capitalized-comments": ["error", "always", ],
-    "id-length": ["error", { "min": 2, "checkGeneric": false,  }],
+    "capitalized-comments": ["error", "always"],
+    "id-length": ["error", { "min": 2, "checkGeneric": false }],
     "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
     "arrow-body-style": "error",
     "one-var": ["error", "never"],
     "import/exports-last": "error",
     "import/no-anonymous-default-export": "error",
     "react/jsx-max-depth": ["error", { "max": 4 }],
-    "react/jsx-props-no-spreading": ["error", {"html": "ignore"}],
-    "react/function-component-definition": [ "error", { "namedComponents": "arrow-function", "unnamedComponents": "function-expression" } ],
+    "react/jsx-props-no-spreading": ["error", { "html": "ignore" }],
+    "react/function-component-definition": [
+      "error",
+      { "namedComponents": "arrow-function", "unnamedComponents": "function-expression" }
+    ],
     "react-perf/jsx-no-new-function-as-prop": "warn",
     "react-perf/jsx-no-new-object-as-prop": [
       "error",
@@ -79,9 +80,9 @@
         "nativeAllowList": "all"
       }
     ],
-// End of custom rules for code style and conventions //
+    // End of custom rules for code style and conventions //
 
-// Custom rules for YAML files //
+    // Custom rules for YAML files //
     "yml/block-mapping-colon-indicator-newline": "error",
     "yml/block-mapping-question-indicator-newline": "error",
     "yml/block-mapping": "error",
@@ -111,9 +112,8 @@
       }
     ],
     "yml/spaced-comment": "error",
-    "yml/vue-custom-block/no-parsing-error": "error",
-// End of custom rules for YAML files //
-
+    "yml/vue-custom-block/no-parsing-error": "error"
+    // End of custom rules for YAML files //
   },
   "overrides": [
     {
