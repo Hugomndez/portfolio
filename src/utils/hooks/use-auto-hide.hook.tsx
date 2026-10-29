@@ -14,7 +14,7 @@ type UseAutoHideOptions = {
  * @param {function} options.onHide - A callback function to be called when the element should be hidden.
  * @param {number} [options.delayMs=5000] - The delay in milliseconds before hiding the element (default is 5000ms).
  */
-export function useAutoHide({ isVisible, onHide, delayMs = 5000 }: UseAutoHideOptions) {
+export default function useAutoHide({ isVisible, onHide, delayMs = 5000 }: UseAutoHideOptions) {
   const handleHide = useEffectEvent(onHide);
 
   useEffect(() => {
