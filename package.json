@@ -21,6 +21,8 @@
     "build": "next build",
     "build:analyze": "next experimental-analyze",
     "start": "next start",
+    "check-types": "tsc --noEmit --checkers 4",
+    "check-types:clean": "tsc --build --clean",
     "test:e2e": "playwright test",
     "test:e2e:report": "playwright show-report tests/reports",
     "test:clean": "rm -rf tests/artifacts tests/reports",
