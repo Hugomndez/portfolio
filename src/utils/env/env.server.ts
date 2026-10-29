@@ -2,7 +2,7 @@ import { createEnv } from '@t3-oss/env-nextjs';
 import { vercel } from '@t3-oss/env-nextjs/presets-zod';
 import { minLength, string } from 'zod/mini';
 
-export const env = createEnv({
+const env = createEnv({
   server: {
     CONTENTFUL_DELIVERY_ACCESS_TOKEN: string().check(minLength(1)),
     CONTENTFUL_ENVIRONMENT: string().check(minLength(1)),
@@ -19,3 +19,5 @@ export const env = createEnv({
   emptyStringAsUndefined: true,
   experimental__runtimeEnv: process.env,
 });
+
+export default env;

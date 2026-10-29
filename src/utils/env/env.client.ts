@@ -1,7 +1,7 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import { minLength, string } from 'zod/mini';
 
-export const env = createEnv({
+const env = createEnv({
   client: {
     NEXT_PUBLIC_TURNSTILE_SITE_KEY: string().check(minLength(1)),
   },
@@ -10,3 +10,5 @@ export const env = createEnv({
   },
   emptyStringAsUndefined: true,
 });
+
+export default env;
