@@ -22,7 +22,7 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit",
     "source.format.oxc": "always", // run formatter first
-    "source.fixAll.oxc": "always", // run lint fixes after
+    "source.fixAll.oxc": "always" // run lint fixes after
   },
   "oxc.typeAware": true,
 
@@ -47,13 +47,15 @@
   "[json]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
   "[yaml]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[html]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
-
 
   // ═══════════════════════════════════════════
   // 📦 PROJECT TOOLING
@@ -93,6 +95,5 @@
     "portfolio/.vscode/mcp.json: next-devtools": {
       "allowedModels": ["copilot/gpt-5-mini", "copilot/gpt-5"]
     }
-  },
-
+  }
 }
