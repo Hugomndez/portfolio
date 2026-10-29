@@ -1,1 +1,1 @@
-export { default as Ring } from './Ring';
+export { default as Ring } from './ring.component';

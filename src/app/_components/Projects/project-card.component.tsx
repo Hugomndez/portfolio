@@ -1,58 +1,56 @@
 import type { ProjectWithBlur } from '@/services/cms/contentful.types';
 import Image from 'next/image';
 import { LinkButton } from '../LinkButton';
-import styles from './Projects.module.css';
+import styles from './projects.module.css';
 
 export type ProjectCardProps = {
   project: ProjectWithBlur;
 };
 
-export const ProjectCard = ({ project: p }: ProjectCardProps) => {
-  return (
-    <article className={styles.card}>
-      <div className={styles.overlay}>
-        <Image
-          className={styles.image}
-          alt={p.image.title}
-          quality={85}
-          sizes='(min-width: 1110px) 540px,(min-width: 768px) 50vw, 100vw'
-          width={p.image.width}
-          height={p.image.height}
-          placeholder={p.image.blurDataUrl}
-          fetchPriority='low'
-          decoding='async'
-          overrideSrc={p.image.fileName}
-          src={p.image.url}
+export const ProjectCard = ({ project }: ProjectCardProps) => (
+  <article className={styles.card}>
+    <div className={styles.overlay}>
+      <Image
+        className={styles.image}
+        alt={project.image.title}
+        quality={85}
+        sizes='(min-width: 1110px) 540px,(min-width: 768px) 50vw, 100vw'
+        width={project.image.width}
+        height={project.image.height}
+        placeholder={project.image.blurDataUrl}
+        fetchPriority='low'
+        decoding='async'
+        overrideSrc={project.image.fileName}
+        src={project.image.url}
+      />
+    </div>
+    <header className={styles.cardHeader}>
+      <h3 className={styles.name}>{project.title}</h3>
+    </header>
+    <ul className={styles.stack}>
+      {project.techStack.map((tech) => (
+        <li
+          key={tech}
+          className={styles.tech}>
+          {tech}
+        </li>
+      ))}
+    </ul>
+    <footer className={styles.cardFooter}>
+      <div className={styles.actions}>
+        <LinkButton
+          href={project.liveSiteUrl}
+          title='View Project'
+          isInternal={false}
         />
-      </div>
-      <header className={styles.cardHeader}>
-        <h3 className={styles.name}>{p.title}</h3>
-      </header>
-      <ul className={styles.stack}>
-        {p.techStack.map((t) => (
-          <li
-            key={t}
-            className={styles.tech}>
-            {t}
-          </li>
-        ))}
-      </ul>
-      <footer className={styles.cardFooter}>
-        <div className={styles.actions}>
+        {project.sourceCodeUrl && (
           <LinkButton
-            href={p.liveSiteUrl}
-            title='View Project'
+            href={project.sourceCodeUrl}
+            title='View Code'
             isInternal={false}
           />
-          {p.sourceCodeUrl && (
-            <LinkButton
-              href={p.sourceCodeUrl}
-              title='View Code'
-              isInternal={false}
-            />
-          )}
-        </div>
-      </footer>
-    </article>
-  );
-};
+        )}
+      </div>
+    </footer>
+  </article>
+);

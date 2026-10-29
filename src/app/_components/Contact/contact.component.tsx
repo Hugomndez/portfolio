@@ -1,31 +1,31 @@
 'use client';
 
-import { env } from '@/utils/env/env.client';
-import { useAutoHide } from '@/utils/hooks/useAutoHide';
+import env from '@/utils/env/env.client';
+import useAutoHide from '@/utils/hooks/use-auto-hide.hook';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { TurnstileInstance } from '@marsidev/react-turnstile';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { initFormValues } from './constants';
-import { contactFormAction } from './contact-form.action';
-import styles from './Contact.module.css';
-import FormError from './FormError';
-import InputField from './InputField';
-import SuccessMessage from './SuccessMessage';
-import TextAreaField from './TextAreaField';
+import initFormValues from './constants';
+import contactFormAction from './contact-form.action';
+import styles from './contact.module.css';
+import FormError from './form-error.component';
+import InputField from './input-field.component';
+import SuccessMessage from './success-message.component';
+import TextAreaField from './text-area-field.component';
 import type { ValidationSchema } from './validation.schema';
 import { validationSchema } from './validation.schema';
 
-const turnstileOptions = {  action: 'submit-form', size: 'invisible', theme: 'dark' } as const;
+const turnstileOptions = { action: 'submit-form', size: 'invisible', theme: 'dark' } as const;
 
-export default function Contact() {
+const Contact = () => {
   const { formState, control, handleSubmit, reset, setError, clearErrors, setValue } =
     useForm<ValidationSchema>({
-      resolver: zodResolver(validationSchema),
-      mode: 'onChange',
-      delayError: 2500,
       defaultValues: initFormValues,
+      delayError: 2500,
+      mode: 'onChange',
+      resolver: zodResolver(validationSchema),
     });
 
   const ref = useRef<TurnstileInstance | null>(null);
@@ -122,4 +122,6 @@ export default function Contact() {
       </form>
     </section>
   );
-}
+};
+
+export default Contact;

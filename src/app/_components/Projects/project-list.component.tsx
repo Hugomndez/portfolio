@@ -1,8 +1,8 @@
-import { getProjects } from '@/services/cms/contentful';
+import getProjects from '@/services/cms/contentful';
 import { cacheLife, cacheTag } from 'next/cache';
 import { ProjectCard } from './project-card.component';
 
-async function ProjectList() {
+const ProjectList = async () => {
   'use cache';
   cacheTag('projectsCollection');
   cacheLife('max');
@@ -11,14 +11,14 @@ async function ProjectList() {
 
   return (
     <>
-      {projects.map((p) => (
+      {projects.map((project) => (
         <ProjectCard
-          key={p._id}
-          project={p}
+          key={project._id}
+          project={project}
         />
       ))}
     </>
   );
-}
+};
 
 export default ProjectList;

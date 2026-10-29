@@ -1,10 +1,10 @@
 'use server';
 
-import { sendEmail } from '@/services/email.service';
-import { validateTurnstileToken } from '@/services/turnstile.service';
+import sendEmail from '@/services/email.service';
+import validateTurnstileToken from '@/services/turnstile.service';
 import { validationSchema } from './validation.schema';
 
-export async function contactFormAction(formData: FormData) {
+export default async function contactFormAction(formData: FormData) {
   const rawFormData = Object.fromEntries(formData);
 
   const { data, error } = validationSchema.safeParse(rawFormData);
