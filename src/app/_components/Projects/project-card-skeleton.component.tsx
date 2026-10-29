@@ -1,4 +1,4 @@
-import styles from './projects-test.module.css';
+import styles from './projects.module.css';
 
 const data = [1, 2, 3, 4];
 

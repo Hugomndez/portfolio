@@ -1,4 +1,4 @@
-import styles from './contact-test.module.css';
+import styles from './contact.module.css';
 
 const SuccessMessage = ({ isVisible }: { isVisible: boolean }) => (
   <span

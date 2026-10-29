@@ -1,5 +1,5 @@
 import ProjectList from './project-list.component';
-import styles from './projects-test.module.css';
+import styles from './projects.module.css';
 
 const Projects = () => (
   <section className={styles.section}>

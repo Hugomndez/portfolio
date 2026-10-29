@@ -3,7 +3,7 @@ import profileTablet from '@/assets/images/hugo-mendez-profile-photo-medium-low-
 import profileMobile from '@/assets/images/hugo-mendez-profile-photo-small-low-res.webp';
 import type { ImageProps } from 'next/image';
 import { getImageProps } from 'next/image';
-import styles from './profile-image-test.module.css';
+import styles from './profile-image.module.css';
 
 const ProfileImage = () => {
   const common = {

@@ -1,4 +1,4 @@
-import styles from './skills-test.module.css';
+import styles from './skills.module.css';
 
 type Experience = {
   id: number;

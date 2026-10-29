@@ -1,4 +1,4 @@
-import styles from './ring-test.module.css';
+import styles from './ring.module.css';
 
 const Ring = ({ position }: { position: 'top' | 'middle' | 'bottom' }) => (
   <svg
