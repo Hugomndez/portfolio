@@ -41,16 +41,16 @@ const ProfileImage = () => {
   return (
     <picture className={styles.picture}>
       <source
-        media='(min-width: 1140px)'
+        media="(min-width: 1140px)"
         srcSet={desktop}
       />
       <source
-        media='(min-width: 768px)'
+        media="(min-width: 768px)"
         srcSet={tablet}
       />
 
       <source
-        media='(min-width: 0px)'
+        media="(min-width: 0px)"
         srcSet={mobile}
       />
 

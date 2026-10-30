@@ -14,12 +14,12 @@ export const ProjectCard = ({ project }: ProjectCardProps) => (
         className={styles.image}
         alt={project.image.title}
         quality={85}
-        sizes='(min-width: 1110px) 540px,(min-width: 768px) 50vw, 100vw'
+        sizes="(min-width: 1110px) 540px,(min-width: 768px) 50vw, 100vw"
         width={project.image.width}
         height={project.image.height}
         placeholder={project.image.blurDataUrl}
-        fetchPriority='low'
-        decoding='async'
+        fetchPriority="low"
+        decoding="async"
         overrideSrc={project.image.fileName}
         src={project.image.url}
       />
@@ -40,13 +40,13 @@ export const ProjectCard = ({ project }: ProjectCardProps) => (
       <div className={styles.actions}>
         <LinkButton
           href={project.liveSiteUrl}
-          title='View Project'
+          title="View Project"
           isInternal={false}
         />
         {project.sourceCodeUrl && (
           <LinkButton
             href={project.sourceCodeUrl}
-            title='View Code'
+            title="View Code"
             isInternal={false}
           />
         )}

@@ -2,7 +2,7 @@ import styles from './contact.module.css';
 
 const SuccessMessage = ({ isVisible }: { isVisible: boolean }) => (
   <span
-    data-testid='form-success-message'
+    data-testid="form-success-message"
     className={styles.thankYouMessage}
     role={isVisible ? 'alert' : undefined}
     aria-live={isVisible ? 'polite' : undefined}>

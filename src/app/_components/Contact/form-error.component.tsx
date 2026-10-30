@@ -10,7 +10,7 @@ const FormError = ({ control }: UseFormStateProps<ValidationSchema>) => {
 
   return (
     <span
-      data-testid='form-error-message'
+      data-testid="form-error-message"
       className={styles.invalidMessage}
       role={errors.root ? 'alert' : undefined}
       aria-live={errors.root ? 'polite' : undefined}>

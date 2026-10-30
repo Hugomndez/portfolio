@@ -1,4 +1,4 @@
- const projectsCollectionQuery = `
+const projectsCollectionQuery = `
 {
   projectsCollection(order: displayOrder_ASC) {
     items {

@@ -18,7 +18,9 @@ export default function useAutoHide({ isVisible, onHide, delayMs = 5000 }: UseAu
   const handleHide = useEffectEvent(onHide);
 
   useEffect(() => {
-    if (!isVisible) {return;}
+    if (!isVisible) {
+      return;
+    }
 
     const timeoutId = setTimeout(() => {
       handleHide();

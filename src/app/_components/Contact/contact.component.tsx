@@ -79,7 +79,7 @@ const Contact = () => {
   return (
     <section
       className={styles.section}
-      id='contact'>
+      id="contact">
       <div className={styles.content}>
         <h2 className={styles.title}>Contact</h2>
         <p className={styles.text}>
@@ -88,7 +88,7 @@ const Contact = () => {
         </p>
       </div>
       <form
-        data-testid='contact-form'
+        data-testid="contact-form"
         className={styles.form}
         onSubmit={handleSubmit(onSubmit)}>
         <Turnstile
@@ -101,20 +101,20 @@ const Contact = () => {
         />
         <InputField
           control={control}
-          name='name'
+          name="name"
         />
         <InputField
           control={control}
-          name='email'
+          name="email"
         />
         <TextAreaField
           control={control}
-          name='message'
+          name="message"
         />
         <button
-          type='submit'
+          type="submit"
           disabled={formState.isSubmitting}
-          data-umami-event='Submit Contact'>
+          data-umami-event="Submit Contact">
           {formState.isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
         <FormError control={control} />

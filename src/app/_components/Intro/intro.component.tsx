@@ -4,18 +4,18 @@ import styles from './intro.module.css';
 
 const Circle = () => (
   <svg
-    xmlns='http://www.w3.org/2000/svg'
-    width='129'
-    height='129'
-    aria-hidden='true'
+    xmlns="http://www.w3.org/2000/svg"
+    width="129"
+    height="129"
+    aria-hidden="true"
     className={styles.circle}>
     <circle
-      cx='830.5'
-      cy='585.5'
-      r='64'
-      fill='none'
-      stroke='#FFF'
-      transform='translate(-766 -521)'
+      cx="830.5"
+      cy="585.5"
+      r="64"
+      fill="none"
+      stroke="#FFF"
+      transform="translate(-766 -521)"
     />
   </svg>
 );
@@ -34,8 +34,8 @@ const Intro = () => (
         SEO principles and best practices building high-performance websites.
       </p>
       <LinkButton
-        pathname='#contact'
-        title='Contact me'
+        pathname="#contact"
+        title="Contact me"
         isInternal
       />
     </div>

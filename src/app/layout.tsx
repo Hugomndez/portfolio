@@ -70,24 +70,24 @@ const serializedGraph = { __html: JSON.stringify(graph) };
 
 const RootLayout = ({ children }: { children: ReactNode }) => (
   <html
-    lang='en'
-    dir='ltr'
-    data-scroll-behavior='smooth'
+    lang="en"
+    dir="ltr"
+    data-scroll-behavior="smooth"
     className={spaceGrotesk.className}>
     <body>
       <Container>{children}</Container>
       <Script
-        id='schema-json-ld'
-        type='application/ld+json'
-        strategy='beforeInteractive'
+        id="schema-json-ld"
+        type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={serializedGraph}
       />
       <Script
-        id='umami-analytics'
-        strategy='afterInteractive'
-        src='https://analytics.umami.is/script.js'
-        data-website-id='8110a8a7-c042-4ada-8306-ed6b7327a5b7'
-        data-domains='hugomendez.dev'
+        id="umami-analytics"
+        strategy="afterInteractive"
+        src="https://analytics.umami.is/script.js"
+        data-website-id="8110a8a7-c042-4ada-8306-ed6b7327a5b7"
+        data-domains="hugomendez.dev"
       />
       <SpeedInsights />
     </body>

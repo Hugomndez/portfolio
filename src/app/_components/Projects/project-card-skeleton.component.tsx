@@ -5,7 +5,7 @@ const data = [1, 2, 3, 4];
 const SkeletonCard = () => (
   <article
     className={styles.card}
-    aria-hidden='true'>
+    aria-hidden="true">
     <div className={styles.overlay}>
       <div className={`${styles.skeletonImage} ${styles.skeleton}`} />
     </div>

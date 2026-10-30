@@ -17,12 +17,12 @@ const TextAreaField = (props: UseControllerProps<ValidationSchema>) => {
         id={field.name}
         rows={3}
         placeholder={field.name}
-        autoComplete='off'
+        autoComplete="off"
         className={hasError ? styles.invalidTextArea : ''}
         aria-invalid={hasError || undefined}
         aria-describedby={hasError ? errorId : undefined}
         aria-required
-        aria-label='Message'
+        aria-label="Message"
       />
       <span
         id={errorId}
