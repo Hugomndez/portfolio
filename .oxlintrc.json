@@ -46,29 +46,161 @@
     "coverage/**"
   ],
   "rules": {
-    // Turn off specific rules too annoyingly strict //
+    // Baseline: oxlint's correctness/perf/style categories run at error (see "categories" above). //
+    // Only deviations from oxlint's built-in defaults are listed below: disabled default-on      //
+    // rules, error -> warn downgrades, off-by-default rules turned on, or custom options.        //
+    // Grouped by plugin scope.                                                                   //
+
+    // ESLint core: default-on rules turned off (too annoyingly strict) //
+    "max-statements": "off",
+    "no-duplicate-imports": "off",
+    "no-magic-numbers": "off",
+    "no-ternary": "off",
     "sort-imports": "off",
     "sort-keys": "off",
-    "no-ternary": "off",
-    "max-statements": "off",
-    "import/group-exports": "off",
-    "no-duplicate-imports": "off",
-    "import/prefer-default-export": "off",
-    "import/no-named-export": "off",
-    "no-magic-numbers": "off",
-    // End of rules that are too strict //
+    // End of ESLint core: turned off //
 
-    // Custom rules for code style and conventions //
+    // ESLint core: off-by-default rules turned on //
+    "no-array-constructor": "error",
+    "no-console": [
+      "warn",
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
+    // End of ESLint core: turned on //
+
+    // ESLint core: custom options on default-on rules //
     "capitalized-comments": ["error", "always"],
-    "id-length": ["error", { "min": 2, "checkGeneric": false }],
     "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+    "id-length": ["error", { "min": 2, "checkGeneric": false }],
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
     "one-var": ["error", "never"],
-    "react/jsx-max-depth": ["error", { "max": 4 }],
-    "react/jsx-props-no-spreading": ["error", { "html": "ignore" }],
+    // End of ESLint core: custom options //
+
+    // import: default-on rules turned off (too annoyingly strict) //
+    "import/group-exports": "off",
+    "import/no-named-export": "off",
+    "import/prefer-default-export": "off",
+    // End of import: turned off //
+
+    // jsx-a11y: custom options on default-on rules (alt-text also downgraded error -> warn) //
+    "jsx-a11y/alt-text": [
+      "warn",
+      {
+        "elements": ["img"],
+        "img": ["Image"]
+      }
+    ],
+    "jsx-a11y/control-has-associated-label": [
+      2,
+      {
+        "labelAttributes": ["label"],
+        "ignoreElements": ["audio", "canvas", "embed", "input", "textarea", "tr", "video"],
+        "ignoreRoles": [
+          "grid",
+          "listbox",
+          "menu",
+          "menubar",
+          "radiogroup",
+          "row",
+          "tablist",
+          "toolbar",
+          "tree",
+          "treegrid"
+        ],
+        "depth": 3
+      }
+    ],
+    "jsx-a11y/interactive-supports-focus": [
+      "error",
+      {
+        "tabbable": ["button", "checkbox", "link", "searchbox", "spinbutton", "switch", "textbox"]
+      }
+    ],
+    "jsx-a11y/no-interactive-element-to-noninteractive-role": [
+      "error",
+      {
+        "tr": ["none", "presentation"],
+        "canvas": ["img"]
+      }
+    ],
+    "jsx-a11y/no-noninteractive-element-interactions": [
+      "error",
+      {
+        "handlers": [
+          "onClick",
+          "onError",
+          "onLoad",
+          "onMouseDown",
+          "onMouseUp",
+          "onKeyPress",
+          "onKeyDown",
+          "onKeyUp"
+        ],
+        "alert": ["onKeyUp", "onKeyDown", "onKeyPress"],
+        "body": ["onError", "onLoad"],
+        "dialog": ["onKeyUp", "onKeyDown", "onKeyPress"],
+        "iframe": ["onError", "onLoad"],
+        "img": ["onError", "onLoad"]
+      }
+    ],
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": [
+      "error",
+      {
+        "ul": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
+        "ol": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
+        "li": ["menuitem", "menuitemradio", "menuitemcheckbox", "option", "row", "tab", "treeitem"],
+        "table": ["grid"],
+        "td": ["gridcell"],
+        "fieldset": ["radiogroup", "presentation"]
+      }
+    ],
+    "jsx-a11y/no-noninteractive-tabindex": [
+      "error",
+      {
+        "tags": [],
+        "roles": ["tabpanel"],
+        "allowExpressionValues": true
+      }
+    ],
+    "jsx-a11y/no-static-element-interactions": [
+      "error",
+      {
+        "allowExpressionValues": true,
+        "handlers": ["onClick", "onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"]
+      }
+    ],
+    // End of jsx-a11y //
+
+    // react: off-by-default rules turned on //
+    "react/display-name": "error",
+    "react/jsx-no-comment-textnodes": "error",
+    "react/no-unescaped-entities": "error",
+    "react/require-render-return": "error",
+    "react/rules-of-hooks": "error",
+    "react/unsupported-syntax": "warn",
+    // End of react: turned on //
+
+    // react: custom options on default-on rules //
     "react/function-component-definition": [
       "error",
       { "namedComponents": "arrow-function", "unnamedComponents": "function-expression" }
     ],
+    "react/jsx-max-depth": ["error", { "max": 4 }],
+    "react/jsx-props-no-spreading": ["error", { "html": "ignore" }],
+    // End of react: custom options //
+
+    // react-perf: error -> warn downgrade + custom options //
     "react-perf/jsx-no-new-function-as-prop": "warn",
     "react-perf/jsx-no-new-object-as-prop": [
       "error",
@@ -76,9 +208,9 @@
         "nativeAllowList": "all"
       }
     ],
-    // End of custom rules for code style and conventions //
+    // End of react-perf //
 
-    // Custom rules for YAML files //
+    // yml: custom rules for YAML files (via jsPlugin eslint-plugin-yml) //
     "yml/block-mapping-colon-indicator-newline": "error",
     "yml/block-mapping-question-indicator-newline": "error",
     "yml/block-mapping": "error",
@@ -109,25 +241,16 @@
     ],
     "yml/spaced-comment": "error",
     "yml/vue-custom-block/no-parsing-error": "error"
-    // End of custom rules for YAML files //
+    // End of yml //
   },
+
   "overrides": [
-    // Only rules that differ from oxlint's built-in defaults are kept in overrides.
-    // correctness/perf/style categories already enable the rest at "error".
+    // TypeScript-only rules: scoped to TS files so plain JS/CJS scripts and configs //
+    // never get TS semantics (e.g. no-require-imports on a .cjs script).           //
     {
       "files": ["**/*.{ts,mts,cts,tsx}"],
       "rules": {
-        "no-array-constructor": "error",
-        "no-unused-vars": [
-          "error",
-          {
-            "varsIgnorePattern": "^_",
-            "argsIgnorePattern": "^_",
-            "caughtErrorsIgnorePattern": "^_",
-            "destructuredArrayIgnorePattern": "^_",
-            "ignoreRestSiblings": true
-          }
-        ],
+        // typescript: off-by-default rules turned on at error //
         "typescript/ban-ts-comment": [
           "error",
           {
@@ -152,24 +275,23 @@
         "typescript/no-require-imports": "error",
         "typescript/no-unnecessary-type-assertion": "error",
         "typescript/no-unnecessary-type-constraint": "error",
-        "typescript/no-unsafe-argument": "warn",
-        "typescript/no-unsafe-assignment": "warn",
-        "typescript/no-unsafe-call": "warn",
         "typescript/no-unsafe-enum-comparison": "error",
         "typescript/no-unsafe-function-type": "error",
-        "typescript/no-unsafe-member-access": "warn",
-        "typescript/no-unsafe-return": "warn",
         "typescript/only-throw-error": "error",
         "typescript/prefer-promise-reject-errors": "error",
         "typescript/require-await": "error",
         "typescript/restrict-plus-operands": "error",
-        "typescript/triple-slash-reference": "off",
-        "no-console": [
-          "warn",
-          {
-            "allow": ["warn", "error"]
-          }
-        ],
+        // End of typescript: error //
+
+        // typescript: off-by-default rules turned on at warn //
+        "typescript/no-unsafe-argument": "warn",
+        "typescript/no-unsafe-assignment": "warn",
+        "typescript/no-unsafe-call": "warn",
+        "typescript/no-unsafe-member-access": "warn",
+        "typescript/no-unsafe-return": "warn",
+        // End of typescript: warn //
+
+        // typescript: default error downgraded to warn //
         "typescript/consistent-type-imports": [
           "warn",
           {
@@ -178,157 +300,7 @@
           }
         ],
         "typescript/consistent-type-definitions": ["warn", "type"]
-      }
-    },
-    {
-      "files": ["**/*.{jsx,tsx}"],
-      "rules": {
-        "react/display-name": "error",
-        "react/jsx-no-comment-textnodes": "error",
-        "react/no-unescaped-entities": "error",
-        "react/no-unsafe": "off",
-        "react/require-render-return": "error"
-      }
-    },
-    {
-      "files": ["**/*.{ts,mts,cts,tsx}"],
-      "rules": {
-        "react/rules-of-hooks": "error",
-        "react/exhaustive-deps": "warn",
-        "react/incompatible-library": "warn",
-        "react/unsupported-syntax": "warn"
-      }
-    },
-    {
-      "files": ["**/*.{jsx,tsx}"],
-      "rules": {
-        "nextjs/google-font-display": "warn",
-        "nextjs/google-font-preconnect": "warn",
-        "nextjs/next-script-for-ga": "warn",
-        "nextjs/no-async-client-component": "warn",
-        "nextjs/no-before-interactive-script-outside-document": "warn",
-        "nextjs/no-css-tags": "warn",
-        "nextjs/no-head-element": "warn",
-        "nextjs/no-img-element": "warn",
-        "nextjs/no-page-custom-font": "warn",
-        "nextjs/no-styled-jsx-in-document": "warn",
-        "nextjs/no-title-in-document-head": "warn",
-        "nextjs/no-typos": "warn",
-        "nextjs/no-unwanted-polyfillio": "warn"
-      }
-    },
-    {
-      "files": ["**/*.{jsx,tsx}"],
-      "rules": {
-        "jsx-a11y/alt-text": [
-          "warn",
-          {
-            "elements": ["img"],
-            "img": ["Image"]
-          }
-        ],
-        "jsx-a11y/control-has-associated-label": [
-          2,
-          {
-            "labelAttributes": ["label"],
-            "ignoreElements": ["audio", "canvas", "embed", "input", "textarea", "tr", "video"],
-            "ignoreRoles": [
-              "grid",
-              "listbox",
-              "menu",
-              "menubar",
-              "radiogroup",
-              "row",
-              "tablist",
-              "toolbar",
-              "tree",
-              "treegrid"
-            ],
-            "depth": 3
-          }
-        ],
-        "jsx-a11y/interactive-supports-focus": [
-          "error",
-          {
-            "tabbable": [
-              "button",
-              "checkbox",
-              "link",
-              "searchbox",
-              "spinbutton",
-              "switch",
-              "textbox"
-            ]
-          }
-        ],
-        "jsx-a11y/no-interactive-element-to-noninteractive-role": [
-          "error",
-          {
-            "tr": ["none", "presentation"],
-            "canvas": ["img"]
-          }
-        ],
-        "jsx-a11y/no-noninteractive-element-interactions": [
-          "error",
-          {
-            "handlers": [
-              "onClick",
-              "onError",
-              "onLoad",
-              "onMouseDown",
-              "onMouseUp",
-              "onKeyPress",
-              "onKeyDown",
-              "onKeyUp"
-            ],
-            "alert": ["onKeyUp", "onKeyDown", "onKeyPress"],
-            "body": ["onError", "onLoad"],
-            "dialog": ["onKeyUp", "onKeyDown", "onKeyPress"],
-            "iframe": ["onError", "onLoad"],
-            "img": ["onError", "onLoad"]
-          }
-        ],
-        "jsx-a11y/no-noninteractive-element-to-interactive-role": [
-          "error",
-          {
-            "ul": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
-            "ol": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
-            "li": [
-              "menuitem",
-              "menuitemradio",
-              "menuitemcheckbox",
-              "option",
-              "row",
-              "tab",
-              "treeitem"
-            ],
-            "table": ["grid"],
-            "td": ["gridcell"],
-            "fieldset": ["radiogroup", "presentation"]
-          }
-        ],
-        "jsx-a11y/no-noninteractive-tabindex": [
-          "error",
-          {
-            "tags": [],
-            "roles": ["tabpanel"],
-            "allowExpressionValues": true
-          }
-        ],
-        "jsx-a11y/no-static-element-interactions": [
-          "error",
-          {
-            "allowExpressionValues": true,
-            "handlers": [
-              "onClick",
-              "onMouseDown",
-              "onMouseUp",
-              "onKeyPress",
-              "onKeyDown",
-              "onKeyUp"
-            ]
-          }
-        ]
+        // End of typescript: downgraded //
       }
     }
   ]
