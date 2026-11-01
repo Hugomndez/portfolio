@@ -2,11 +2,12 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "trailingComma": "all",
   "tabWidth": 2,
-  "printWidth": 100,
   "semi": true,
+  "arrowParens": "always",
+  "printWidth": 120,
   "singleQuote": true,
   "bracketSameLine": true,
-  "arrowParens": "always",
   "singleAttributePerLine": true,
+  "quoteProps": "consistent",
   "ignorePatterns": ["pnpm-lock.yaml", "AGENT.md"]
 }

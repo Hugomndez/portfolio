@@ -23,11 +23,7 @@ async function getAccessToken(): Promise<string> {
   return response.accessToken;
 }
 
-export default async function sendEmail(
-  name: string,
-  email: string,
-  message: string,
-): Promise<void> {
+export default async function sendEmail(name: string, email: string, message: string): Promise<void> {
   const accessToken = await getAccessToken();
   const emailAdminAddress = env.MS_GRAPH_SENDER_EMAIL;
 
@@ -60,18 +56,15 @@ export default async function sendEmail(
   const timeout = setTimeout(() => controller.abort(), 5000);
 
   try {
-    const response = await fetch(
-      `https://graph.microsoft.com/v1.0/users/${emailAdminAddress}/sendMail`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify(emailMessage),
-        signal: controller.signal,
+    const response = await fetch(`https://graph.microsoft.com/v1.0/users/${emailAdminAddress}/sendMail`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`,
       },
-    );
+      body: JSON.stringify(emailMessage),
+      signal: controller.signal,
+    });
     if (!response.ok) {
       const bodyText = await response.text().catch(() => '<unreadable>');
       console.error('Microsoft Graph sendMail failed', { status: response.status, bodyText });

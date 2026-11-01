@@ -20,13 +20,12 @@ import { validationSchema } from './validation.schema';
 const turnstileOptions = { action: 'submit-form', size: 'invisible', theme: 'dark' } as const;
 
 const Contact = () => {
-  const { formState, control, handleSubmit, reset, setError, clearErrors, setValue } =
-    useForm<ValidationSchema>({
-      defaultValues: initFormValues,
-      delayError: 2500,
-      mode: 'onChange',
-      resolver: zodResolver(validationSchema),
-    });
+  const { formState, control, handleSubmit, reset, setError, clearErrors, setValue } = useForm<ValidationSchema>({
+    defaultValues: initFormValues,
+    delayError: 2500,
+    mode: 'onChange',
+    resolver: zodResolver(validationSchema),
+  });
 
   const ref = useRef<TurnstileInstance | null>(null);
   const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState<boolean>(false);
@@ -83,8 +82,8 @@ const Contact = () => {
       <div className={styles.content}>
         <h2 className={styles.title}>Contact</h2>
         <p className={styles.text}>
-          I would love to hear about your project and how I could help. Please fill in the form, and
-          I’ll get back to you as soon as possible.
+          I would love to hear about your project and how I could help. Please fill in the form, and I’ll get back to
+          you as soon as possible.
         </p>
       </div>
       <form

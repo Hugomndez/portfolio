@@ -137,16 +137,7 @@
     "jsx-a11y/no-noninteractive-element-interactions": [
       "error",
       {
-        "handlers": [
-          "onClick",
-          "onError",
-          "onLoad",
-          "onMouseDown",
-          "onMouseUp",
-          "onKeyPress",
-          "onKeyDown",
-          "onKeyUp"
-        ],
+        "handlers": ["onClick", "onError", "onLoad", "onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"],
         "alert": ["onKeyUp", "onKeyDown", "onKeyPress"],
         "body": ["onError", "onLoad"],
         "dialog": ["onKeyUp", "onKeyDown", "onKeyPress"],

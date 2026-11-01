@@ -1,7 +1,6 @@
 ---
 description: 'Review code for quality and adherence to best practices.'
-tools:
-  ['vscode/vscodeAPI', 'read/problems', 'read/readFile', 'search', 'web', 'next-devtools/*', 'todo']
+tools: ['vscode/vscodeAPI', 'read/problems', 'read/readFile', 'search', 'web', 'next-devtools/*', 'todo']
 ---
 
 # Code Reviewer agent

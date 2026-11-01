@@ -27,9 +27,7 @@ test('contact form: submit is enabled initially', async ({ page }) => {
   await expect(submit).toBeEnabled();
 });
 
-test('contact form: invalid email keeps submit enabled and shows input email error', async ({
-  page,
-}) => {
+test('contact form: invalid email keeps submit enabled and shows input email error', async ({ page }) => {
   await page.getByLabel('Name').fill('Playwright Tester');
   await page.getByLabel('Email address').fill('not-an-email');
   await page.getByLabel('Message').fill('Hello from Playwright');
@@ -66,9 +64,7 @@ test('contact form: invalid email keeps submit enabled and shows input email err
   await expect(submit).toBeEnabled();
 });
 
-test('contact form: valid inputs keep submit enabled and show no validation alerts', async ({
-  page,
-}) => {
+test('contact form: valid inputs keep submit enabled and show no validation alerts', async ({ page }) => {
   await page.getByLabel('Name').fill('Playwright Tester');
   await page.getByLabel('Email address').fill('user@example.com');
   await page.getByLabel('Message').fill('Hello from Playwright');

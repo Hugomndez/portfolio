@@ -32,7 +32,7 @@ async function fetchContentfulData<T>(
     const response = await fetch(CONTENTFUL_API_URL, {
       body: JSON.stringify({ query, variables }),
       headers: {
-        Authorization: `Bearer ${getAccessToken(variables)}`,
+        'Authorization': `Bearer ${getAccessToken(variables)}`,
         'Content-Type': 'application/json',
       },
       method: 'POST',

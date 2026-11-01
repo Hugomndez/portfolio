@@ -6,9 +6,7 @@ import type { TurnstileServerValidationResponse } from '@marsidev/react-turnstil
 const verifyEndpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const TURNSTILE_TIMEOUT_MS = 5000;
 
-export default async function validateTurnstileToken(
-  token: string,
-): Promise<TurnstileServerValidationResponse> {
+export default async function validateTurnstileToken(token: string): Promise<TurnstileServerValidationResponse> {
   const formData = new FormData();
   formData.append('secret', env.TURNSTILE_SECRET_KEY);
   formData.append('response', token);
