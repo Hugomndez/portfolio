@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  turbopack: {
+    resolveAlias: {
+      '../build/polyfills/polyfill-module': './src/utils/modern-polyfill.js',
+      'next/dist/build/polyfills/polyfill-module': './src/utils/modern-polyfill.js',
+    },
+  },
   experimental: {
     inlineCss: true,
     mcpServer: true,
