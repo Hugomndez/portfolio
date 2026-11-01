@@ -2,8 +2,10 @@
 
 import type { UseControllerProps } from 'react-hook-form';
 import { useController } from 'react-hook-form';
-import styles from './contact.module.css';
+
 import type { ValidationSchema } from './validation.schema';
+
+import styles from './contact.module.css';
 
 const InputField = (props: UseControllerProps<ValidationSchema>) => {
   const { field, fieldState } = useController(props);

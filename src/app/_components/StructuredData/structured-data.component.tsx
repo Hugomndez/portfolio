@@ -1,5 +1,5 @@
-import Script from 'next/script';
 import type { Graph, Person, WebSite } from 'schema-dts';
+import Script from 'next/script';
 
 const websiteSchema: WebSite = {
   '@type': 'WebSite',

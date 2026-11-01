@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": ["pnpm-lock.yaml", "AGENT.md"],
   "trailingComma": "all",
   "tabWidth": 2,
   "semi": true,
@@ -9,5 +10,19 @@
   "singleQuote": true,
   "bracketSameLine": true,
   "quoteProps": "consistent",
-  "ignorePatterns": ["pnpm-lock.yaml", "AGENT.md"]
+  "sortImports": {
+    "groups": [
+      "builtin",
+      "type-external",
+      { "newlinesBetween": false },
+      "external",
+      { "newlinesBetween": false },
+      ["internal", "subpath"],
+      ["type-parent", "type-sibling", "type-index"],
+      { "newlinesBetween": false },
+      ["parent", "sibling", "index"],
+      "style",
+      "unknown"
+    ]
+  }
 }

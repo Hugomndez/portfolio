@@ -1,10 +1,9 @@
 import 'server-only';
-
-import env from '@/utils/env/env.server';
 import { getPixels } from '@unpic/pixels';
 import { blurhashToDataUri } from '@unpic/placeholder';
 import { encode } from 'blurhash';
-import projectsCollectionQuery from './contentful.queries';
+import env from '@/utils/env/env.server';
+
 import type {
   ContentfulResult,
   ProjectWithBlur,
@@ -12,6 +11,7 @@ import type {
   Variables,
   WithErrors,
 } from './contentful.types';
+import projectsCollectionQuery from './contentful.queries';
 
 const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`;
 

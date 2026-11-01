@@ -1,7 +1,6 @@
 import 'server-only';
-
-import env from '@/utils/env/env.server';
 import { ConfidentialClientApplication } from '@azure/msal-node';
+import env from '@/utils/env/env.server';
 
 const msalClient = new ConfidentialClientApplication({
   auth: {

@@ -1,6 +1,8 @@
-import type { ProjectWithBlur } from '@/services/cms/contentful.types';
 import Image from 'next/image';
+import type { ProjectWithBlur } from '@/services/cms/contentful.types';
+
 import { LinkButton } from '../LinkButton';
+
 import styles from './projects.module.css';
 
 export type ProjectCardProps = {

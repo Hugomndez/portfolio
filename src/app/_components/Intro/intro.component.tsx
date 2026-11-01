@@ -1,5 +1,6 @@
 import { LinkButton } from '../LinkButton';
 import { ProfileImage } from '../ProfileImage';
+
 import styles from './intro.module.css';
 
 const Circle = () => (

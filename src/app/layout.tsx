@@ -1,11 +1,11 @@
+import type { Metadata, Viewport } from 'next';
+import type { ReactNode } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Container } from '@/components/Container';
 import { StructuredData } from '@/components/StructuredData';
 import { UmamiAnalytics } from '@/components/UmamiAnalytics';
 import { siteMetadata, siteViewport } from '@/config/site-metadata';
 import spaceGrotesk from '@/fonts';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import type { Metadata, Viewport } from 'next';
-import type { ReactNode } from 'react';
 
 import '@/styles/globals.css';
 

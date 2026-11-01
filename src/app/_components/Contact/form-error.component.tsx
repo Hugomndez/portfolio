@@ -2,8 +2,10 @@
 
 import type { UseFormStateProps } from 'react-hook-form';
 import { useFormState } from 'react-hook-form';
-import styles from './contact.module.css';
+
 import type { ValidationSchema } from './validation.schema';
+
+import styles from './contact.module.css';
 
 const FormError = ({ control }: UseFormStateProps<ValidationSchema>) => {
   const { errors } = useFormState({ control });

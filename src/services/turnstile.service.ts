@@ -1,7 +1,6 @@
 import 'server-only';
-
-import env from '@/utils/env/env.server';
 import type { TurnstileServerValidationResponse } from '@marsidev/react-turnstile';
+import env from '@/utils/env/env.server';
 
 const verifyEndpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const TURNSTILE_TIMEOUT_MS = 5000;

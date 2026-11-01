@@ -1,7 +1,7 @@
-import env from '@/utils/env/env.server';
-import { revalidateTag } from 'next/cache';
 import type { NextRequest } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import { NextResponse } from 'next/server';
+import env from '@/utils/env/env.server';
 
 export function POST(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);

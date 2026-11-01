@@ -1,21 +1,23 @@
 'use client';
 
-import env from '@/utils/env/env.client';
-import useAutoHide from '@/utils/hooks/use-auto-hide.hook';
-import { zodResolver } from '@hookform/resolvers/zod';
 import type { TurnstileInstance } from '@marsidev/react-turnstile';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import env from '@/utils/env/env.client';
+import useAutoHide from '@/utils/hooks/use-auto-hide.hook';
+
+import type { ValidationSchema } from './validation.schema';
 import initFormValues from './constants';
 import contactFormAction from './contact-form.action';
-import styles from './contact.module.css';
 import FormError from './form-error.component';
 import InputField from './input-field.component';
 import SuccessMessage from './success-message.component';
 import TextAreaField from './text-area-field.component';
-import type { ValidationSchema } from './validation.schema';
 import { validationSchema } from './validation.schema';
+
+import styles from './contact.module.css';
 
 const turnstileOptions = { action: 'submit-form', size: 'invisible', theme: 'dark' } as const;
 

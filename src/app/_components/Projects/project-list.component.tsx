@@ -1,5 +1,6 @@
-import getProjects from '@/services/cms/contentful';
 import { cacheLife, cacheTag } from 'next/cache';
+import getProjects from '@/services/cms/contentful';
+
 import { ProjectCard } from './project-card.component';
 
 const ProjectList = async () => {
