@@ -60,6 +60,11 @@
     "sort-keys": "off",
     // End of ESLint core: turned off //
 
+    // react-perf: error -> off downgrade handled by react compiler optimizations //
+    "react-perf/jsx-no-new-function-as-prop": "off",
+    "react-perf/jsx-no-new-object-as-prop": "off",
+    // End of react-perf //
+
     // ESLint core: off-by-default rules turned on //
     "no-array-constructor": "error",
     "no-console": [
@@ -179,16 +184,6 @@
     "react/jsx-max-depth": ["error", { "max": 4 }],
     "react/jsx-props-no-spreading": ["error", { "html": "ignore" }],
     // End of react: custom options //
-
-    // react-perf: error -> warn downgrade + custom options //
-    "react-perf/jsx-no-new-function-as-prop": "warn",
-    "react-perf/jsx-no-new-object-as-prop": [
-      "error",
-      {
-        "nativeAllowList": "all"
-      }
-    ],
-    // End of react-perf //
 
     // yml: custom rules for YAML files (via jsPlugin eslint-plugin-yml) //
     "yml/block-mapping-colon-indicator-newline": "error",

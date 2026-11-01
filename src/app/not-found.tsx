@@ -1,7 +1,5 @@
 import Link from 'next/link';
 
-const linkStyle = { color: 'blue' } as React.CSSProperties;
-
 const NotFound = () => (
   <div
     style={{
@@ -14,7 +12,7 @@ const NotFound = () => (
     }}>
     <h1>Not Found</h1>
     <p>Could not find requested resource.</p>
-    <Link href="/" style={linkStyle}>
+    <Link href="/" style={{ color: 'blue' }}>
       Return to home page
     </Link>
   </div>
