@@ -10,11 +10,7 @@ import type { ReactNode } from 'react';
 import '@/styles/globals.css';
 
 const RootLayout = ({ children }: { children: ReactNode }) => (
-  <html
-    lang="en"
-    dir="ltr"
-    data-scroll-behavior="smooth"
-    className={spaceGrotesk.className}>
+  <html lang="en" dir="ltr" data-scroll-behavior="smooth" className={spaceGrotesk.className}>
     <body>
       <Container>{children}</Container>
       <StructuredData />

@@ -91,9 +91,7 @@ test('contact form: valid inputs keep submit enabled and show no validation aler
   await expect(submitButton).toBeEnabled();
 });
 
-test('contact form: max length validation errors keep submit enabled and show input length errors', async ({
-  page,
-}) => {
+test('contact form: max length validation errors keep submit enabled and show input length errors', async ({ page }) => {
   await page.getByLabel('Name').fill('a'.repeat(31));
   await page.getByLabel('Email address').fill('user@example.com');
   await page.getByLabel('Message').fill('a'.repeat(501));

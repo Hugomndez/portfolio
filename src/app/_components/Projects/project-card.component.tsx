@@ -29,27 +29,15 @@ export const ProjectCard = ({ project }: ProjectCardProps) => (
     </header>
     <ul className={styles.stack}>
       {project.techStack.map((tech) => (
-        <li
-          key={tech}
-          className={styles.tech}>
+        <li key={tech} className={styles.tech}>
           {tech}
         </li>
       ))}
     </ul>
     <footer className={styles.cardFooter}>
       <div className={styles.actions}>
-        <LinkButton
-          href={project.liveSiteUrl}
-          title="View Project"
-          isInternal={false}
-        />
-        {project.sourceCodeUrl && (
-          <LinkButton
-            href={project.sourceCodeUrl}
-            title="View Code"
-            isInternal={false}
-          />
-        )}
+        <LinkButton href={project.liveSiteUrl} title="View Project" isInternal={false} />
+        {project.sourceCodeUrl && <LinkButton href={project.sourceCodeUrl} title="View Code" isInternal={false} />}
       </div>
     </footer>
   </article>

@@ -4,10 +4,10 @@
   "tabWidth": 2,
   "semi": true,
   "arrowParens": "always",
-  "printWidth": 120,
+  "singleAttributePerLine": false,
+  "printWidth": 125,
   "singleQuote": true,
   "bracketSameLine": true,
-  "singleAttributePerLine": true,
   "quoteProps": "consistent",
   "ignorePatterns": ["pnpm-lock.yaml", "AGENT.md"]
 }

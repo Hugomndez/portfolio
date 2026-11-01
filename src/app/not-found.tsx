@@ -14,9 +14,7 @@ const NotFound = () => (
     }}>
     <h1>Not Found</h1>
     <p>Could not find requested resource.</p>
-    <Link
-      href="/"
-      style={linkStyle}>
+    <Link href="/" style={linkStyle}>
       Return to home page
     </Link>
   </div>

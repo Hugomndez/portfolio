@@ -8,41 +8,12 @@ const Ring = ({ position }: { position: 'top' | 'middle' | 'bottom' }) => (
     aria-hidden="true"
     className={styles.ring}
     data-position={position}>
-    <g
-      fill="none"
-      fillRule="evenodd"
-      stroke="#FFF"
-      opacity=".25">
-      <ellipse
-        cx="265"
-        cy="40"
-        rx="264.5"
-        ry="39.5"
-      />
-      <ellipse
-        cx="265"
-        cy="52"
-        rx="264.5"
-        ry="39.5"
-      />
-      <ellipse
-        cx="265"
-        cy="65"
-        rx="264.5"
-        ry="39.5"
-      />
-      <ellipse
-        cx="265"
-        cy="77"
-        rx="264.5"
-        ry="39.5"
-      />
-      <ellipse
-        cx="265"
-        cy="89"
-        rx="264.5"
-        ry="39.5"
-      />
+    <g fill="none" fillRule="evenodd" stroke="#FFF" opacity=".25">
+      <ellipse cx="265" cy="40" rx="264.5" ry="39.5" />
+      <ellipse cx="265" cy="52" rx="264.5" ry="39.5" />
+      <ellipse cx="265" cy="65" rx="264.5" ry="39.5" />
+      <ellipse cx="265" cy="77" rx="264.5" ry="39.5" />
+      <ellipse cx="265" cy="89" rx="264.5" ry="39.5" />
     </g>
   </svg>
 );

@@ -92,11 +92,7 @@ async function getImageBlurData(imageUrl: string) {
 }
 
 async function GetProjects(): Promise<ContentfulResult<ProjectWithBlur[]>> {
-  const result = await fetchContentfulData<ProjectsCollectionResponse>(
-    projectsCollectionQuery,
-    {},
-    'projectsCollection',
-  );
+  const result = await fetchContentfulData<ProjectsCollectionResponse>(projectsCollectionQuery, {}, 'projectsCollection');
 
   const { items } = result.data.projectsCollection;
 

@@ -3,20 +3,8 @@ import { ProfileImage } from '../ProfileImage';
 import styles from './intro.module.css';
 
 const Circle = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="129"
-    height="129"
-    aria-hidden="true"
-    className={styles.circle}>
-    <circle
-      cx="830.5"
-      cy="585.5"
-      r="64"
-      fill="none"
-      stroke="#FFF"
-      transform="translate(-766 -521)"
-    />
+  <svg xmlns="http://www.w3.org/2000/svg" width="129" height="129" aria-hidden="true" className={styles.circle}>
+    <circle cx="830.5" cy="585.5" r="64" fill="none" stroke="#FFF" transform="translate(-766 -521)" />
   </svg>
 );
 
@@ -30,14 +18,10 @@ const Intro = () => (
         I&rsquo;m <span className={styles.underline}>Hugo Méndez</span>.
       </h1>
       <p className={styles.subTitle}>
-        Based in Mexico, I&rsquo;m a full stack developer with experience in the implementation of SEO principles and
-        best practices building high-performance websites.
+        Based in Mexico, I&rsquo;m a full stack developer with experience in the implementation of SEO principles and best
+        practices building high-performance websites.
       </p>
-      <LinkButton
-        pathname="#contact"
-        title="Contact me"
-        isInternal
-      />
+      <LinkButton pathname="#contact" title="Contact me" isInternal />
     </div>
   </section>
 );

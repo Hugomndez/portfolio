@@ -76,20 +76,15 @@ const Contact = () => {
   }
 
   return (
-    <section
-      className={styles.section}
-      id="contact">
+    <section className={styles.section} id="contact">
       <div className={styles.content}>
         <h2 className={styles.title}>Contact</h2>
         <p className={styles.text}>
-          I would love to hear about your project and how I could help. Please fill in the form, and I’ll get back to
-          you as soon as possible.
+          I would love to hear about your project and how I could help. Please fill in the form, and I’ll get back to you as
+          soon as possible.
         </p>
       </div>
-      <form
-        data-testid="contact-form"
-        className={styles.form}
-        onSubmit={handleSubmit(onSubmit)}>
+      <form data-testid="contact-form" className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <Turnstile
           ref={ref}
           siteKey={env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
@@ -98,22 +93,10 @@ const Contact = () => {
           onExpire={onTurnstileExpire}
           onError={onTurnstileError}
         />
-        <InputField
-          control={control}
-          name="name"
-        />
-        <InputField
-          control={control}
-          name="email"
-        />
-        <TextAreaField
-          control={control}
-          name="message"
-        />
-        <button
-          type="submit"
-          disabled={formState.isSubmitting}
-          data-umami-event="Submit Contact">
+        <InputField control={control} name="name" />
+        <InputField control={control} name="email" />
+        <TextAreaField control={control} name="message" />
+        <button type="submit" disabled={formState.isSubmitting} data-umami-event="Submit Contact">
           {formState.isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
         <FormError control={control} />

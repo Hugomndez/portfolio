@@ -20,9 +20,7 @@ const Skills = () => (
     <hr className={styles.hrTop} />
     <div className={styles.container}>
       {data.map((item) => (
-        <div
-          key={item.id}
-          className={styles.card}>
+        <div key={item.id} className={styles.card}>
           <p className={styles.skill}>{item.skill}</p>
           <p className={styles.years}>{item.years} Years Experience</p>
         </div>

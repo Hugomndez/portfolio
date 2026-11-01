@@ -9,10 +9,7 @@ const SocialMedia = () => (
       rel="noreferrer noopener"
       aria-label="GitHub Link"
       data-umami-event="GitHub Link">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
         <title>GitHub</title>
         <path
           fill="#FFF"
@@ -27,10 +24,7 @@ const SocialMedia = () => (
       rel="noreferrer noopener"
       aria-label="Frontend Mentor Link"
       data-umami-event="Frontend Mentor Link">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
         <title>Frontend Mentor</title>
         <path
           fill="#FFF"
@@ -44,10 +38,7 @@ const SocialMedia = () => (
       rel="noreferrer noopener"
       aria-label="LinkedIn Link"
       data-umami-event="LinkedIn Link">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
         <title>LinkedIn</title>
         <path
           fill="#FFF"
@@ -63,9 +54,7 @@ const Bar = () => (
   <>
     <hr className={styles.hrTop} />
     <div className={styles.bar}>
-      <Link
-        href="/"
-        className={styles.name}>
+      <Link href="/" className={styles.name}>
         hugoméndez
       </Link>
       <SocialMedia />

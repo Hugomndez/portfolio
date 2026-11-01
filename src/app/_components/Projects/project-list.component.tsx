@@ -12,10 +12,7 @@ const ProjectList = async () => {
   return (
     <>
       {projects.map((project) => (
-        <ProjectCard
-          key={project._id}
-          project={project}
-        />
+        <ProjectCard key={project._id} project={project} />
       ))}
     </>
   );
