@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
   },
   turbopack: {
     resolveAlias: {
+      // Workaround to avoid legacy polyfills in Next.js
       '../build/polyfills/polyfill-module': './src/utils/modern-polyfill.js',
       'next/dist/build/polyfills/polyfill-module': './src/utils/modern-polyfill.js',
     },
