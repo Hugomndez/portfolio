@@ -21,4 +21,5 @@ jobs:
         with:
           urls: ${{ github.event.client_payload.url }}
           device: 'all'
+          gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           prCommentEnabled: true
