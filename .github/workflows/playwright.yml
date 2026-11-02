@@ -16,7 +16,7 @@ jobs:
       - name: Notify Vercel
         uses: vercel/repository-dispatch/actions/status@v1
         with:
-          name: 'GitHub Action - portfolio: e2e tests'
+          name: 'GitHub Action - ${{ github.event.client_payload.project.name }}: e2e tests'
 
       - name: Checkout Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

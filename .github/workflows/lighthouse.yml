@@ -13,8 +13,15 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - uses: actions/checkout@master
-      - name: Lighthouse
+      - name: Notify Vercel
+        uses: vercel/repository-dispatch/actions/status@v1
+        with:
+          name: 'GitHub Action - ${{ github.event.client_payload.project.name }}: lighthouse tests'
+
+      - name: Checkout Repository
+        uses: actions/checkout@master
+
+      - name: Run Lighthouse Tests
         uses: foo-software/lighthouse-check-action@master
         with:
           urls: ${{ github.event.client_payload.url }}
