@@ -18,3 +18,5 @@ jobs:
         uses: foo-software/lighthouse-check-action@master
         with:
           urls: ${{ github.event.client_payload.url }}
+          device: 'all'
+          prCommentEnabled: true
