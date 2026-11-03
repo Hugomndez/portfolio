@@ -7,6 +7,10 @@ on:
 
 run-name: E2E Tests on ${{ github.event.client_payload.project.name }} deployment (${{ github.event.client_payload.environment }})
 
+permissions:
+  contents: read
+  statuses: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
