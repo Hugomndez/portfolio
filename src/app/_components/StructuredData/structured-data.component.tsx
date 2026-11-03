@@ -1,29 +1,30 @@
 import type { Graph, Person, WebSite } from 'schema-dts';
 import Script from 'next/script';
+import { ogImageUrl, siteConfig } from '@/config/site';
+import { socialLinks } from '@/config/social-links';
 
 const websiteSchema: WebSite = {
   '@type': 'WebSite',
-  '@id': 'https://hugomendez.dev/#website',
-  'name': 'Hugo Méndez - Full Stack Developer',
-  'url': 'https://hugomendez.dev',
-  'description':
-    'Personal developer portfolio showcasing my skills on HTML, CSS, JavaScript, TypeScript, React, NextJS, Web Performance, SEO and more...',
+  '@id': `${siteConfig.url}/#website`,
+  'name': siteConfig.name,
+  'url': siteConfig.url,
+  'description': siteConfig.description,
   'creator': {
-    '@id': 'https://hugomendez.dev/#person',
+    '@id': `${siteConfig.url}/#person`,
   },
   'mainEntity': {
-    '@id': 'https://hugomendez.dev/#person',
+    '@id': `${siteConfig.url}/#person`,
   },
 };
 
 const personSchema: Person = {
   '@type': 'Person',
-  '@id': 'https://hugomendez.dev/#person',
-  'name': 'Hugo Méndez',
+  '@id': `${siteConfig.url}/#person`,
+  'name': siteConfig.author,
   'givenName': 'Hugo',
   'familyName': 'Méndez',
   'gender': 'Male',
-  'image': 'https://hugomendez.dev/hugo-mendez-profile-photo-large-high-res.jpg',
+  'image': ogImageUrl,
   'knowsLanguage': ['English', 'Spanish'],
   'hasOccupation': {
     '@type': 'Occupation',
@@ -36,13 +37,8 @@ const personSchema: Person = {
     'addressRegion': 'Quintana Roo',
     'addressCountry': 'MX',
   },
-  'url': 'https://hugomendez.dev',
-  'sameAs': [
-    'https://hugomendez.dev',
-    'https://www.linkedin.com/in/hugomndez/',
-    'https://www.instagram.com/hugomndez/',
-    'https://github.com/Hugomndez',
-  ],
+  'url': siteConfig.url,
+  'sameAs': [siteConfig.url, ...socialLinks.map(({ url }) => url)],
 };
 
 const graph: Graph = {
