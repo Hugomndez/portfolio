@@ -3,12 +3,13 @@ name: Lighthouse Tests
 on:
   repository_dispatch:
     types:
-      - vercel.deployment.ready
-  pull_request:
-    branches:
-      - main
+      - vercel.deployment.promoted
 
 run-name: Lighthouse Tests on ${{ github.event.client_payload.project.name }} deployment (${{ github.event.client_payload.environment }})
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   lighthouse:
@@ -16,13 +17,46 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@master
+      - name: Find pull request targeting main
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const sha = context.payload.client_payload.git.sha;
+            const { data: pullRequests } =
+              await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                commit_sha: sha,
+              });
+            const pr = pullRequests.find(
+              (pullRequest) => pullRequest.base.ref === 'main',
+            );
+            if (!pr) {
+              core.notice(
+                `No pull request targeting main found for commit ${sha}. Skipping Lighthouse comment.`,
+              );
+              core.setOutput('found', 'false');
+              return;
+            }
+            core.notice(`Found PR #${pr.number} targeting main for commit ${sha}.`);
+            core.setOutput('found', 'true');
+            core.setOutput('reviews-url', `${pr.url}/reviews`);
 
       - name: Run Lighthouse Tests
         uses: foo-software/lighthouse-check-action@master
+        id: lighthouseCheck
         with:
-          urls: ${{ github.event.client_payload.url }}
+          urls: 'https://hugomendez.dev'
           device: 'all'
           gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           prCommentEnabled: true
+          commentUrl: ${{ steps.pr.outputs.reviews-url }}
+      - name: Verify Lighthouse Check results
+        uses: foo-software/lighthouse-check-status-action@master
+        with:
+          lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+          minAccessibilityScore: '90'
+          minBestPracticesScore: '90'
+          minPerformanceScore: '50'
+          minSeoScore: '90'
