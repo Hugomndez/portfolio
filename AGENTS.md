@@ -39,3 +39,9 @@ When starting work on this Next.js project, establish context FIRST using the `n
 - After making code changes, run `pnpm lint:fix`, then run `pnpm fmt`.
 - Before finishing, run `pnpm exec oxlint --deny-warnings --format=agent`.
 - Use the version-pinned binaries via pnpm scripts / `pnpm exec` only. Do NOT use `pnx`, `pnpm dlx`, or `npx` for oxlint/oxfmt — they resolve to the latest registry version instead of the pinned devDependencies.
+
+## Releases
+
+- Automated with release-please (see `.github/workflows/release-please.yml`): a `chore(main): release …` PR tracks changes on `main`; merging it tags `vX.Y.Z`, creates the GitHub Release, and updates `CHANGELOG.md` + `package.json`.
+- Squash-merge PRs with a conventional-commit title — it becomes the commit on `main` that release-please parses. `feat:`/`fix:`/`perf:` (and `security:`) appear in the changelog and bump the version; `chore:`/`ci:`/`build:`/`docs:`/`style:`/`refactor:`/`test:` don't.
+- Follow-ups after the first release and for 1.0.0: see comments at the top of `.github/workflows/release-please.yml`.
