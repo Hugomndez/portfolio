@@ -41,7 +41,6 @@ const Configuration: UserConfig = {
         'test',
         'translation',
         'security',
-        'changeset',
       ],
     ],
   },

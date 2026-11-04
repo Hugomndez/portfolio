@@ -1,0 +1,31 @@
+# Automated releases via release-please.
+#
+# On every push to main it opens/updates a Release PR (version bump in package.json
+# + CHANGELOG.md from conventional commits). Merging that PR tags vX.Y.Z and
+# creates the GitHub Release. Config: release-please-config.json (strict JSON, no
+# comments) + .release-please-manifest.json.
+#
+# Follow-ups:
+# - After the first tagged release, `bootstrap-sha` in release-please-config.json
+#   is inert (the tag/manifest take over) — optionally remove it.
+# - To cut 1.0.0: remove `bump-minor-pre-major` and `bump-patch-for-minor-pre-major`
+#   from release-please-config.json, then land a `feat!:` (BREAKING CHANGE) commit.
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Run release-please
+        uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4.4.1
