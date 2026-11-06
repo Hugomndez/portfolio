@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.4](https://github.com/Hugomndez/portfolio/compare/portfolio-v0.0.3...portfolio-v0.0.4) (2026-11-06)
+
+
+### Bug Fixes
+
+* refine transition properties for smoother animations ([7fc4533](https://github.com/Hugomndez/portfolio/commit/7fc4533c2d74195f17e5ead2ed94a0ceeaa65e8f))
+* remove error message display from GlobalError component ([6dd269b](https://github.com/Hugomndez/portfolio/commit/6dd269b96da3e22aa443773cce92cff366e7342d))
+* remove obsolete bootstrap-sha from release-please config ([0e0b61f](https://github.com/Hugomndez/portfolio/commit/0e0b61fd9b16cf8e181fa20a5be2f3d743fdc464))
+* remove overrideSrc prop from Image component in ProjectCard ([771d750](https://github.com/Hugomndez/portfolio/commit/771d750225bc338a4e3ee8c73b00d3c31b0f59d8))
+* reorder cache functions in ProjectList component and rename GetProjects to getProjects ([79f5842](https://github.com/Hugomndez/portfolio/commit/79f58428daedf2022bc8f53f63c134e08113cc50))
+* update TypeScript SDK path in VSCode settings ([3bd9e74](https://github.com/Hugomndez/portfolio/commit/3bd9e743169971203a65c87ce102762553894ea1))
+
 ## [0.0.3](https://github.com/Hugomndez/portfolio/compare/portfolio-v0.0.2...portfolio-v0.0.3) (2026-11-04)
 
 
