@@ -22,7 +22,6 @@ export const ProjectCard = ({ project }: ProjectCardProps) => (
         placeholder={project.image.blurDataUrl}
         fetchPriority="low"
         decoding="async"
-        overrideSrc={project.image.fileName}
         src={project.image.url}
       />
     </div>
