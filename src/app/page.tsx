@@ -1,8 +1,8 @@
-import { Bar } from '@/components/Bar';
-import { Contact } from '@/components/Contact';
-import { Intro } from '@/components/Intro';
-import { Projects } from '@/components/Projects';
-import { Skills } from '@/components/Skills';
+import Bar from '@/components/Bar/bar.component';
+import Contact from '@/components/Contact/contact.component';
+import Intro from '@/components/Intro/intro.component';
+import Projects from '@/components/Projects/project.component';
+import Skills from '@/components/Skills/skills.component';
 
 const Page = () => (
   <>

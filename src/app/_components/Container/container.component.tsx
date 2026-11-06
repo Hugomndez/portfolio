@@ -1,4 +1,4 @@
-import { Ring } from '../Ring';
+import Ring from '../Ring/ring.component';
 
 const Container = ({ children }: { children: React.ReactNode }) => (
   <div style={{ position: 'relative', overflowX: 'clip' }}>

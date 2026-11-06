@@ -1,5 +1,5 @@
-import { LinkButton } from '../LinkButton';
-import { ProfileImage } from '../ProfileImage';
+import LinkButton from '../LinkButton/link-button.component';
+import ProfileImage from '../ProfileImage/profile-image.component';
 
 import styles from './intro.module.css';
 
