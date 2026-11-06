@@ -5,10 +5,10 @@ type GlobalErrorProps = {
   reset: () => void;
 };
 
-const GlobalError = ({ error, reset }: GlobalErrorProps) => (
+const GlobalError = ({ reset }: GlobalErrorProps) => (
   <html lang="en">
     <body>
-      <h2>Something went wrong! {error.message}</h2>
+      <h2>Something went wrong!</h2>
       <button onClick={reset}>Try again</button>
     </body>
   </html>
