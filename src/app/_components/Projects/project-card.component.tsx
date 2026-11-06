@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import type { ProjectWithBlur } from '@/services/cms/contentful.types';
 
-import { LinkButton } from '../LinkButton';
+import LinkButton from '../LinkButton/link-button.component';
 
 import styles from './projects.module.css';
 

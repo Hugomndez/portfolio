@@ -17,8 +17,8 @@
 - Use PascalCase for component names, component folders, interfaces, and type aliases
 - Use camelCase for variables, functions, methods, and module-level constants
 - Reserve ALL_CAPS for rare global/service constants (e.g. `CONTENTFUL_API_URL`)
-- Use kebab-case file names with a role suffix: `*.component.tsx`, `*.module.css`, `*.hook.tsx`, `*.action.ts`, `*.schema.ts`, `*.service.ts`, `*.queries.ts`, `*.types.ts`
-- Re-export components through a barrel `index.ts` in the component folder
+- Use kebab-case file names with a role suffix: `*.component.tsx`, `*.module.css`, `*.hook.tsx`, `*.action.ts`, `*.schema.ts`, `*.service.ts`, `*.queries.ts`, `*.types.ts`, `*.font.ts`
+- No barrel `index.ts` files — import modules via direct file paths (e.g. `@/components/Bar/bar.component`)
 
 ## Code Quality
 

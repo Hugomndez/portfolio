@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Container } from '@/components/Container';
-import { StructuredData } from '@/components/StructuredData';
-import { UmamiAnalytics } from '@/components/UmamiAnalytics';
+import Container from '@/components/Container/container.component';
+import StructuredData from '@/components/StructuredData/structured-data.component';
+import UmamiAnalytics from '@/components/UmamiAnalytics/umami-analytics.component';
 import { siteMetadata, siteViewport } from '@/config/site-metadata';
 import spaceGrotesk from '@/fonts';
 
