@@ -1,8 +1,8 @@
-import 'server-only';
 import { getPixels } from '@unpic/pixels';
 import { blurhashToDataUri } from '@unpic/placeholder';
 import { encode } from 'blurhash';
 import env from '@/utils/env/env.server';
+import 'server-only';
 
 import type {
   ContentfulResult,
@@ -91,7 +91,7 @@ async function getImageBlurData(imageUrl: string) {
   return base64ImageUri;
 }
 
-async function GetProjects(): Promise<ContentfulResult<ProjectWithBlur[]>> {
+async function getProjects(): Promise<ContentfulResult<ProjectWithBlur[]>> {
   const result = await fetchContentfulData<ProjectsCollectionResponse>(projectsCollectionQuery, {}, 'projectsCollection');
 
   const { items } = result.data.projectsCollection;
@@ -133,4 +133,4 @@ async function GetProjects(): Promise<ContentfulResult<ProjectWithBlur[]>> {
   return projects;
 }
 
-export default GetProjects;
+export default getProjects;

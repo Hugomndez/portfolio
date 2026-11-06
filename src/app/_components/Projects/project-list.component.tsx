@@ -5,8 +5,8 @@ import { ProjectCard } from './project-card.component';
 
 const ProjectList = async () => {
   'use cache';
-  cacheTag('projectsCollection');
   cacheLife('max');
+  cacheTag('projectsCollection');
 
   const projects = await getProjects();
 
