@@ -8,8 +8,8 @@
   // ═══════════════════════════════════════════
   // 🧑‍💻 LANGUAGES — TypeScript
   // ═══════════════════════════════════════════
-  //"js/ts.tsdk.path": "node_modules/typescript/lib", // workspace TS SDK (activate via "TypeScript: Select TypeScript Version")
   // "eslint.workingDirectories": [{ "mode": "auto" }], find oxc similar setting if needed
+  "js/ts.tsdk.path": "node_modules/typescript",
   "js/ts.experimental.useTsgo": true,
 
   // ═══════════════════════════════════════════
