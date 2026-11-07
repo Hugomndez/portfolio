@@ -1,1 +1,2 @@
-pnpm lint
+pnpm exec oxlint --deny-warnings
+pnpm fmt:check
