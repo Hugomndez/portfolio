@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": ["pnpm-lock.yaml", "AGENTS.md"],
+  "ignorePatterns": ["pnpm-lock.yaml", "AGENTS.md", "CHANGELOG.md"],
   "trailingComma": "all",
   "tabWidth": 2,
   "semi": true,
