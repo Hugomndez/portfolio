@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/Hugomndez/portfolio/compare/portfolio-v0.0.4...portfolio-v0.0.5) (2026-11-06)
+
+
+### Performance
+
+* remove barrel files ([#165](https://github.com/Hugomndez/portfolio/issues/165)) ([5f53a09](https://github.com/Hugomndez/portfolio/commit/5f53a0919cb323bf5ae585a781d7a228773511d3))
+
 ## [0.0.4](https://github.com/Hugomndez/portfolio/compare/portfolio-v0.0.3...portfolio-v0.0.4) (2026-11-06)
 
 
