@@ -90,7 +90,11 @@
   // ═══════════════════════════════════════════
   // 🔌 INTEGRATIONS — external tooling
   // ═══════════════════════════════════════════
-  "github-actions.workflows.pinned.workflows": [".github/workflows/playwright.yml"],
+  "github-actions.workflows.pinned.workflows": [
+    ".github/workflows/playwright.yml",
+    ".github/workflows/lighthouse.yml",
+    ".github/workflows/release-please.yml"
+  ],
   // Read MCP servers from workspace-root .mcp.json (portable `mcpServers` standard)
   "chat.mcp.workspaceRootConfig.enabled": true
 }
