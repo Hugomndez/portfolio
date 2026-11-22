@@ -15,14 +15,22 @@ const Intro = () => (
     <ProfileImage />
     <div className={styles.content}>
       <h1 className={styles.title}>
-        <span className={styles.spanBlock}>Nice to meet you! </span>
-        I&rsquo;m <span className={styles.underline}>Hugo Méndez</span>.
+        <span className={styles.spanBlock}>
+          Hi, I&rsquo;m <span className={styles.underline}>Hugo Méndez</span>.
+        </span>
+        I build and modernize <span className={styles.staticTerms}>websites and web apps.</span>
+        <span className={styles.animatedTerms} aria-hidden="true">
+          <span>websites.</span>
+          <span>web apps.</span>
+        </span>
       </h1>
       <p className={styles.subTitle}>
-        Based in Mexico, I&rsquo;m a full stack developer with experience in the implementation of SEO principles and best
-        practices building high-performance websites.
+        Get a fast, reliable website that helps your business reach more people and serve customers better.
       </p>
-      <LinkButton pathname="#contact" title="Contact me" isInternal />
+      <div className={styles.actions}>
+        <LinkButton pathname="#contact" title="Tell me about your project" isInternal />
+        <LinkButton pathname="#projects" title="Explore my work" isInternal />
+      </div>
     </div>
   </section>
 );

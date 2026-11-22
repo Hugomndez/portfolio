@@ -3,7 +3,7 @@ import ProjectList from './project-list.component';
 import styles from './projects.module.css';
 
 const Projects = () => (
-  <section className={styles.section}>
+  <section className={styles.section} id="projects">
     <h2 className={styles.title}>Projects</h2>
     <div className={styles.container}>
       <ProjectList />
