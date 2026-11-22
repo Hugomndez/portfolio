@@ -6,11 +6,19 @@
   text-transform: uppercase;
   letter-spacing: 2.28571px;
   color: var(--White);
+}
+
+.button[data-variant='primary'] {
   border-bottom: 2px solid var(--Green);
+}
+
+.button[data-variant='secondary'] {
+  border-bottom: 2px solid var(--Black);
 }
 
 .button:is(:hover, :focus) {
   color: var(--Green);
+  border-bottom: 2px solid hsl(153, 71%, 39%);
 }
 
 .button:is(:focus-visible) {
@@ -19,5 +27,5 @@
 
 .button:active {
   color: hsl(153, 71%, 39%);
-  border-bottom-color: hsl(153, 71%, 39%);
+  border-bottom: 2px solid hsl(153, 71%, 39%);
 }

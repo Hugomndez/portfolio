@@ -30,7 +30,7 @@ const Intro = () => (
       </p>
       <div className={styles.actions}>
         <LinkButton pathname="#contact" title="Tell me about your project" isInternal />
-        <LinkButton pathname="#projects" title="Explore my work" isInternal />
+        <LinkButton pathname="#projects" title="Explore my work" isInternal variant="secondary" />
       </div>
     </div>
   </section>
