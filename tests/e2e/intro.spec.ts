@@ -10,7 +10,11 @@ test('heading is visible with correct text', async ({ page }) => {
     name: 'Hi, I’m Hugo Méndez. I build and modernize websites and web apps.',
   });
   await expect(h1).toBeVisible();
-  await expect(page.getByText('Get a fast, reliable website that helps your business reach more people')).toBeVisible();
+  await expect(
+    page.getByText(
+      'I help businesses build, improve, and maintain fast, reliable web experiences to reach more people and serve customers better.',
+    ),
+  ).toBeVisible();
 });
 
 test('terms animate without a pause control', async ({ page }) => {
