@@ -6,9 +6,31 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('heading is visible with correct text', async ({ page }) => {
-  // Expect a h1 with "Nice to meet you!"
-  const h1 = page.getByRole('heading', { name: 'Nice to meet you!' });
+  const h1 = page.getByRole('heading', {
+    name: 'Hi, I’m Hugo Méndez. I build and modernize websites and web apps.',
+  });
   await expect(h1).toBeVisible();
+  await expect(
+    page.getByText(
+      'I help businesses build, improve, and maintain fast, reliable web experiences to reach more people and serve customers better.',
+    ),
+  ).toBeVisible();
+});
+
+test('terms animate without a pause control', async ({ page }) => {
+  const heading = page.getByRole('heading', { level: 1 });
+  const terms = heading.locator('[aria-hidden="true"] > span');
+  await expect(terms.first()).toHaveCSS('animation-play-state', 'running');
+  await expect(terms.first()).toHaveCSS('animation-iteration-count', 'infinite');
+  await expect(page.getByLabel('Pause animation')).toHaveCount(0);
+});
+
+test('reduced motion shows both terms without animation', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+
+  await expect(page.getByText('websites and web apps.', { exact: true })).toBeVisible();
+  await expect(page.getByText('websites.', { exact: true })).toBeHidden();
+  await expect(page.getByText('web apps.', { exact: true })).toBeHidden();
 });
 
 test('profile image is visible with correct alt text', async ({ page }) => {
@@ -16,13 +38,16 @@ test('profile image is visible with correct alt text', async ({ page }) => {
   await expect(img).toBeVisible();
 });
 
-test('contact me link works', async ({ page }) => {
-  // Click the "Contact me" link.
-  await page.getByRole('link', { name: 'Contact me' }).click();
+test('tell me about your project link works', async ({ page }) => {
+  await page.getByRole('link', { name: 'Tell me about your project' }).click();
 
-  // Expects page url to contain "#contact"
   await expect(page).toHaveURL(/#contact/);
-
-  // Contact section heading is visible
   await expect(page.getByRole('heading', { name: 'Contact' })).toBeVisible();
+});
+
+test('explore my work link works', async ({ page }) => {
+  await page.getByRole('link', { name: 'Explore my work' }).click();
+
+  await expect(page).toHaveURL(/#projects/);
+  await expect(page.getByRole('heading', { name: 'Projects' })).toBeVisible();
 });

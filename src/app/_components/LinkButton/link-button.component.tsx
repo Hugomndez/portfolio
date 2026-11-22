@@ -7,17 +7,21 @@ type InternalLinkProps<T extends string> = {
   pathname: Route<T>;
   title: string;
   isInternal: true;
+  variant?: 'primary' | 'secondary';
 };
 
 type ExternalLinkProps = {
   href: string;
   title: string;
   isInternal: false;
+  variant?: 'primary' | 'secondary';
 };
 
 type LinkButtonProps<T extends string> = InternalLinkProps<T> | ExternalLinkProps;
 
 const LinkButton = <T extends string>(props: LinkButtonProps<T>) => {
+  const variant = props.variant ?? 'primary';
+
   if (props.isInternal === false) {
     return (
       <a
@@ -25,6 +29,7 @@ const LinkButton = <T extends string>(props: LinkButtonProps<T>) => {
         target="_blank"
         rel="noopener noreferrer"
         className={styles.button}
+        data-variant={variant}
         data-umami-event="Link button"
         data-umami-event-path={props.href}
         data-umami-event-title={props.title}>
@@ -37,6 +42,7 @@ const LinkButton = <T extends string>(props: LinkButtonProps<T>) => {
     <Link
       href={props.pathname}
       className={styles.button}
+      data-variant={variant}
       data-umami-event="Link button"
       data-umami-event-path={String(props.pathname)}
       data-umami-event-title={props.title}>
