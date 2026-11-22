@@ -34,7 +34,7 @@
 
 .title {
   margin-block: 24px 40px;
-  font-size: clamp(3.2rem, 10vw, 4rem);
+  font-size: clamp(3.2rem, 9vw, 4rem);
   line-height: 1.1;
   letter-spacing: -1.13636px;
 }
