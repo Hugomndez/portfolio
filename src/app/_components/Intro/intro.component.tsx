@@ -25,7 +25,8 @@ const Intro = () => (
         </span>
       </h1>
       <p className={styles.subTitle}>
-        Get a fast, reliable website that helps your business reach more people and serve customers better.
+        I help businesses build, improve, and maintain fast, reliable web experiences to reach more people and serve
+        customers better.
       </p>
       <div className={styles.actions}>
         <LinkButton pathname="#contact" title="Tell me about your project" isInternal />
