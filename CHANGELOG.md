@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/Hugomndez/portfolio/compare/portfolio-v0.0.5...portfolio-v0.0.6) (2026-11-22)
+
+
+### Features
+
+* enhance hero section for client focus ([#167](https://github.com/Hugomndez/portfolio/issues/167)) ([751336c](https://github.com/Hugomndez/portfolio/commit/751336c423e55dfc8a129804191e9ba9aa8bde2f))
+
 ## [0.0.5](https://github.com/Hugomndez/portfolio/compare/portfolio-v0.0.4...portfolio-v0.0.5) (2026-11-06)
 
 
